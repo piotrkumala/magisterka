@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Wprowadzenie i cel pracy}{2}{}%
+\contentsline {section}{\numberline {2}Wstęp teoretyczny}{2}{}%
+\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{2}{}%
+\contentsline {section}{\numberline {4}Przeprowadzone badania}{2}{}%
+\contentsline {section}{\numberline {5}Otrzymane wyniki}{2}{}%
+\contentsline {section}{\numberline {6}Wnioski}{2}{}%
