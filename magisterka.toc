@@ -1,6 +1,14 @@
 \contentsline {section}{\numberline {1}Wprowadzenie i cel pracy}{2}{}%
-\contentsline {section}{\numberline {2}Wstęp teoretyczny}{2}{}%
-\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{2}{}%
-\contentsline {section}{\numberline {4}Przeprowadzone badania}{2}{}%
-\contentsline {section}{\numberline {5}Otrzymane wyniki}{2}{}%
-\contentsline {section}{\numberline {6}Wnioski}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Wprowadzenie}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Cel pracy}{2}{}%
+\contentsline {section}{\numberline {2}Wstęp teoretyczny}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Szereg czasowy}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Regresja liniowa}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Drzewa decyzyjne}{3}{}%
+\contentsline {subsection}{\numberline {2.4}Rekurencyjne sieci neuronowe}{3}{}%
+\contentsline {subsection}{\numberline {2.5}Architektura LSTM}{3}{}%
+\contentsline {subsection}{\numberline {2.6}Architektura GRU}{3}{}%
+\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{3}{}%
+\contentsline {section}{\numberline {4}Przeprowadzone badania}{3}{}%
+\contentsline {section}{\numberline {5}Otrzymane wyniki}{3}{}%
+\contentsline {section}{\numberline {6}Wnioski}{3}{}%

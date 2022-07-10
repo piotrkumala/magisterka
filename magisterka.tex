@@ -10,6 +10,8 @@
 \usepackage{placeins}
 \usepackage{subcaption}
 
+\usepackage[style=ieee, backend=bibtex ,sorting=none]{biblatex}
+\addbibresource{refs.bib}
 %opening
 \author{Piotr Kumala}
 \title{Mobilna aplikacja do wizualizacji pomiarów prowadzonych z pokładu drona}
@@ -104,10 +106,26 @@ systemów informatycznych.
 \newpage
 
 \section{Wprowadzenie i cel pracy}
+
+\subsection{Wprowadzenie}
+Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w wydawałoby się prostych urządzeniach jak telefony zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Jednym z najczęściej spotykanych problemów w życiu codziennym jest próba predykcji szeregu czasowego warto więc spróbować wykorzystać sieci neuronowe do jego rozwiązania. Do tego celu zastosować można różne rodzaje sieci neuronowych ja chciałbym się skupić na zastosowaniu rekurencyjnych sieci neuronowych.
+
+\subsection{Cel pracy}
+Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego (Google Android LSTM). Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci warto sprawdzić jak radzą one sobie w nieco bardziej nietypowych dla nich dziedzinach. W tej pracy chcę przedstawić badanie użyteczności zastosowania rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. W przypadku wykazania, że są one użyteczne do rozwiązywania problemów tego typu dostaniemy "za darmo" nowy dobry sposób predykcji. 
+
 \section{Wstęp teoretyczny}
+\subsection{Szereg czasowy}
+\subsection{Regresja liniowa}
+\subsection{Drzewa decyzyjne}
+\subsection{Rekurencyjne sieci neuronowe}
+\subsection{Architektura LSTM}
+\subsection{Architektura GRU}
+
 \section{Przygotowanie zbioru danych}
 \section{Przeprowadzone badania}
 \section{Otrzymane wyniki}
 \section{Wnioski}
+
+\printbibliography
 
 \end{document}
