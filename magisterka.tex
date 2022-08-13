@@ -108,10 +108,10 @@ systemów informatycznych.
 \section{Wprowadzenie i cel pracy}
 
 \subsection{Wprowadzenie}
-Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w wydawałoby się prostych urządzeniach jak telefony zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Jednym z najczęściej spotykanych problemów w życiu codziennym jest próba predykcji szeregu czasowego warto więc spróbować wykorzystać sieci neuronowe do jego rozwiązania. Do tego celu zastosować można różne rodzaje sieci neuronowych ja chciałbym się skupić na zastosowaniu rekurencyjnych sieci neuronowych.
+Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w wydawałoby się prostych urządzeniach jak telefony komórkowe zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Taki rozwój technologiczny może zostać zastosowany do próby zrozumienia i szukania rozwiązań problemów życia codziennego. Jednym z szeroko występujących w świadomości społecznej problemów jest poziom zanieczyszczenia środowiska naturalnego i zmiany klimatu. Co roku na początku zimy media raportują o wysokim poziome zanieczyszczeń powietrza w polskich miastach. Podejmowane są również działania mające na celu ograniczenie poziomu tychże zanieczyszczeń przez samorządy i instytucje centralne. Posiadanie wiarygodnych estymacji skali problemu i jego zmiany w czasie może mieć wymierne skutki w usprawnianiu reakcji na wysokie poziomy zanieczyszczeń. W tej pracy podjęta zostanie próba stworzenia wiarygodnego modelu predykcyjnego poziomu zanieczyszczeń korzystającego z rekurencyjnych sieci neuronowych.
 
 \subsection{Cel pracy}
-Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego (Google Android LSTM). Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci warto sprawdzić jak radzą one sobie w nieco bardziej nietypowych dla nich dziedzinach. W tej pracy chcę przedstawić badanie użyteczności zastosowania rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. W przypadku wykazania, że są one użyteczne do rozwiązywania problemów tego typu dostaniemy "za darmo" nowy dobry sposób predykcji. 
+Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego (Google Android LSTM). Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci nasuwa się pytanie jakie rezultaty będą one osiągać w innych zastosowaniach. W ramach tej pracy zbadana zostanie jakość predykcji szeregów czasowych płynących z modeli opartych na rekurencyjnych sieciach neuronowych. Zostaną one zestawione z klasycznymi metodami predykcyjnymi w celu stwierdzenia zasadności stosowania sieci neuronowych. Specjalna uwaga zostanie również poświęcona różnicom w jakości uzyskiwanych rozwiązań różnych architektur sieci oraz skalowalności modeli opartych na rekurencyjnych sieciach neuronowych. 
 
 \section{Wstęp teoretyczny}
 \subsection{Szereg czasowy}
@@ -120,10 +120,32 @@ Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez najwi�
 \subsection{Rekurencyjne sieci neuronowe}
 \subsection{Architektura LSTM}
 \subsection{Architektura GRU}
+\subsection{Index of agreeement}
 
 \section{Przygotowanie zbioru danych}
+\subsection{Baza danych Instytutu Meteorologii i Gospodarki Wodnej}
+\subsection{Baza danych Głównego Inspektoratu Ochrony Środowiska}
+\subsection{Łączenie danych obu baz danych}
+\subsection{Podział na geograficznie spójne szeregi czasowe}
+
 \section{Przeprowadzone badania}
+\subsection{Porównanie wydajności modeli predykcyjnych}
+\subsubsection{Regresja liniowa}
+\subsubsection{Drzewa decyzyjne}
+\subsubsection{Prosta sieć rekurencyjna}
+\subsubsection{Sieć rekurencyjna typu LSTM}
+\subsubsection{Sieć rekurencyjna typu GRU}
+\subsection{Badanie skalowalności modelu GRU}
+
 \section{Otrzymane wyniki}
+\subsection{Porównanie wydajności modeli predykcyjnych}
+\subsubsection{Regresja liniowa}
+\subsubsection{Drzewa decyzyjne}
+\subsubsection{Prosta sieć rekurencyjna}
+\subsubsection{Sieć rekurencyjna typu LSTM}
+\subsubsection{Sieć rekurencyjna typu GRU}
+\subsection{Badanie skalowalności modelu GRU}
+
 \section{Wnioski}
 
 \printbibliography
