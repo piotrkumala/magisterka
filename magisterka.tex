@@ -16,7 +16,7 @@
 \author{Piotr Kumala}
 \title{Mobilna aplikacja do wizualizacji pomiarów prowadzonych z pokładu drona}
 \date{}
-
+\graphicspath{ {./img/} }
 \renewcommand*\contentsname{Spis treści}
 \renewcommand*\figurename{Rysunek}
 
@@ -118,6 +118,20 @@ Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez najwi�
 W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozpoczęciem dalszych dywagacji należy zdefiniować samo pojęcie aby uniknąć nieścisłości. Podążając za Głównym Urzędem Statystycznym szeregiem czasowym nazywamy ciąg obserwacji ilustrujący kształt zjawiska w kolejnych okresach czasu. Obserwacją można określić zbiór cech opisujących zjawisko w danym punkcie czasu. Rozumiejąc w taki sposób pojęcie szeregu czasowego można w prosty sposób określić cel systemu predykcyjnego. System ten powinien być w stanie przewidzieć wartość pewnej cechy w kolejnym punkcie czasu na podstawie poprzednich obserwacji. Można również określić, że predykcja będzie tym lepsza im bardziej zgodna z posiadanymi obserwacjami. 
 
 \subsection{Regresja liniowa}
+Jedną z najbardziej klasycznych metod predykcyjnych jest regresja liniowa. Jej podstawy zostały położone w pracach Legrende'a i Gauss'a na początku XIX wieku \cite{seal1967studies}. Polega ona na dopasowywaniu funkcji liniowej do danych w taki sposób, aby jak najlepiej opisywała ona kształt i właściwości danych. Najprostszym mechanizmem służącym do zapewnienia optymalnych wyników jest metoda najmniejszych kwadratów opisana po raz pierwszy przez Legrende'a w 1805 roku\cite{legendre1806nouvelles}. Polega ona na takim dopasowywaniu parametrów funkcji aby zminimalizować sumaryczny kwadrat odległości obserwacji od prostej opisanej funkcją. 
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.2]{example_linear_regression.png}}
+	\caption{Przykład wyniku regresji liniowej}
+\end{figure}
+\FloatBarrier
+Metoda ta jest szeroko wykorzystywana, ale nie jest pozbawiona wad. Bardzo mocno reaguje ona na elementy nietypowe co może prowadzić do nieprawidłowego kształtu funkcji. F. Anscombe  w 1973 roku zaprezentował cztery zbiory danych, które korzystając z metody najmniejszych kwadratów zwracają takie same proste pomimo tego, że kształty tychże zbiorów danych są bardzo od siebie różne \cite{anscombe1973graphs}.
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.6]{anscombe.png}}
+	\caption{Zbiory opisane przez Anscombe'ego i dopasowane do nich proste}
+\end{figure}
+\FloatBarrier 
 \subsection{Drzewa decyzyjne}
 \subsection{Rekurencyjne sieci neuronowe}
 \subsection{Architektura LSTM}

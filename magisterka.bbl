@@ -24,5 +24,75 @@
     \verb https://www.apple.com/pl/newsroom/2020/11/apple-unleashes-m1/
     \endverb
   \endentry
+
+  \entry{seal1967studies}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SHL}{%
+         family={Seal},
+         familyi={S\bibinitperiod},
+         given={Hilary\bibnamedelima L},
+         giveni={H\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Oxford University Press}%
+    }
+    \strng{namehash}{SHL1}
+    \strng{fullhash}{SHL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1-2}
+    \field{pages}{1\bibrangedash 24}
+    \field{title}{Studies in the History of Probability and Statistics. XV The
+  historical development of the Gauss linear model}
+    \field{volume}{54}
+    \field{journaltitle}{Biometrika}
+    \field{year}{1967}
+  \endentry
+
+  \entry{legendre1806nouvelles}{book}{}
+    \name{author}{1}{}{%
+      {{hash=LAM}{%
+         family={Legendre},
+         familyi={L\bibinitperiod},
+         given={Adrien\bibnamedelima Marie},
+         giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {chez Firmin Didot, libraire pour lew mathematiques, la marine, l~…}%
+    }
+    \strng{namehash}{LAM1}
+    \strng{fullhash}{LAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Nouvelles m{\'e}thodes pour la d{\'e}termination des orbites
+  des com{\`e}tes; par AM Legendre...}
+    \field{year}{1806}
+  \endentry
+
+  \entry{anscombe1973graphs}{article}{}
+    \name{author}{1}{}{%
+      {{hash=AFJ}{%
+         family={Anscombe},
+         familyi={A\bibinitperiod},
+         given={Francis\bibnamedelima J},
+         giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Taylor \& Francis}%
+    }
+    \strng{namehash}{AFJ1}
+    \strng{fullhash}{AFJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{17\bibrangedash 21}
+    \field{title}{Graphs in statistical analysis}
+    \field{volume}{27}
+    \field{journaltitle}{The american statistician}
+    \field{year}{1973}
+  \endentry
 \enddatalist
 \endinput

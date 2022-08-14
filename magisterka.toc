@@ -4,30 +4,30 @@
 \contentsline {section}{\numberline {2}Wstęp teoretyczny}{2}{}%
 \contentsline {subsection}{\numberline {2.1}Szereg czasowy}{2}{}%
 \contentsline {subsection}{\numberline {2.2}Regresja liniowa}{3}{}%
-\contentsline {subsection}{\numberline {2.3}Drzewa decyzyjne}{3}{}%
-\contentsline {subsection}{\numberline {2.4}Rekurencyjne sieci neuronowe}{3}{}%
-\contentsline {subsection}{\numberline {2.5}Architektura LSTM}{3}{}%
-\contentsline {subsection}{\numberline {2.6}Architektura GRU}{3}{}%
-\contentsline {subsection}{\numberline {2.7}Index of agreeement}{3}{}%
-\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{3}{}%
-\contentsline {subsection}{\numberline {3.1}Baza danych Instytutu Meteorologii i Gospodarki Wodnej}{3}{}%
-\contentsline {subsection}{\numberline {3.2}Baza danych Głównego Inspektoratu Ochrony Środowiska}{3}{}%
-\contentsline {subsection}{\numberline {3.3}Łączenie danych obu baz danych}{3}{}%
-\contentsline {subsection}{\numberline {3.4}Podział na geograficznie spójne szeregi czasowe}{3}{}%
-\contentsline {section}{\numberline {4}Przeprowadzone badania}{3}{}%
-\contentsline {subsection}{\numberline {4.1}Porównanie wydajności modeli predykcyjnych}{3}{}%
-\contentsline {subsubsection}{\numberline {4.1.1}Regresja liniowa}{3}{}%
-\contentsline {subsubsection}{\numberline {4.1.2}Drzewa decyzyjne}{3}{}%
-\contentsline {subsubsection}{\numberline {4.1.3}Prosta sieć rekurencyjna}{3}{}%
-\contentsline {subsubsection}{\numberline {4.1.4}Sieć rekurencyjna typu LSTM}{3}{}%
-\contentsline {subsubsection}{\numberline {4.1.5}Sieć rekurencyjna typu GRU}{3}{}%
-\contentsline {subsection}{\numberline {4.2}Badanie skalowalności modelu GRU}{3}{}%
-\contentsline {section}{\numberline {5}Otrzymane wyniki}{3}{}%
-\contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{3}{}%
-\contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{3}{}%
-\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{3}{}%
-\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{3}{}%
-\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{3}{}%
-\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{3}{}%
-\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{3}{}%
-\contentsline {section}{\numberline {6}Wnioski}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Drzewa decyzyjne}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Rekurencyjne sieci neuronowe}{4}{}%
+\contentsline {subsection}{\numberline {2.5}Architektura LSTM}{4}{}%
+\contentsline {subsection}{\numberline {2.6}Architektura GRU}{4}{}%
+\contentsline {subsection}{\numberline {2.7}Index of agreeement}{4}{}%
+\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Baza danych Instytutu Meteorologii i Gospodarki Wodnej}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Baza danych Głównego Inspektoratu Ochrony Środowiska}{4}{}%
+\contentsline {subsection}{\numberline {3.3}Łączenie danych obu baz danych}{4}{}%
+\contentsline {subsection}{\numberline {3.4}Podział na geograficznie spójne szeregi czasowe}{4}{}%
+\contentsline {section}{\numberline {4}Przeprowadzone badania}{4}{}%
+\contentsline {subsection}{\numberline {4.1}Porównanie wydajności modeli predykcyjnych}{4}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Regresja liniowa}{4}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Drzewa decyzyjne}{4}{}%
+\contentsline {subsubsection}{\numberline {4.1.3}Prosta sieć rekurencyjna}{4}{}%
+\contentsline {subsubsection}{\numberline {4.1.4}Sieć rekurencyjna typu LSTM}{4}{}%
+\contentsline {subsubsection}{\numberline {4.1.5}Sieć rekurencyjna typu GRU}{4}{}%
+\contentsline {subsection}{\numberline {4.2}Badanie skalowalności modelu GRU}{4}{}%
+\contentsline {section}{\numberline {5}Otrzymane wyniki}{4}{}%
+\contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{4}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{4}{}%
+\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{4}{}%
+\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{4}{}%
+\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{4}{}%
+\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{4}{}%
+\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{4}{}%
+\contentsline {section}{\numberline {6}Wnioski}{4}{}%

@@ -22,44 +22,47 @@ Database file #2: refs.bib
 Biblatex version: 3.17
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
-You've used 2 entries,
+Too many commas in name 1 of "chez Firmin Didot, libraire pour lew mathematiques, la marine, l~…" for entry legendre1806nouvelles
+while executing---line 2815 of file biblatex.bst
+You've used 5 entries,
             6399 wiz_defined-function locations,
-            1207 strings with 9094 characters,
-and the built_in function-call counts, 2912 in all, are:
-= -- 106
-> -- 70
-< -- 10
-+ -- 50
-- -- 30
-* -- 67
-:= -- 392
+            1229 strings with 9611 characters,
+and the built_in function-call counts, 21904 in all, are:
+= -- 1659
+> -- 389
+< -- 164
++ -- 429
+- -- 93
+* -- 1197
+:= -- 2023
 add.period$ -- 0
-call.type$ -- 2
-change.case$ -- 2
+call.type$ -- 5
+change.case$ -- 129
 chr.to.int$ -- 42
-cite$ -- 2
-duplicate$ -- 211
-empty$ -- 343
-format.name$ -- 0
-if$ -- 651
+cite$ -- 8
+duplicate$ -- 1986
+empty$ -- 2134
+format.name$ -- 135
+if$ -- 4852
 int.to.chr$ -- 0
-int.to.str$ -- 1
+int.to.str$ -- 10
 missing$ -- 0
-newline$ -- 28
-num.names$ -- 0
-pop$ -- 370
+newline$ -- 96
+num.names$ -- 226
+pop$ -- 1359
 preamble$ -- 1
-purify$ -- 2
+purify$ -- 138
 quote$ -- 0
-skip$ -- 140
+skip$ -- 893
 stack$ -- 0
-substring$ -- 159
-swap$ -- 54
-text.length$ -- 29
+substring$ -- 2886
+swap$ -- 493
+text.length$ -- 83
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 56
+type$ -- 158
 warning$ -- 0
-while$ -- 66
+while$ -- 223
 width$ -- 0
-write$ -- 27
+write$ -- 92
+(There was 1 error message)
