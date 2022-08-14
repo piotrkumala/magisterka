@@ -133,6 +133,17 @@ Metoda ta jest szeroko wykorzystywana, ale nie jest pozbawiona wad. Bardzo mocno
 \end{figure}
 \FloatBarrier 
 \subsection{Drzewa decyzyjne}
+Jedną z najszerzej używanych metod uczenia maszynowego są drzewa decyzyjne. Są one szeroko wykorzystywane ze względu na swoje nieskomplikowanie i intuicyjność w zrozumieniu wyników \cite{wu2008top}. Drzewem decyzyjnym nazywamy model predykcyjny, $h: X \rightarrow Y$, który przewiduje wartość $Y$ dla $x$ poprzez trawers drzewa od korzenia do liścia. Na każdym węźle drzewa kierunek przejścia jest wybierany poprzez rozdzielenie przestrzeni wejściowej. Najczęściej jest ono dokonywane na podstawie cech obserwacji $x$ \cite{books/daglib/0033642}. Wynikiem procesu uczenia jest drzewo pozwalające prześledzić ścieżkę jaką podąża każda obserwacja $x$ w celu przypisania jej odpowiedniej wartości. Przykładowe, bardzo uproszczone drzewo decyzyjne jest przedstawione na rysunku numer 3.
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.8]{example_decission_tree.png}}
+	\caption{Przykładowe drzewo decyzyjne}
+\end{figure}
+\FloatBarrier
+
+Na podstawie tego przykładu można łatwo zaobserwować główną zaletę drzew decyzyjnych, mianowicie łatwość interpretacji uzyskanego drzewa. Podejmowanie decyzji poprzez odpowiadanie na pytania, które stale zawężają możliwe rozwiązania jest intuicyjnie zrozumiałe. Powodem tej łatwości zrozumienia może być bliskość procesu wyboru przez drzewo do ludzkiego procesu podejmowania decyzji. Niektórzy ludzie twierdzą, że drzewo decyzyjne powiela ludzkie schematy myślowe \cite{James2013}. 
+
+Drzewa decyzyjne mogą być wykorzystywane w problemach regresyjnych to znaczy dla ciągłej dziedziny rozwiązań $Y$. Należy jednak pamiętać, że w takim przypadku  należy uważać na możliwość zbytniego dopasowywania drzewa do danych trenujących. Problem ten objawia się stworzeniem zbyt szczegółowego drzewa, które nie generalizuje odpowiednio danych nieobecnych w zbiorze treningowym.
 \subsection{Rekurencyjne sieci neuronowe}
 \subsection{Architektura LSTM}
 \subsection{Architektura GRU}
@@ -145,6 +156,7 @@ Metoda ta jest szeroko wykorzystywana, ale nie jest pozbawiona wad. Bardzo mocno
 \subsection{Podział na geograficznie spójne szeregi czasowe}
 
 \section{Przeprowadzone badania}
+adsfjkhldsfh;dsaf
 \subsection{Porównanie wydajności modeli predykcyjnych}
 \subsubsection{Regresja liniowa}
 \subsubsection{Drzewa decyzyjne}
@@ -160,10 +172,10 @@ Metoda ta jest szeroko wykorzystywana, ale nie jest pozbawiona wad. Bardzo mocno
 \subsubsection{Prosta sieć rekurencyjna}
 \subsubsection{Sieć rekurencyjna typu LSTM}
 \subsubsection{Sieć rekurencyjna typu GRU}
-\subsection{Badanie skalowalności modelu GRU}
+\subsection{Badanie skalowalności modelu GRU}adsfds
 
 \section{Wnioski}
-
+sera
 \printbibliography
 
 \end{document}

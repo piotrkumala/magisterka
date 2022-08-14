@@ -94,5 +94,151 @@
     \field{journaltitle}{The american statistician}
     \field{year}{1973}
   \endentry
+
+  \entry{wu2008top}{article}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{10}{}{%
+      {{hash=WX}{%
+         family={Wu},
+         familyi={W\bibinitperiod},
+         given={Xindong},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kumar},
+         familyi={K\bibinitperiod},
+         given={Vipin},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=RQJ}{%
+         family={Ross\bibnamedelima Quinlan},
+         familyi={R\bibinitperiod\bibinitdelim Q\bibinitperiod},
+         given={J},
+         giveni={J},
+      }}%
+      {{hash=GJ}{%
+         family={Ghosh},
+         familyi={G\bibinitperiod},
+         given={Joydeep},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=YQ}{%
+         family={Yang},
+         familyi={Y\bibinitperiod},
+         given={Qiang},
+         giveni={Q\bibinitperiod},
+      }}%
+      {{hash=MH}{%
+         family={Motoda},
+         familyi={M\bibinitperiod},
+         given={Hiroshi},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=MGJ}{%
+         family={McLachlan},
+         familyi={M\bibinitperiod},
+         given={Geoffrey\bibnamedelima J},
+         giveni={G\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=NA}{%
+         family={Ng},
+         familyi={N\bibinitperiod},
+         given={Angus},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LB}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Bing},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=YPS}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={Philip\bibnamedelima S},
+         giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{WXKVRQJ+1}
+    \strng{fullhash}{WXKVRQJGJYQMHMGJNALBYPS+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{1\bibrangedash 37}
+    \field{title}{Top 10 algorithms in data mining}
+    \field{volume}{14}
+    \field{journaltitle}{Knowledge and information systems}
+    \field{year}{2008}
+  \endentry
+
+  \entry{books/daglib/0033642}{book}{}
+    \name{author}{2}{}{%
+      {{hash=SSS}{%
+         family={Shalev-Shwartz},
+         familyi={S\bibinithyphendelim S\bibinitperiod},
+         given={Shai},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BDS}{%
+         family={Ben-David},
+         familyi={B\bibinithyphendelim D\bibinitperiod},
+         given={Shai},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \keyw{dblp}
+    \strng{namehash}{SSSBDS1}
+    \strng{fullhash}{SSSBDS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{isbn}{978-1-10-705713-5}
+    \field{pages}{250}
+    \field{title}{Understanding Machine Learning - From Theory to Algorithms.}
+    \field{year}{2014}
+  \endentry
+
+  \entry{James2013}{book}{}
+    \name{author}{4}{}{%
+      {{hash=JG}{%
+         family={James},
+         familyi={J\bibinitperiod},
+         given={Gareth},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=WD}{%
+         family={Witten},
+         familyi={W\bibinitperiod},
+         given={Daniela},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=HT}{%
+         family={Hastie},
+         familyi={H\bibinitperiod},
+         given={Trevor},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=TR}{%
+         family={Tibshirani},
+         familyi={T\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \keyw{general_machine_learning}
+    \strng{namehash}{JGWDHT+1}
+    \strng{fullhash}{JGWDHTTR1}
+    \field{labelnamesource}{author}
+    \field{pages}{315}
+  \endentry
 \enddatalist
 \endinput
