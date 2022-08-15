@@ -14,7 +14,7 @@
 \addbibresource{refs.bib}
 %opening
 \author{Piotr Kumala}
-\title{Mobilna aplikacja do wizualizacji pomiarów prowadzonych z pokładu drona}
+\title{Zastosowanie rekurencyjnych sieci neuronowych do predykcji szeregów czasowych}
 \date{}
 \graphicspath{ {./img/} }
 \renewcommand*\contentsname{Spis treści}
@@ -173,6 +173,41 @@ Na przestrzeni lat powstało wiele wariacji na temat architektury rekurencyjnych
 
 
 \subsection{Architektura LSTM}
+Sieci Long Short-Term Memory(LSTM) powstały jako próba rozwiązania problemów występujących w klasycznych sieciach rekurencyjnych. Problemy te głównie dotyczyły aspektu rekurencyjnych sieci neuronowych pozwalającego ,,zapamiętać'' sieci poprzednie kroki czasowe. Zauważono, że korzystając z mechanizmu propagacji wstecznej przesyłany do następnych kroków czasowych sygnał błędu (sposób sieci na ,,zapamiętanie'' poprzednich przypadków) ma tendencję do znikania lub wybuchania. 
+
+Zniknięciem sygnału błędu nazwać można sytuację, w której dąży on do zera w kolejnych krokach czasowych. Jest ona problemem w procesie uczenia, ponieważ może doprowadzić do bardzo dużego przedłużenia procesu lub nawet całkowicie uniemożliwić poprawne nauczenie sieci.
+
+Wybuchem sygnału błędu nazywana jest sytuacja, w której dąży on do nieskończoności. Sytuacja ta jest niepożądana, ponieważ bardzo duży błąd przesyłany do następnych kroków czasowych oznacza, że sieć tak naprawdę niczego nie ,,zapamiętuje''. Może to prowadzić do oscylacji wag w sieci bez sygnału błędu stabilizującego wynik. 
+
+Problemy te zostały podniesione przez S. Hochreiter'a w jego pracy doktorskiej, a następnie dokładniej opisane w roku 1991 we wspólnej pracy z J. Schmidhuber'em. 
+W ramach artykułu ,,Long Short-Term Memory'' zaproponowali oni całkowicie nową architekturę rekurencyjnej sieci neuronowej dążącą do rozwiązania wyżej opisanych problemów \cite{hochreiter1997long}.
+
+Stworzona została architektura oparta na komórkach pamięci i bramkach. Podstawową składową warstwy w tej architekturze jest komórka pamięci. Trzonem komórki jest rekurencyjna jednostka liniowa posiadająca Stałą Karuzelę Błędu (Constant Error Carousel), w skrócie CEC. Wartości CEC będą nazywane stanem komórki. Istnienie mechanizmu CEC eliminuje problemy z sygnałem błędu, ponieważ zapewnia on, że lokalny błąd nie będzie się samoistnie zmieniał w kolejnych krokach czasowych.
+
+Mechanizmem odpowiedzialnym za modyfikację stanu komórki są bramki wejściowa i wyjściowa. Bramka wejściowa zajmuje się kontrolą przepływu nowych informacji do komórki. Oznacza to, że decyduje ona czy zachować obecny stan, czy nadpisać go nowymi informacjami. Można rozumieć zadanie bramki wejściowej jako określanie czy należy zapamiętać nową wiedzę lub uaktualnić istniejącą wiedzę. 
+
+Bramka wyjściowa natomiast kontroluje przepływ stanu komórki na zewnątrz. Decyduje ona czy przechowywana przez komórkę wiedza jest warta przekazania innym komórkom do zapamiętania. Jej zadanie możemy rozumieć jako decyzję czy podzielić się swoją wiedzą z resztą komórek czy zachować ją dla siebie. 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{lstm_without_forget_gate_schema.png}}
+	\caption{Komórka pamięci w architekturze LSTM}
+\end{figure}
+\FloatBarrier
+
+Na powyższym rysunku zauważyć możemy schemat budowy najprostszej komórki pamięci w sieci LSTM. Widzimy wyraźnie bramki wejściową i wyjściową operujące na sygnałach wejściowych $w_{in_ji}$, $y_{in_j}$, $net_{in_j}$ oraz wyjściowych ${w_{out_ji}}$, $y_{out_j}$, $net_{out_j}$. Widoczny jest również mechanizm zmiany stanu wewnętrznego komórki $s_{c_j}$ na podstawie przepuszczonego przez bramkę wejściową sygnału $y_{in_j}$.
+
+Stworzona w taki sposób architektura okazała się mieć jeden poważny problem. Stan komórki wykazywał tendencje do liniowego wzrostu w kolejnych krokach czasowych. Wzrost ten mógł prowadzić do saturacji funkcji h. Saturacja ta prowadziła do przestania przyjmowania nowych błędów i zrównania wyniku komórki z wartością funkcji aktywacji bramki wyjściowej. W takich kierunkach komórka pamięci traciła swoje korzyści i wracała do zachowania typowego dla zwykłej sieci rekurencyjnej \cite{gers2000learning}.
+
+Rozwiązaniem tego problemu okazało się dodanie trzeciej bramki nazywanej bramką zapominania. Zauważono, że przechowywanie w pamięci komórki danych przez bardzo długi często sprawia, że dane te są nieaktualne. Bramka zapominania kontroluje kiedy i ile przechowywanego stanu komórki $s_{c_j}$ należy zapomnieć. Dzięki usuwaniu z pamięci przestarzałych błędów wyeliminowany został problem saturacji funkcji h. Bramka zapominania stała się integralna częścią architektury LSTM. 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{lstm_with_forget_gate_schema.png}}
+	\caption{Komórka pamięci w architekturze LSTM z bramką zapominania}
+\end{figure}
+\FloatBarrier
+
 \subsection{Architektura GRU}
 \subsection{Index of agreeement}
 
