@@ -144,7 +144,34 @@ Jedną z najszerzej używanych metod uczenia maszynowego są drzewa decyzyjne. S
 Na podstawie tego przykładu można łatwo zaobserwować główną zaletę drzew decyzyjnych, mianowicie łatwość interpretacji uzyskanego drzewa. Podejmowanie decyzji poprzez odpowiadanie na pytania, które stale zawężają możliwe rozwiązania jest intuicyjnie zrozumiałe. Powodem tej łatwości zrozumienia może być bliskość procesu wyboru przez drzewo do ludzkiego procesu podejmowania decyzji. Niektórzy ludzie twierdzą, że drzewo decyzyjne powiela ludzkie schematy myślowe \cite{James2013}. 
 
 Drzewa decyzyjne mogą być wykorzystywane w problemach regresyjnych to znaczy dla ciągłej dziedziny rozwiązań $Y$. Należy jednak pamiętać, że w takim przypadku  należy uważać na możliwość zbytniego dopasowywania drzewa do danych trenujących. Problem ten objawia się stworzeniem zbyt szczegółowego drzewa, które nie generalizuje odpowiednio danych nieobecnych w zbiorze treningowym.
+
 \subsection{Rekurencyjne sieci neuronowe}
+Rekurencyjne sieci neuronowe to sieci neuronowe posiadające pętlę sprzężenia zwrotnego w swojej warstwie rekurencyjnej. Taka struktura pozwala im ,,zapamiętywać'' informacje przez pewien okres czasu i wykorzystywać w dalszych predykcjach \cite{reviewOfANN2018}. Taka umiejętność pozwala przewidywać, że rekurencyjna sieć neuronowa powinna dobrze zachowywać się w predykcji szeregu czasowego dzięki ,,zapamiętywaniu'' wartości w poprzednich krokach czasowych. 
+
+Podwaliny rekurencyjnych sieci neuronowych zostały stworzone w 1986 roku przez D. Rumelhart'a. Opisywał on sposób uczenia sieci neuronowych poprzez propagację wsteczną błędu \cite{rumelhart1986learning}. Zauważył on, że korzystając z tej metody uczenia można wypracować sieć, która rekurencyjnie wyznaczy wartości wag neuronów w swojej warstwie ukrytej. Potrzeba opracowania nowego sposobu uczenia wynikała z istnienia zadań niedających się rozwiązać poprzez proste połączenie jednostek wejściowych z wyjściowymi.
+
+Powszechnym sposobem myślenia o strukturze sieci neuronowych jest seria warstw składających się na sieć. Każda warstwa składająca się z pewnej liczby neuronów komunikuje się z następującą warstwą aż do osiągnięcia warstwy wyjściowej zwracającej wynik sieci. 
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{ann_layers.png}}
+	\caption{Przykładowa sieć neuronowa z trzema warstwami}
+\end{figure}
+\FloatBarrier
+
+W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących się ze sobą, a jedna rekurencyjna warstwa zmieniająca się w czasie. W celu lepszego zrozumienia struktury i sposobu działania takiej sieci często dokonywany jest proces rozwijania w czasie warstwy rekurencyjnej.
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{Recurrent_neural_network_unfold.png}}
+	\caption{Przykład rozwijania warstwy rekurencyjnej $h$}
+\end{figure}
+\FloatBarrier
+
+W powyższym przykładzie należy zauważyć, że w wersji rozwiniętej $h_{t-1}, h_t i h_{t+1}$ nie są osobnymi warstwami, a jedynie reprezentacją warstwy $h$ w różnych krokach czasowych. 
+
+Na przestrzeni lat powstało wiele wariacji na temat architektury rekurencyjnych sieci neuronowych odpowiadających na różne problemy i wymagania im stawiane. W dalszym ciągu pracy przedstawione zostaną wybrane architektury, które mogą zostać wykorzystane do rozwiązania postawionego problemu predykcji szeregu czasowego.
+
+
 \subsection{Architektura LSTM}
 \subsection{Architektura GRU}
 \subsection{Index of agreeement}

@@ -240,5 +240,120 @@
     \field{labelnamesource}{author}
     \field{pages}{315}
   \endentry
+
+  \entry{reviewOfANN2018}{article}{}
+    \name{author}{10}{}{%
+      {{hash=AO}{%
+         family={Abiodun},
+         familyi={A\bibinitperiod},
+         given={Oludare},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=JA}{%
+         family={Jantan},
+         familyi={J\bibinitperiod},
+         given={Aman},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=OO}{%
+         family={Omolara},
+         familyi={O\bibinitperiod},
+         given={Oludare},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=DK}{%
+         family={Dada},
+         familyi={D\bibinitperiod},
+         given={Kemi},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=UA}{%
+         family={Umar},
+         familyi={U\bibinitperiod},
+         given={Abubakar},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LO}{%
+         family={Linus},
+         familyi={L\bibinitperiod},
+         given={Okafor},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=AH}{%
+         family={Arshad},
+         familyi={A\bibinitperiod},
+         given={Humaira},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=AKA}{%
+         family={Aminu\bibnamedelima Kazaure},
+         familyi={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+         given={Abdullahi},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GU}{%
+         family={Gana},
+         familyi={G\bibinitperiod},
+         given={Usman},
+         giveni={U\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Kiru},
+         familyi={K\bibinitperiod},
+         given={Muhammad},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AOJAOO+1}
+    \strng{fullhash}{AOJAOODKUALOAHAKAGUKM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2019.2945545
+    \endverb
+    \field{pages}{1\bibrangedash 1}
+    \field{title}{Comprehensive Review of Artificial Neural Network
+  Applications to Pattern Recognition}
+    \field{volume}{PP}
+    \field{journaltitle}{IEEE Access}
+    \field{month}{10}
+    \field{year}{2019}
+  \endentry
+
+  \entry{rumelhart1986learning}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RDE}{%
+         family={Rumelhart},
+         familyi={R\bibinitperiod},
+         given={David\bibnamedelima E},
+         giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HGE}{%
+         family={Hinton},
+         familyi={H\bibinitperiod},
+         given={Geoffrey\bibnamedelima E},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=WRJ}{%
+         family={Williams},
+         familyi={W\bibinitperiod},
+         given={Ronald\bibnamedelima J},
+         giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Nature Publishing Group}%
+    }
+    \strng{namehash}{RDEHGEWRJ1}
+    \strng{fullhash}{RDEHGEWRJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{6088}
+    \field{pages}{533\bibrangedash 536}
+    \field{title}{Learning representations by back-propagating errors}
+    \field{volume}{323}
+    \field{journaltitle}{nature}
+    \field{year}{1986}
+  \endentry
 \enddatalist
 \endinput
