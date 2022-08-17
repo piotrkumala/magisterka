@@ -195,7 +195,7 @@ Bramka wyjściowa natomiast kontroluje przepływ stanu komórki na zewnątrz. De
 \end{figure}
 \FloatBarrier
 
-Na powyższym rysunku zauważyć możemy schemat budowy najprostszej komórki pamięci w sieci LSTM. Widzimy wyraźnie bramki wejściową i wyjściową operujące na sygnałach wejściowych $w_{in_ji}$, $y_{in_j}$, $net_{in_j}$ oraz wyjściowych ${w_{out_ji}}$, $y_{out_j}$, $net_{out_j}$. Widoczny jest również mechanizm zmiany stanu wewnętrznego komórki $s_{c_j}$ na podstawie przepuszczonego przez bramkę wejściową sygnału $y_{in_j}$.
+Na powyższym rysunku przedstawiony jest schemat budowy najprostszej komórki pamięci w sieci LSTM. Wyraźnie widoczne są bramki wejściową i wyjściową operujące na sygnałach wejściowych $w_{in_ji}$, $y_{in_j}$, $net_{in_j}$ oraz wyjściowych ${w_{out_ji}}$, $y_{out_j}$, $net_{out_j}$. Widoczny jest również mechanizm zmiany stanu wewnętrznego komórki $s_{c_j}$ na podstawie przepuszczonego przez bramkę wejściową sygnału $y_{in_j}$.
 
 Stworzona w taki sposób architektura okazała się mieć jeden poważny problem. Stan komórki wykazywał tendencje do liniowego wzrostu w kolejnych krokach czasowych. Wzrost ten mógł prowadzić do saturacji funkcji h. Saturacja ta prowadziła do przestania przyjmowania nowych błędów i zrównania wyniku komórki z wartością funkcji aktywacji bramki wyjściowej. W takich kierunkach komórka pamięci traciła swoje korzyści i wracała do zachowania typowego dla zwykłej sieci rekurencyjnej \cite{gers2000learning}.
 
@@ -203,12 +203,39 @@ Rozwiązaniem tego problemu okazało się dodanie trzeciej bramki nazywanej bram
 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.3]{lstm_with_forget_gate_schema.png}}
+	\makebox[0pt]{\includegraphics[scale=0.9]{lstm_with_forget_gate_schema.png}}
 	\caption{Komórka pamięci w architekturze LSTM z bramką zapominania}
 \end{figure}
 \FloatBarrier
-
+\newpage
 \subsection{Architektura GRU}
+
+Architektura Gated Recurrent Unit (GRU) została zaproponowana przez K. Cho w 2014 roku \cite{https://doi.org/10.48550/arxiv.1406.1078}. Oryginalnie została zaprojektowana do pracy w sieciach typu enkoder-dekoder do tłumaczenia tekstu jako alternatywa dla używanych wcześniej komórek z funkcją aktywacji tangens hiperboliczny. Decyzja o próbie wykorzystania jednostki rekurencyjnej działającej na bramkach była motywowana sukcesem sieci LSTM.
+
+W porównaniu do architektury Long Short-Term Memory Gated Recurrent Unit jest prostsza do zaimplementowania i mniej wymagająca obliczeniowo. Dzieje się tak dzięki zmniejszeniu ilości bramek kontrolujących pamięć komórki. Podczas gdy LSTM do poprawnego działania wymaga użycia trzech bramek (wejściowej, wyjściowej i zapominania) to wewnątrz jednostki GRU występują jedynie dwie bramki (aktualizacja i reset). 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=1]{gru_schema.png}}
+	\caption{Komórka pamięci w architekturze GRU}
+\end{figure}
+\FloatBarrier
+
+Na powyższym rysunku przedstawiony jest schemat komórki GRU, gdzie stan komórki w obecnym kroku czasowym $h$ zmienia się w $\widetilde{h}$. Widoczne są również bramki resetu $r$ i aktualizacji $z$. 
+
+Bramka reset (reset gate) decyduje czy poprzedni wewnętrzny stan komórki powinien być zachowany czy wyrzucony. Jej wartość w j-tej komórce w warstwie wyznaczamy ze wzoru:
+\begin{equation}
+	r_j = \sigma([W_rx]_j + [U_rh_{t-1}]_j),
+\end{equation} 
+gdzie $W_r$ i $U_r$ to macierze wag, których wartości są wyznaczane w trakcie uczenia sieci. Przy takich założeniach można zauważyć, że jeżeli wartość bramki reset będzie bliska zeru to stan komórki będzie często usuwany.
+
+Bramka aktualizacji (update gate) decyduje natomiast ile stanu z poprzedniego kroku czasowego należy zapamiętać w obecnym kroku. Wartość bramki w j-tej komórce warstwy wyznaczamy ze wzoru:
+\begin{equation}
+	z_j = \sigma([W_zx]_j + [U_zh_{t-1}]_j),
+\end{equation} 
+gdzie $W_z$ i $U_z$ to macierze wag analogiczne do tych występujących w bramce resetu. 
+
+Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę, że macierze $W_z, W_r, U_z, U_r$ są wyznaczane w trakcie uczenia można wysunąć kilka obserwacji. Dualizm bramek powinien prowadzić do jednej bramki będącej znacznie bardziej aktywnej od drugiej. Zjawisko to można rozumieć jako specjalizację komórek warstwy, gdzie te z aktywnymi bramkami resetu odpowiadają za pamięć krótkotrwałą, a te z aktywną bramką aktualizacji odpowiadają za pamięć długoterminową. Pamiętając, że aktywność każdej bramki jest dopasowywana dla każdej komórki w procesie uczenia możemy założyć, że podział komórek na pamięć krótkotrwałą i długotrwałą będzie w wytrenowanej sieci rozłożony w sposób optymalny. Rozumiemy przez to, że jeżeli dane treningowe na przykład nie wykazywały długofalowych trendów, a były bardziej chaotyczne i często zmieniające się to po procesie uczenia powinny dominować komórki z aktywną bramką resetu.
 \subsection{Index of agreeement}
 
 \section{Przygotowanie zbioru danych}

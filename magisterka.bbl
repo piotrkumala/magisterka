@@ -421,5 +421,73 @@
     \field{journaltitle}{Neural computation}
     \field{year}{2000}
   \endentry
+
+  \entry{https://doi.org/10.48550/arxiv.1406.1078}{misc}{}
+    \name{author}{7}{}{%
+      {{hash=CK}{%
+         family={Cho},
+         familyi={C\bibinitperiod},
+         given={Kyunghyun},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=vMB}{%
+         prefix={van},
+         prefixi={v\bibinitperiod},
+         family={Merrienboer},
+         familyi={M\bibinitperiod},
+         given={Bart},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=GC}{%
+         family={Gulcehre},
+         familyi={G\bibinitperiod},
+         given={Caglar},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Bahdanau},
+         familyi={B\bibinitperiod},
+         given={Dzmitry},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BF}{%
+         family={Bougares},
+         familyi={B\bibinitperiod},
+         given={Fethi},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=SH}{%
+         family={Schwenk},
+         familyi={S\bibinitperiod},
+         given={Holger},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=BY}{%
+         family={Bengio},
+         familyi={B\bibinitperiod},
+         given={Yoshua},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {arXiv}%
+    }
+    \keyw{Computation and Language (cs.CL), Machine Learning (cs.LG), Neural
+  and Evolutionary Computing (cs.NE), Machine Learning (stat.ML), FOS: Computer
+  and information sciences, FOS: Computer and information sciences}
+    \strng{namehash}{CKMBvGC+1}
+    \strng{fullhash}{CKMBvGCBDBFSHBY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.48550/ARXIV.1406.1078
+    \endverb
+    \field{title}{Learning Phrase Representations using RNN Encoder-Decoder for
+  Statistical Machine Translation}
+    \verb{url}
+    \verb https://arxiv.org/abs/1406.1078
+    \endverb
+    \field{year}{2014}
+  \endentry
 \enddatalist
 \endinput
