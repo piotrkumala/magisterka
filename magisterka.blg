@@ -19,55 +19,47 @@ Reallocated singl_function (elt_size=8) to 100 items from 50.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: magisterka-blx.bib
 Database file #2: refs.bib
-I was expecting a `,' or a `}'---line 72 of file refs.bib
- :  
- :  timestamp = {2019-10-12T23:45:37.000+0200},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Biblatex version: 3.17
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
-Too many commas in name 1 of "chez Firmin Didot, libraire pour lew mathematiques, la marine, l~…" for entry legendre1806nouvelles
-while executing---line 2815 of file biblatex.bst
-You've used 14 entries,
+You've used 16 entries,
             6399 wiz_defined-function locations,
-            1292 strings with 11606 characters,
-and the built_in function-call counts, 130229 in all, are:
-= -- 11343
+            1303 strings with 11959 characters,
+and the built_in function-call counts, 133117 in all, are:
+= -- 11406
 > -- 1619
-< -- 456
-+ -- 4086
-- -- 625
-* -- 8977
-:= -- 15526
+< -- 470
++ -- 4089
+- -- 634
+* -- 9077
+:= -- 15580
 add.period$ -- 0
-call.type$ -- 14
-change.case$ -- 280
+call.type$ -- 16
+change.case$ -- 286
 chr.to.int$ -- 48
-cite$ -- 26
-duplicate$ -- 13359
-empty$ -- 10944
+cite$ -- 30
+duplicate$ -- 13772
+empty$ -- 11444
 format.name$ -- 973
-if$ -- 25994
+if$ -- 26669
 int.to.chr$ -- 0
-int.to.str$ -- 34
+int.to.str$ -- 36
 missing$ -- 0
-newline$ -- 495
+newline$ -- 518
 num.names$ -- 639
-pop$ -- 5004
+pop$ -- 5642
 preamble$ -- 1
-purify$ -- 393
+purify$ -- 399
 quote$ -- 0
-skip$ -- 2680
+skip$ -- 2800
 stack$ -- 0
-substring$ -- 21511
-swap$ -- 2069
-text.length$ -- 327
+substring$ -- 21531
+swap$ -- 2195
+text.length$ -- 343
 text.prefix$ -- 1
 top$ -- 1
-type$ -- 464
+type$ -- 532
 warning$ -- 0
-while$ -- 1858
+while$ -- 1863
 width$ -- 0
-write$ -- 482
-(There were 2 error messages)
+write$ -- 503

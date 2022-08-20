@@ -244,7 +244,7 @@ Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę
 Odpowiednie dane są niezbędne do prób zbadania użyteczności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Z tego powodu stworzeniu badawczo ciekawych szeregów czasowych przeznaczona została adekwatna ilość czasu. Przeanalizowano wiele możliwych zbiorów danych aby ich użyć do zbudowania szeregów czasowych. Ostatecznie podjęta została decyzja o połączeniu danych klimatycznych agregowanych przez Instytut Meteorologii i Gospodarki Wodnej oraz danych o zanieczyszczeniu powietrza zbieranych przez Główny Inspektorat Ochrony Środowiska. Oba te zbiory, sposób połączenia ich w szereg czasowy i napotkane trudności zostaną opisane w tym rozdziale. 
 
 \subsection{Baza danych Instytutu Meteorologii i Gospodarki Wodnej}
-Instytut Meteorologii i Gospodarki Wodnej to polska instytucja zajmująca się prognozowaniem pogody i sporządzaniem ekspertyz meteorologicznych. Cel ten jest realizowany między innymi poprzez przeprowadzanie systematycznych pomiarów i obserwacji korzystając z sieci stacji pomiarowych \cite{imgwTask}. Ten aspekt działalności Instytutu implikuje istnienie obszernej bazy danych pomiarowych, które są udostępniane publicznie ponieważ celem Instytutu jest służba społeczeństwu. Ten zbiór danych pomiarowych został wykorzystany do budowy szeregów czasowych. 
+Instytut Meteorologii i Gospodarki Wodnej to instytucja zajmująca się prognozowaniem pogody i sporządzaniem ekspertyz meteorologicznych. Cel ten jest realizowany między innymi poprzez przeprowadzanie systematycznych pomiarów i obserwacji korzystając z sieci stacji pomiarowych \cite{imgwTask}. Ten aspekt działalności Instytutu implikuje istnienie obszernej bazy danych pomiarowych, które są udostępniane publicznie ponieważ celem Instytutu jest służba społeczeństwu. Ten zbiór danych pomiarowych został wykorzystany do budowy szeregów czasowych. 
 
 Publicznie dostępne są dane klimatyczne od 1951 roku do chwili obecnej. Są one udostępniane w formie dwóch plików csv dla każdego miesiąca roku. Dane w obu plikach mają analogiczną strukturę wyglądającą następująco:
 \begin{center}
@@ -268,6 +268,37 @@ W kolejnych wierszach są zapisane informacje o pomiarach z jednej stacji z cał
 Dla każdego pomiaru jest zapisywany status tego pomiaru pozwalający stwierdzić czy został on przeprowadzony poprawnie i czy dane zjawisko występowało w danym dniu. W wykorzystywanych danych z okresu 2001-2020 nie było przypadku błędnego pomiaru co pozwala wierzyć w dokładność danych i skrupulatność przeprowadzanych obserwacji. 
 
 \subsection{Baza danych Głównego Inspektoratu Ochrony Środowiska}
+Główny Inspektorat Ochrony Środowiska to instytucja powołana 27 kwietnia 2001 roku \cite{giosStart}. Jako część swojej misji określa ona mierzenie stanu środowiska oraz udostępnianie wyników tych pomiarów społeczeństwu \cite{giosMission}. Ten aspekt działalności Inspektoratu gwarantuje istnienie dużej bazy wyników pomiarów danych dotyczących poziomu zanieczyszczeń powietrza, które mogą zostać wykorzystane do tworzenia szeregów czasowych. 
+
+Główny Inspektorat Ochrony Środowiska jest instytucją znacznie młodszą o Instytutu Meteorologii i Gospodarki Wodnej, więc dane agregowane przez Inspektorat nie będą dotyczyć tak długiego okresu czasu jak dane Instytutu. Jako że Główny Inspektorat Ochrony Środowiska jest instytucją względnie młodą to w jego początkowych stadiach nie monitorował on wielu różnych typów zanieczyszczeń oraz nie posiadał szerokiej sieci punktów pomiarowych. W trakcie jego rozwoju dochodziło również do zmian w formacie udostępnianych danych. Czynniki te musiały być brane pod uwagę w trakcie pracy z udostępnianymi przez niego danymi. 
+
+Dane te są udostępniane w formie plików formatu xlsx, gdzie dla każdej substancji zanieczyszczającej tworzony jest osobny plik z wynikami pomiarów. Co do zasady struktura danych prezentuje się następująco:
+\begin{center}
+	\begin{tabular}{|c|c|c}
+		Data wykonania pomiaru & Kod stacji 1 & Kod stacji 2 ...
+	\end{tabular}
+\end{center}
+Różne czynniki zanieczyszczające mają również różne rozdzielczości czasowe, dla niektórych jest rozdzielczość godzinna, dla innych dobowa, dla niektórych są dostępne obie. 
+
+Ilość badanych substancji zanieczyszczających powietrze fluktuuje w czasie. W pierwszym roku, dla którego dostępne są dane, mianowicie roku 2000 mierzone były:
+\begin{itemize}
+	\item Średnie dobowe stężenie Benzo(a)pirenu w pyle PM10
+	\item Średnie dobowe stężenie Benzenu
+	\item Średnie dobowe stężenie Kadmu w pyle PM10 
+	\item Średnie dobowe stężenie Niklu w pyle PM10
+	\item Godzinne stężenie Dwutlenku azotu
+	\item Średnie dobowe stężenie Dwutlenku azotu
+	\item Godzinne stężenie mieszaniny Tlenku azotu i Dwutlenku azotu
+	\item Godzinne stężenie Ozonu
+	\item Średnie dobowe stężenie pyłu PM10
+	\item Godzinne stężenie Dwutlenku siarki
+	\item Średnie dobowe stężenie Dwutlenku siarki
+\end{itemize}
+W kolejnych latach liczba badanych czynników zanieczyszczających oraz rozdzielczość czasowa tych badań znacząco wzrastała, jednak aby zachować możliwość budowy jak najdłuższego szeregu czasowego podjęta została decyzja na braniu pod uwagę jedynie polutantów występujących w wynikach pomiarów ze wszystkich lat działania Inspektoratu. 
+
+
+Nie bez znaczenia jest również fakt, że ilość stacji badających różniła się znacznie pomiędzy różnymi substancjami. Ostatecznie wybrane zostało używanie jedynie średniego dobowego stężenia pyłu PM10, jako że był on badany przez największą ilość stacji przez najdłuższy możliwy czas. Czynniki te miały duży wpływ na proces budowania jednego szeregu czasowego na podstawie obu opisanych zbiorów danych, który zostanie opisany w dalszej części pracy.
+
 \subsection{Łączenie danych obu baz danych}
 \subsection{Podział na geograficznie spójne szeregi czasowe}
 

@@ -60,7 +60,8 @@
       }}%
     }
     \list{publisher}{1}{%
-      {chez Firmin Didot, libraire pour lew mathematiques, la marine, l~…}%
+      {chez Firmin Didot{\,} libraire pour lew mathematiques, la marine,
+  l~…}%
     }
     \strng{namehash}{LAM1}
     \strng{fullhash}{LAM1}
@@ -238,7 +239,14 @@
     \strng{namehash}{JGWDHT+1}
     \strng{fullhash}{JGWDHTTR1}
     \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
     \field{pages}{315}
+    \field{title}{An Introduction to Statistical Learning: with Applications in
+  R}
+    \verb{url}
+    \verb https://faculty.marshall.usc.edu/gareth-james/ISL/
+    \endverb
+    \field{year}{2013}
   \endentry
 
   \entry{reviewOfANN2018}{article}{}
@@ -495,6 +503,23 @@
     \field{title}{Zadania statutowe}
     \verb{url}
     \verb https://www.imgw.pl/instytut/zadania-statutowe
+    \endverb
+  \endentry
+
+  \entry{giosStart}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Zadania INSPEKCJI OCHRONY ŚRODOWISKA}
+    \verb{url}
+    \verb https://www.gios.gov.pl/pl/o-urzedzie/zadania-inspekcji-ochrony-srodo
+    \verb wiska
+    \endverb
+  \endentry
+
+  \entry{giosMission}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Misja Inspekcji Ochrony Środowiska}
+    \verb{url}
+    \verb https://www.gios.gov.pl/pl/o-urzedzie/strategia
     \endverb
   \endentry
 \enddatalist
