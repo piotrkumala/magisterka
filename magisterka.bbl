@@ -489,5 +489,13 @@
     \endverb
     \field{year}{2014}
   \endentry
+
+  \entry{imgwTask}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Zadania statutowe}
+    \verb{url}
+    \verb https://www.imgw.pl/instytut/zadania-statutowe
+    \endverb
+  \endentry
 \enddatalist
 \endinput

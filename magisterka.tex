@@ -9,6 +9,7 @@
 \usepackage{etoolbox}
 \usepackage{placeins}
 \usepackage{subcaption}
+\usepackage{gensymb}
 
 \usepackage[style=ieee, backend=bibtex ,sorting=none]{biblatex}
 \addbibresource{refs.bib}
@@ -236,10 +237,36 @@ Bramka aktualizacji (update gate) decyduje natomiast ile stanu z poprzedniego kr
 gdzie $W_z$ i $U_z$ to macierze wag analogiczne do tych występujących w bramce resetu. 
 
 Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę, że macierze $W_z, W_r, U_z, U_r$ są wyznaczane w trakcie uczenia można wysunąć kilka obserwacji. Dualizm bramek powinien prowadzić do jednej bramki będącej znacznie bardziej aktywnej od drugiej. Zjawisko to można rozumieć jako specjalizację komórek warstwy, gdzie te z aktywnymi bramkami resetu odpowiadają za pamięć krótkotrwałą, a te z aktywną bramką aktualizacji odpowiadają za pamięć długoterminową. Pamiętając, że aktywność każdej bramki jest dopasowywana dla każdej komórki w procesie uczenia możemy założyć, że podział komórek na pamięć krótkotrwałą i długotrwałą będzie w wytrenowanej sieci rozłożony w sposób optymalny. Rozumiemy przez to, że jeżeli dane treningowe na przykład nie wykazywały długofalowych trendów, a były bardziej chaotyczne i często zmieniające się to po procesie uczenia powinny dominować komórki z aktywną bramką resetu.
-\subsection{Index of agreeement}
+\subsection{Indeks Willmott'a}
 
+\newpage
 \section{Przygotowanie zbioru danych}
+Odpowiednie dane są niezbędne do prób zbadania użyteczności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Z tego powodu stworzeniu badawczo ciekawych szeregów czasowych przeznaczona została adekwatna ilość czasu. Przeanalizowano wiele możliwych zbiorów danych aby ich użyć do zbudowania szeregów czasowych. Ostatecznie podjęta została decyzja o połączeniu danych klimatycznych agregowanych przez Instytut Meteorologii i Gospodarki Wodnej oraz danych o zanieczyszczeniu powietrza zbieranych przez Główny Inspektorat Ochrony Środowiska. Oba te zbiory, sposób połączenia ich w szereg czasowy i napotkane trudności zostaną opisane w tym rozdziale. 
+
 \subsection{Baza danych Instytutu Meteorologii i Gospodarki Wodnej}
+Instytut Meteorologii i Gospodarki Wodnej to polska instytucja zajmująca się prognozowaniem pogody i sporządzaniem ekspertyz meteorologicznych. Cel ten jest realizowany między innymi poprzez przeprowadzanie systematycznych pomiarów i obserwacji korzystając z sieci stacji pomiarowych \cite{imgwTask}. Ten aspekt działalności Instytutu implikuje istnienie obszernej bazy danych pomiarowych, które są udostępniane publicznie ponieważ celem Instytutu jest służba społeczeństwu. Ten zbiór danych pomiarowych został wykorzystany do budowy szeregów czasowych. 
+
+Publicznie dostępne są dane klimatyczne od 1951 roku do chwili obecnej. Są one udostępniane w formie dwóch plików csv dla każdego miesiąca roku. Dane w obu plikach mają analogiczną strukturę wyglądającą następująco:
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c}
+		Kod stacji & Nazwa stacji & Rok & Miesiąc & Dzień & Wyniki pomiarów...
+	\end{tabular}
+\end{center}
+W kolejnych wierszach są zapisane informacje o pomiarach z jednej stacji z całego miesiąca, potem następnej i tak dalej. Ponieważ wyniki pomiarów z obu plików mogą nieść znaczenie w procesie predykcyjnym podjęta została decyzja o korzystaniu z danych zapisanych w obu plikach. Biorąc pod uwagę oba pliki w bazie danych agregowane są wyniki pomiarów: 
+\begin{itemize}
+	\item Średniej dobowej temperatury [$\degree C$]
+	\item Średniej dobowej wilgotności względnej [\%]
+	\item Średniej dobowej prędkości wiatru [$\frac{m}{s}$]
+	\item Średniego dobowego zachmurzenia ogólne [oktany]
+	\item Maksymalnej temperatury dobowej [$\degree C$]
+	\item Minimalnej temperatury dobowej [$\degree C$]
+	\item Temperatura minimalnej przy gruncie [$\degree C$]
+	\item Suma dobowej opadów [$mm$]
+	\item Rodzaju opadu [S (Śnieg) /W (Deszcz)]
+	\item Wysokości pokrywy śnieżnej [$cm$]
+\end{itemize}
+Dla każdego pomiaru jest zapisywany status tego pomiaru pozwalający stwierdzić czy został on przeprowadzony poprawnie i czy dane zjawisko występowało w danym dniu. W wykorzystywanych danych z okresu 2001-2020 nie było przypadku błędnego pomiaru co pozwala wierzyć w dokładność danych i skrupulatność przeprowadzanych obserwacji. 
+
 \subsection{Baza danych Głównego Inspektoratu Ochrony Środowiska}
 \subsection{Łączenie danych obu baz danych}
 \subsection{Podział na geograficznie spójne szeregi czasowe}
