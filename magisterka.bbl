@@ -522,5 +522,14 @@
     \verb https://www.gios.gov.pl/pl/o-urzedzie/strategia
     \endverb
   \endentry
+
+  \entry{sklearnLinearRegression}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Linear Regression}
+    \verb{url}
+    \verb https://scikit-learn.org/stable/modules/generated/sklearn.linear_mode
+    \verb l.LinearRegression.html
+    \endverb
+  \endentry
 \enddatalist
 \endinput
