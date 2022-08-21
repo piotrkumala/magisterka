@@ -531,5 +531,21 @@
     \verb l.LinearRegression.html
     \endverb
   \endentry
+
+  \entry{sklearnDecissionTrees}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Decission Trees}
+    \verb{url}
+    \verb https://scikit-learn.org/stable/modules/tree.html#tree
+    \endverb
+  \endentry
+
+  \entry{dotLanguage}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{DOT Language}
+    \verb{url}
+    \verb http://www.graphviz.org/doc/info/lang.html
+    \endverb
+  \endentry
 \enddatalist
 \endinput

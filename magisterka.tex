@@ -347,7 +347,18 @@ W celu umożliwienia ewaluacji wyników działania metody sporządzony został w
 \end{center}
 
 Uzyskane w tej metodzie wyniki zostaną dokładnie przedyskutowane w podsekcji \hyperlink{subsubsection.5.1.1}{5.1.1} oraz zestawione z wynikami pozostałych metod w podsekcji \hyperlink{subsubsection.5.1.6}{5.1.6}.
+
 \subsubsection{Drzewa decyzyjne}
+Drugą zastosowaną metodą była regresja z wykorzystaniem drzew decyzyjnych, jako że jest ona jedną z najszerzej wykorzystywanych metod uczenia maszynowego. Uzyskane przez nią wyniki będą pełnić rolę podobną do wyników regresji liniowej. Warty odnotowania jest również fakt użyteczności graficznych reprezentacji procesu decyzyjnego do zrozumienia nie tylko sposobu podejmowania decyzji, ale również struktury danych wejściowych. 
+
+Regresja z wykorzystaniem drzew decyzyjnych została przeprowadzona za pomocą metod udostępnionych w bibliotece ,,sklearn'' dla języka Python. Biblioteka ta definiuje drzewa decyzyjne jako nieparametryczną metodę nadzorowanego uczenia używaną do klasyfikacji i regresji \cite{sklearnDecissionTrees}. Aspekt regresyjny został wykorzystany w prowadzonych badaniach. 
+
+Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej szczegółów podziału i wyliczanych charakterystyk można znaleźć w podsekcji \hyperlink{subsubsection.4.1.1}{4.1.1}.
+
+Dla ułatwienia zrozumienia otrzymywanych wyników sporządzony został również rysunek ostatecznego drzewa decyzyjnego. Rysunek ten został wykonany korzystając z języka opisu grafów DOT \cite{dotLanguage}.
+
+Wyniki regresji z wykorzystaniem drzew decyzyjnych zostaną dokładnie przedstawione w podsekcji \hyperlink{5.1.2}{5.1.2} oraz porównane z innymi metodami w podsekcji \hyperlink{5.1.6}{5.1.6}.
+
 \subsubsection{Prosta sieć rekurencyjna}
 \subsubsection{Sieć rekurencyjna typu LSTM}
 \subsubsection{Sieć rekurencyjna typu GRU}
