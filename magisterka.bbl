@@ -547,5 +547,13 @@
     \verb http://www.graphviz.org/doc/info/lang.html
     \endverb
   \endentry
+
+  \entry{tfSimpleRNN}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{tf.keras.layers.SimpleRNN}
+    \verb{url}
+    \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/SimpleRNN
+    \endverb
+  \endentry
 \enddatalist
 \endinput
