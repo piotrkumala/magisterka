@@ -555,5 +555,21 @@
     \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/SimpleRNN
     \endverb
   \endentry
+
+  \entry{tfLSTM}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{tf.keras.layers.LSTM}
+    \verb{url}
+    \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM
+    \endverb
+  \endentry
+
+  \entry{tfGRU}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{tf.keras.layers.GRU}
+    \verb{url}
+    \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU
+    \endverb
+  \endentry
 \enddatalist
 \endinput

@@ -359,20 +359,18 @@ Dla ułatwienia zrozumienia otrzymywanych wyników sporządzony został równie�
 
 Wyniki regresji z wykorzystaniem drzew decyzyjnych zostaną dokładnie przedstawione w podsekcji \hyperlink{5.1.2}{5.1.2} oraz porównane z wynikami innych metod w podsekcji \hyperlink{5.1.6}{5.1.6}.
 
-\subsubsection{Prosta sieć rekurencyjna}
-Pierwszy model zbudowany na podstawie rekurencyjnej sieci rekurencyjne wykorzystywał najprostszą implementację sieci rekurencyjnej. Uzyskane w ten sposób wyniki zostaną przeanalizowane w kontekście przydatności tej metody oraz w kontekście jej wydajności w porównaniu do nowocześniejszych architektur sieci rekurencyjnych. 
+\subsubsection{Sieci rekurencyjne}
+W ramach badania przydatności rekurencyjnych sieci neuronowych do badania szeregów czasowych rozważane były trzy rodzaje architektury sieci neuronowej. Badano zachowanie prostej rekurencyjnej sieci neuronowej, sieci typu LSTM oraz GRU. Uzyskane w ten sposób wyniki zostaną przeanalizowane w kontekście przydatności tej metody oraz w kontekście jej wydajności w porównaniu do nowocześniejszych architektur sieci rekurencyjnych. 
 
-Model został zbudowany z wykorzystaniem nieskomplikowanej warstwy rekurencyjnej ,,SimpleRNN'' z biblioteki ,,TensorFlow'' jako warstwy ukrytej \cite{tfSimpleRNN}. Sieć neuronowa posiadała również proste warstwy wejściowe i wyjściowe wymagane do poprawnej pracy warstwy ukrytej ze wykorzystywanym w badaniach zbiorem danych.
+Sieć neuronowa posiadała również proste warstwy wejściowe i wyjściowe wymagane do poprawnej pracy warstw ukrytych ze wykorzystywanym w badaniach zbiorem danych.
+Dla każdej rozważanej architektury tworzona była warstwa ukryta na niej oparta dostarczana w ramach biblioteki ,,TensorFlow'' dla języka Python. Dla prostej sieci rekurencyjnej była to ,,SimpleRNN'' \cite{tfSimpleRNN}, dla sieci Long Short-Term Memory  warstwa ,,LSTM'' \cite{tfLSTM}, a dla sieci Gated Recurrent Unit warstwa ,,GRU'' \cite{tfGRU}.
 
 Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej szczegółów podziału i wyliczanych charakterystyk można znaleźć w podsekcji \hyperlink{subsubsection.4.1.1}{4.1.1}.
 Badany był również wpływ liczby neuronów w warstwie ukrytej na jakość uzyskiwanych wyników. 
 
-Wyniki predykcji z wykorzystaniem prostej sieci rekurencyjnej zostaną dokładnie przedstawione w podsekcji \hyperlink{5.1.3}{5.1.3} oraz porównane z wynikami innych metod w podsekcji \hyperlink{5.1.6}{5.1.6}.
+Wyniki predykcji zostaną dokładnie przedstawione w podsekcjach odpowiadających każdej w zastosowanych architektur oraz porównane z wynikami innych metod w podsekcji \hyperlink{5.1.6}{5.1.6}.
 
 
- 
-\subsubsection{Sieć rekurencyjna typu LSTM}
-\subsubsection{Sieć rekurencyjna typu GRU}
 \subsection{Badanie skalowalności modelu GRU}
 
 \section{Otrzymane wyniki}
