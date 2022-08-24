@@ -21,6 +21,8 @@
 \graphicspath{ {./img/} }
 \renewcommand*\contentsname{Spis treści}
 \renewcommand*\figurename{Rysunek}
+\renewcommand*\tablename{Tabela}
+\renewcommand*\tableautorefname{Tab.}
 
 \begin{document}
 \begin{titlepage}
@@ -389,6 +391,30 @@ W ramach tego rozdziału przedstawione zostaną wyniki wszystkich przeprowadzony
 W tym podrozdziale poświęcona zostanie szczególna uwaga wynikom uzyskiwanym przez poszczególne modele, problemom występującym w procesie badawczym oraz zestawieniu wyników wszystkich metod. Oczekuje się, że opis wyników oraz ich analiza przedstawią wystarczający poziom dokładności pozwalający przenieść uwagę na wyciąganie wniosków.
  
 \subsubsection{Regresja liniowa}
+W procesie badania efektywności regresji liniowej do predykcji szeregu czasowego uzyskane zostały parametry opisujące poprawność predykcji oraz wizualne zestawienie wartości przewidywanych i realnych. W tej podsekcji zostaną one przedstawione oraz przedyskutowane. 
+
+W pierwszej kolejności przedyskutowane zostaną uzyskane wartości parametrów opisujące poprawność wyników. Wyliczone zostały wartości:
+\begin{center}
+	\begin{itemize}
+		\item wynik testu $R^2$
+		\item błąd średniokwadratowy (MSE)
+		\item pierwiastek błędu średniokwadratowego {RMSE}
+		\item indeks Willmott'a
+	\end{itemize}
+\end{center}
+, których wartości zostały przedstawione w \autoref{table:1}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$R^2$ & MSE & RMSE & Willmott \\
+		0.3230 &1386.2897 & 37.2329 & 0.6719 \\
+		\hline
+	\end{tabular}
+		\caption{Parametry opisujące poprawność wyników regresji liniowej}
+		\label{table:1}
+\end{table}
+
 \subsubsection{Drzewa decyzyjne}
 \subsubsection{Prosta sieć rekurencyjna}
 \subsubsection{Sieć rekurencyjna typu LSTM}
