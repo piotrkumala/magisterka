@@ -372,6 +372,15 @@ Wyniki predykcji zostaną dokładnie przedstawione w podsekcjach odpowiadającyc
 
 
 \subsection{Badanie skalowalności modelu GRU}
+Jak zauważono poprzednio skalowalność modelu ma duże znaczenie przy określaniu jego przydatności do predykcji szeregów czasowych. W celu zbadania skalowalności modelu opartego na architekturze Gated Recurrent Unit przeprowadzono serię uczenia i testowania dla szeregów czasowych o zwiększającej się liczbie elementów. 
+
+Sieć neuronowa posiadała analogiczną budowę do sieci GRU opisanej w podsekcji \hyperlink{subsubsection.4.1.3}{4.1.3}. Występowały zmiany struktury warstwy wejściowej umożliwiające współpracę z różnymi wymiarami danych wejściowych.
+
+W ramach badania przeprowadzone zostało łącznie dwadzieścia dziewięć procesów uczenia i walidacji stworzonego modelu. W każdym kolejnym kroku badania do wejściowego szeregu czasowego dodawany był nowy szereg czasowy dla położenia geograficznego nie ujętego w poprzednich danych. 
+
+Przeprowadzone zostały identyczne pomiary wydajności modelu oraz wizualne zestawienia wyników predykcji z danymi rzeczywistymi. Sporządzony został również wykres wartości indeksu Willmott'a dla każdego przeprowadzonego procesu uczenia i walidacji modelu.
+
+Przyjęcie takiej metodologii badania skalowalności pozwala wierzyć, że otrzymane wyniki będą pomocne w określeniu przydatności tejże sieci do predykcji szeregów czasowych. Wyniki te zostaną przedstawione w podsekcji \hyperlink{subsection.5.2}{5.2}.
 
 \section{Otrzymane wyniki}
 \subsection{Porównanie wydajności modeli predykcyjnych}
