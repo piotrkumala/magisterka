@@ -10,6 +10,7 @@
 \usepackage{placeins}
 \usepackage{subcaption}
 \usepackage{gensymb}
+\usepackage{siunitx}
 \usepackage[hidelinks]{hyperref}
 
 \usepackage[style=ieee, backend=bibtex ,sorting=none]{biblatex}
@@ -23,6 +24,7 @@
 \renewcommand*\figurename{Rysunek}
 \renewcommand*\tablename{Tabela}
 \renewcommand*\tableautorefname{Tab.}
+\renewcommand*\figureautorefname{Rys.}
 
 \begin{document}
 \begin{titlepage}
@@ -402,7 +404,7 @@ W pierwszej kolejności przedyskutowane zostaną uzyskane wartości parametrów 
 		\item indeks Willmott'a
 	\end{itemize}
 \end{center}
-, których wartości zostały przedstawione w \autoref{table:1}
+, których wartości zostały przedstawione w \autoref{table:1}. Zostaną one wykorzystane w celu porównania jakości uzyskiwanych wyników z innymi metodami.
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
@@ -415,6 +417,17 @@ W pierwszej kolejności przedyskutowane zostaną uzyskane wartości parametrów 
 		\label{table:1}
 \end{table}
 
+Na \autoref{figure:linear} przedstawione zostało zestawienie wyników uzyskanych przez regresję liniową z wynikami obserwacji. Wyniki będące rezultatem regresji są na rysunku zaznaczone kolorem pomarańczowym, a pierwotny szereg czasowy kolorem niebieskim. Na osi x znajdują się daty z przedziału [01.01.2000 - 31.12.2020], na osi y natomiast poziom stężenia pyłu PM10 w $\frac{\si{\micro\gram}}{\si\meter^3}$. 
+
+Wykres ten pokazuje, że regresja metodą najmniejszych kwadratów dobrze przystosowała się do okresowości badanego szeregu. Dobrze przystosowała się zmian zanieczyszczenia w różnych porach roku. Wychwyciła również ogólny trend zmniejszającego się poziomu zanieczyszczeń w kolejnych latach. Możemy również zaobserwować, że regresja liniowa miała problem z przewidzeniem bardzo wysokich poziomów zanieczyszczeń w zimie. 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{linear.png}}
+	\caption{Zestawienie wyników regresji liniowej z prawdziwymi obserwacjami}
+	\label{figure:linear}
+\end{figure}
+\FloatBarrier
 \subsubsection{Drzewa decyzyjne}
 \subsubsection{Prosta sieć rekurencyjna}
 \subsubsection{Sieć rekurencyjna typu LSTM}

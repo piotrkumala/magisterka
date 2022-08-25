@@ -24,10 +24,10 @@
 \contentsline {section}{\numberline {5}Otrzymane wyniki}{18}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{18}{subsection.5.1}%
 \contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{18}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{19}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{19}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{19}{subsubsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{19}{subsubsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{19}{subsubsection.5.1.6}%
-\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{19}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Wnioski}{19}{section.6}%
+\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{20}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{20}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{20}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{20}{subsubsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{20}{subsubsection.5.1.6}%
+\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{20}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Wnioski}{20}{section.6}%
