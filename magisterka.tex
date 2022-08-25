@@ -11,6 +11,7 @@
 \usepackage{subcaption}
 \usepackage{gensymb}
 \usepackage{siunitx}
+\usepackage{svg}
 \usepackage[hidelinks]{hyperref}
 
 \usepackage[style=ieee, backend=bibtex ,sorting=none]{biblatex}
@@ -398,9 +399,9 @@ W procesie badania efektywności regresji liniowej do predykcji szeregu czasoweg
 W pierwszej kolejności przedyskutowane zostaną uzyskane wartości parametrów opisujące poprawność wyników. Wyliczone zostały wartości:
 \begin{center}
 	\begin{itemize}
-		\item wynik testu $R^2$
+		\item wynik testu ($R^2$)
 		\item błąd średniokwadratowy (MSE)
-		\item pierwiastek błędu średniokwadratowego {RMSE}
+		\item pierwiastek błędu średniokwadratowego (RMSE)
 		\item indeks Willmott'a
 	\end{itemize}
 \end{center}
@@ -429,6 +430,82 @@ Wykres ten pokazuje, że regresja metodą najmniejszych kwadratów dobrze przyst
 \end{figure}
 \FloatBarrier
 \subsubsection{Drzewa decyzyjne}
+Podczas badania efektywności drzew decyzyjnych do predykcji szeregów czasowych stworzone zostały zostały parametry opisujące jakość wyników, zestawienie predykcji z danymi pomiarowymi oraz wizualizacja drzewa decyzyjnego. Stworzono również zestawienie jakości wyników predykcji w zależności od dozwolonej głębokości drzewa. 
+
+W \autoref{table:2} przedstawione zostały wyniki parametrów opisujących jakość otrzymanych predykcji. Przedstawione w tabeli są:
+\begin{center}
+	\begin{itemize}
+		\item wynik testu ($R^2$)
+		\item błąd średniokwadratowy (MSE)
+		\item pierwiastek błędu średniokwadratowego (RMSE)
+		\item indeks Willmott'a
+	\end{itemize}
+\end{center}
+Warto zauważyć, że o ile wartość indeksu Willmott'a utrzymuje się na podobnym poziomie to pozostałe parametry zmieniają się znacząco wraz ze wzrostem głębokości drzewa. Szczególnie interesującym wskaźnikiem jest wynik testu $R^2$, który spada w szybkim tempie i osiąga wartości ujemne. Zazwyczaj ujemne wartości tego testu oznaczają, że sposób predykcji nie jest odpowiedni dla danych wejściowych. Zmiana ta została zaprezentowana na \autoref{figure:treer2}. W celu dokładniejszego zrozumienia stworzone zostały 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Głębokość drzewa & $R^2$ & MSE & RMSE & Willmott \\
+		3  & 0.3115 & 1409.9907 & 37.5498 & 0.6708 \\
+		4  & 0.3276 & 1376.8134 & 37.1054 & 0.6878 \\
+		5  & 0.2790 & 1476.4216 & 38.4242 & 0.6845 \\
+		6  & 0.2527 & 1530.2719 & 39.1187 & 0.6850 \\
+		7  & 0.2004 & 1637.5259 & 40.4664 & 0.6830 \\
+		8  & 0.1274 & 1786.9854 & 42.2727 & 0.6723 \\
+		9  & 0.0530 & 1939.2576 & 44.0370 & 0.6613 \\
+		10 & -0.0039 & 2055.8442 & 45.3414 & 0.6448 \\
+		11 & -0.1173 & 2288.0452 & 47.8335 & 0.6096 \\
+		12 & -0.1333 & 2320.7656 & 48.1743 & 0.6122 \\
+		13 & -0.1870 & 2430.7387 & 49.3025 & 0.6097 \\
+		14 & -0.2812 & 2623.6710 & 51.2219 & 0.6017 \\
+		\hline
+	\end{tabular}
+	\caption{Parametry opisujące poprawność wyników regresji liniowej}
+	\label{table:2}
+\end{table}
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{trees_r2.png}}
+	\caption{Zmiana wyniku testu $R^2$ dla różnych głębokości drzewa}
+	\label{figure:treer2}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{decission_tree_5.png}}
+	\caption{Zestawienie wyników drzewa o głębokości 5 z prawdziwymi obserwacjami}
+	\label{figure:tree5}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{decission_tree_14.png}}
+	\caption{Zestawienie wyników drzewa o głębokości 14 z prawdziwymi obserwacjami}
+	\label{figure:tree14}
+\end{figure}
+\FloatBarrier
+
+Na \autoref{figure:tree5} i \autoref{figure:tree14} przedstawione są wyniki predykcji w zestawieniu z pierwotnymi obserwacjami w szeregu. Na \autoref{figure:tree5} z powodu ograniczonej wielkości drzewa, większość przypadków decyzyjnych znajduje się w przedziale (0 - 100) $\frac{\si{\micro\gram}}{\si\meter^3}$ co pozwala na relatywnie poprawne odwzorowanie zbioru danych. Natomiast na \autoref{figure:tree14} z powodu większej głębokości drzewa tworzone są przypadki decyzyjne dla bardzo odosobnionych, bardzo wysokich wartości zanieczyszczeń, które nie reprezentują większości danych wejściowych. 
+
+Z tego powodu przyjęte zostało założenie wykorzystywania optymalnej głębokości drzewa w dalszej analizie porównawczej z innymi modelami. Nieuczciwy byłby wybór takiego drzewa decyzyjnego, w którym poprzez zbyt dużą głębokość drzewa wyniki predykcji nie odwzorowują adekwatnie danych wejściowych, jeżeli zmiana głębokości pozwala na otrzymanie wierniejszych oryginałowi predykcji.
+
+Sporządzona została również wizualizacja procesu decyzyjnego dla drzewa o głębokości równej pięć pozwalająca lepiej zrozumieć działanie drzewa decyzyjnego. Jest ona przedstawiona na \autoref{figure:tree_graph} i pozwala zauważyć wyraźnie drzewiastą strukturę podejmowania decyzji. Nie jest niestety możliwe zawarcie tej ilustracji w wystarczająco dużym formacie, aby móc przyjrzeć się dokładnie poszczególnym liściom drzewa. Z tego powodu stworzona została również wizualizacja dla drzewa o głębokości równej 3 przedstawiona na \autoref{figure:tree_graph_small}
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.06]{decission_tree_tree.png}}
+	\caption{Proces decyzyjny drzewa o głębokości równej 5}
+	\label{figure:tree_graph}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.25]{tree.png}}
+	\caption{Proces decyzyjny drzewa o głębokości równej 3}
+	\label{figure:tree_graph_small}
+\end{figure}
+\FloatBarrier
+Taka wizualizacja pozwala na lepsze zrozumienie zbioru danych i znaczenia różnych parametrów klimatycznych obecnych w szeregu czasowym. Za pierwszy punkt podziału oba drzewa przyjmują fakt występowania przymrozku w danym dniu. Dalsza analiza pozwala zaobserwować inne ciekawe sytuacje bezpośrednio wpływające na poziom zanieczyszczeń. Na przykład zarówno w lewej jak i prawej części drzewa, fakt występowania opadu atmosferycznego implikuje zwiększony poziom zanieczyszczeń. 
 \subsubsection{Prosta sieć rekurencyjna}
 \subsubsection{Sieć rekurencyjna typu LSTM}
 \subsubsection{Sieć rekurencyjna typu GRU}
