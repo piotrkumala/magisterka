@@ -506,7 +506,78 @@ Sporządzona została również wizualizacja procesu decyzyjnego dla drzewa o g�
 \end{figure}
 \FloatBarrier
 Taka wizualizacja pozwala na lepsze zrozumienie zbioru danych i znaczenia różnych parametrów klimatycznych obecnych w szeregu czasowym. Za pierwszy punkt podziału oba drzewa przyjmują fakt występowania przymrozku w danym dniu. Dalsza analiza pozwala zaobserwować inne ciekawe sytuacje bezpośrednio wpływające na poziom zanieczyszczeń. Na przykład zarówno w lewej jak i prawej części drzewa, fakt występowania opadu atmosferycznego implikuje zwiększony poziom zanieczyszczeń. 
+
 \subsubsection{Prosta sieć rekurencyjna}
+W ramach badania przydatności prostej sieci rekurencyjnej uzyskane zostały wartości parametrów opisujących jakość wyników modelu oraz graficzne reprezentacje rozwiązania dostarczanego przez model. Wyniki te zostaną przedstawione i przedyskutowane w ramach tej podsekcji.
+
+
+W \autoref{table:simpleRNN} przedstawione zostały wyniki parametrów opisujących jakość otrzymanych predykcji. Przedstawione w tabeli są:
+\begin{center}
+	\begin{itemize}
+		\item wynik testu ($R^2$)
+		\item błąd średniokwadratowy (MSE)
+		\item pierwiastek błędu średniokwadratowego (RMSE)
+		\item indeks Willmott'a
+	\end{itemize}
+\end{center}
+
+Korzystając z tych danych można zaobserwować, że wartości parametrów poprawiają się wraz ze wzrostem liczby neuronów. Takie zjawisko nie powinno być w żadnym wypadku zaskakujące, można spodziewać się, że większa sieć będzie lepiej przetwarzać dane wejściowe. Warto jednak zauważyć, że nie występuje liniowa zależność pomiędzy wzrostem ilości neuronów oraz dokładnością predykcji. Mając na uwadze ten fakt oraz znaczące zwiększenie się czasu trenowania większych sieci warto postarać się o znalezienie optymalnej liczby neuronów w warstwie ukrytej. Zależność ta została przedstawiona na \autoref{figure:simple_rnn_neurons}.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
+		1    & -0.6348 & 3347.8974 & 57.8610 & 0.3961 \\
+		2    & -0.3668 & 2798.9705 & 52.9053 & 0.3735 \\
+		4    & -0.0525 & 2155.2926 & 46.4251 & 0.3050 \\
+		8    & 0.1528  & 1734.8320 & 41.6513 & 0.4193 \\
+		16   & 0.2446  & 1546.9749 & 39.3316 & 0.5749 \\
+		32   & 0.3070  & 1418.9520 & 37.6690 & 0.6463 \\
+		64   & 0.3484  & 1334.4482 & 36.5301 & 0.6896 \\
+		128  & 0.3763  & 1277.3338 & 35.7398 & 0.7110 \\
+		256  & 0.3865  & 1256.3483 & 35.4450 & 0.7190 \\
+		512  & 0.3810  & 1267.6353 & 35.6038 & 0.7247 \\
+		1024 & 0.3797  & 1270.2468 & 35.6405 & 0.6995 \\
+		\hline
+	\end{tabular}
+	\caption{Parametry opisujące poprawność wyników predykcji prostej sieci neuronowej}
+	\label{table:simpleRNN}
+\end{table}
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.35]{simple_rnn_neurons.png}}
+	\caption{Wynik testu $R^2$ dla różnej liczby neuronów w warstwie ukrytej}
+	\label{figure:simple_rnn_neurons}
+\end{figure}
+\FloatBarrier
+ \begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{simpleRNN_2.png}}
+	\caption{Zestawienie wyników prostej rekurencyjnej sieci neuronowej z dwoma neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:simple_rnn_2}
+\end{figure}
+\FloatBarrier
+ \begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{simpleRNN_64.png}}
+	\caption{Zestawienie wyników prostej rekurencyjnej sieci neuronowej z 64 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:simple_rnn_64}
+\end{figure}
+\FloatBarrier
+ \begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.5]{simpleRNN_512.png}}
+	\caption{Zestawienie wyników prostej rekurencyjnej sieci neuronowej z 512 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:simple_rnn_512}
+\end{figure}
+\FloatBarrier
+
+Na \autoref{figure:simple_rnn_2} \autoref{figure:simple_rnn_64} \autoref{figure:simple_rnn_512} przedstawione zostały zestawienia wyników predykcji z danymi zgromadzonymi w pierwotnym szeregu czasowym. Bliższa analiza tych rysunków pozwoli lepiej zrozumieć wpływ liczby neuronów w warstwie ukrytej na jakość otrzymywanych predykcji. Na \autoref{figure:simple_rnn_2} można zaobserwować zachowanie sieci neuronowej, która nie posiada wystarczającej liczby neuronów. Model taki nie odwzorowuje poprawnie danych wejściowych, jest zdecydowanie zbyt prosty do przedstawiania jakkolwiek sensownych predykcji. 
+
+Ciekawsze są dwa kolejne rysunki, dla 64 i 512 neuronów w warstwie ukrytej. Można zaobserwować, że te modele w odwzorowują dane wejściowe ze zdecydowanie wyższą precyzją. Warto zwrócić uwagę na fakt, że różnice pomiędzy tymi dwoma modelami nie są dramatyczne i na pewno nie proporcjonalne do różnicy w liczbie neuronów. Interesujący może być fakt, że przy zwiększeniu liczby neuronów sieć stara się bardziej dopasowywać do bardzo wysokich poziomów zanieczyszczeń. To zachowanie może implikować występowanie problemu zbytniego dopasowywania się do danych wejściowych, które było widoczne w zbyt głębokich drzewach decyzyjnych.
+
+Ostatecznie warto zauważyć, że niezależnie od liczby neuronów w warstwie ukrytej sieci mają problem z wychwyceniem długotrwałego trendu zmniejszenia się poziomu zanieczyszczeń w kolejnych latach. Dobrze rozumieją one okresowość danych wejściowych, ale zdają się nie mieć wystarczającej liczby informacji do wychwycenia trendu. 
 \subsubsection{Sieć rekurencyjna typu LSTM}
 \subsubsection{Sieć rekurencyjna typu GRU}
 \subsubsection{Zestawienie otrzymanych wyników}
