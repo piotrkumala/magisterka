@@ -413,6 +413,7 @@ W pierwszej kolejności przedyskutowane zostaną uzyskane wartości parametrów 
 	\begin{tabular}{|c|c|c|c|}
 		\hline
 		$R^2$ & MSE & RMSE & Willmott \\
+		\hline
 		0.3230 &1386.2897 & 37.2329 & 0.6719 \\
 		\hline
 	\end{tabular}
@@ -450,6 +451,7 @@ Warto zauważyć, że o ile wartość indeksu Willmott'a utrzymuje się na podob
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		Głębokość drzewa & $R^2$ & MSE & RMSE & Willmott \\
+		\hline
 		3  & 0.3115 & 1409.9907 & 37.5498 & 0.6708 \\
 		4  & 0.3276 & 1376.8134 & 37.1054 & 0.6878 \\
 		5  & 0.2790 & 1476.4216 & 38.4242 & 0.6845 \\
@@ -530,6 +532,7 @@ Korzystając z tych danych można zaobserwować, że wartości parametrów popra
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
+		\hline
 		1    & -0.6348 & 3347.8974 & 57.8610 & 0.3961 \\
 		2    & -0.3668 & 2798.9705 & 52.9053 & 0.3735 \\
 		4    & -0.0525 & 2155.2926 & 46.4251 & 0.3050 \\
@@ -591,6 +594,7 @@ W \autoref{table:lstm} przedstawione zostały wartości parametrów opisujących
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
+		\hline
 		1    & -0.6827 & 3445.6967 & 58.7001 & 0.3979 \\
 		2    & -0.4874 & 3045.8948 & 55.1896 & 0.3871 \\
 		4    & -0.1599 & 2375.2018 & 48.7360 & 0.3169 \\
@@ -662,6 +666,7 @@ Przyglądając się relacji wyniku testu $R^2$ do liczby neuronów w warstwie uk
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
+		\hline
 		1    & -0.5998 & 3276.1793 & 57.2379 & 0.3945 \\
 		2    & -0.3570 & 2778.8420 & 52.7147 & 0.3720 \\
 		4    & -0.0395 & 2128.6287 & 46.1371 & 0.3058 \\
@@ -721,6 +726,40 @@ Obserwując wszystkie trzy rysunki można stwierdzić fakt nie radzenia sobie si
 
 \subsubsection{Zestawienie otrzymanych wyników}
 Kluczowym punktem tej pracy jest zestawienie ze sobą wyników różnych metod predykcyjnych i przeanalizowanie jakości zwracanych przez nie rozwiązań. Czynności te pozwolą zbudować podstawy do wyciągania wniosków odnośnie przydatności poszczególnych metod do predykcji szeregów czasowych. W tej podsekcji porównane ze sobą wyniki, które były dokładnie przedyskutowane w poprzednich podsekcjach oraz zbudowane zostaną podstawy merytoryczne do dalszej pracy i wyciągania wniosków. 
+
+W trakcie poprzednich dyskusji poszczególnych modeli w izolacji można było stracić cel tej pracy i zapomnieć jakie metody predykcyjne są analizowane w ramach tej pracy. Być może z tego powodu warte jest przypomnienie metod, porównywanych w dalszej części tego podrozdziału, są to:
+\begin{itemize}
+	\item Regresja liniowa
+	\item Regresja z wykorzystaniem drzew decyzyjnych
+	\item Predykcja z wykorzystaniem prostej sieci neuronowej
+	\item Predykcja z wykorzystaniem sieci neuronowej opartej na architekturze Long Short-Term Memory (LSTM)
+	\item Predykcja z wykorzystaniem sieci neuronowej opartej na architekturze Gated Recurrent Memory (GRU)
+\end{itemize}
+
+W celu umożliwienia dyskusji nad jakością wyników uzyskiwanych przez różne metody stworzone zostało tabelaryczne zestawienia w postaci \autoref{table:models_comparission}. Aby uniknąć niesprawiedliwych porównań w zestawieniu ujęte zostały najbardziej optymalne konfiguracje każdej metody. Porównywanie najgorszych możliwych kombinacji parametrów jednej metody z najlepszymi parametrami innej mogłoby prowadzić do nieszczerej oceny faktycznej jakości predykcji zwracanych przez model. Dla drzew decyzyjnych wybrane zostało drzewo o głębokości 5, gdyż z \autoref{figure:treer2} wynika, że jest to optymalna głębokość drzewa. 
+
+W przypadku sieci neuronowych proces dobierania optymalnych parametrów był nieco bardziej skomplikowany. O ile największa możliwa liczba neuronów w warstwie ukrytej zwracała najlepsze wyniki to zawsze zużywała najwięcej zasobów obliczeniowych. Mając na uwadze zwiększone zużycie zasobów oraz brak drastycznej poprawy wyników poprzez zwiększenie wielkości sieci podjęta została decyzja o wykorzystaniu sieci neuronowych z 256 neuronami w warstwie ukrytej. Jest to liczba neuronów, gdzie przy wzroście neuronów nie jest już odnotowywana gwałtowna poprawa zwracanych wyników oraz czas treningu sieci jest względnie akceptowalny.
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Metoda predykcji & $R^2$ & MSE & RMSE & Willmott \\
+		\hline
+		Regresja liniowa & 0.3230 & 1386.2897 & 37.2329 & 0.6719 \\
+		Drzewa decyzyjne & 0.3276 & 1376.8134 & 37.1054 & 0.6878\\
+		Prosta sieć rekurencyjna & 0.3865  & 1256.3483 & 35.4450 & 0.7190 \\
+		Sieć LSTM & 0.3948  & 1239.2538 & 35.2030 & 0.7154 \\
+		Sieć GRU & 0.3987  & 1231.2979 & 35.0899 & 0.7053 \\
+		\hline
+	\end{tabular}
+	\caption{Zestawienie parametrów opisujących jakość predykcji różnych metod}
+	\label{table:models_comparission}
+\end{table}
+
+Widzimy delikatny przeskok w jakościach predykcji pomiędzy metodami klasycznymi (regresja liniowa, drzewa decyzyjne) oraz tymi opartymi na rekurencyjnych sieciach neuronowych. Nie jest to być może duży przeskok, ale jest wyraźny na tyle, aby nie można go było pominąć w dalszych rozważaniach. Kwestia tego czy ta poprawa parametrów jest wystarczająca, aby usprawiedliwić używanie bardziej skomplikowanych sieci neuronowych jest dyskusyjna i zostanie dokładniej przedyskutowana w \hyperlink{section.6}{rozdziale 6}.
+
 \subsection{Badanie skalowalności modelu GRU}
 
 \section{Wnioski}

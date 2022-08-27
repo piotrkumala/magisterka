@@ -29,5 +29,5 @@
 \contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{27}{subsubsection.5.1.4}%
 \contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{30}{subsubsection.5.1.5}%
 \contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{34}{subsubsection.5.1.6}%
-\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{34}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Wnioski}{34}{section.6}%
+\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{36}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Wnioski}{36}{section.6}%
