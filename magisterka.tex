@@ -426,7 +426,7 @@ Wykres ten pokazuje, że regresja metodą najmniejszych kwadratów dobrze przyst
 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{linear.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{linear.png}}
 	\caption{Zestawienie wyników regresji liniowej z prawdziwymi obserwacjami}
 	\label{figure:linear}
 \end{figure}
@@ -469,20 +469,20 @@ Warto zauważyć, że o ile wartość indeksu Willmott'a utrzymuje się na podob
 \end{table}
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{trees_r2.png}}
+	\makebox[0pt]{\includegraphics[scale=0.42]{trees_r2.png}}
 	\caption{Zmiana wyniku testu $R^2$ dla różnych głębokości drzewa}
 	\label{figure:treer2}
 \end{figure}
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{decission_tree_5.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{decission_tree_5.png}}
 	\caption{Zestawienie wyników drzewa o głębokości 5 z prawdziwymi obserwacjami}
 	\label{figure:tree5}
 \end{figure}
 \FloatBarrier
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{decission_tree_14.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{decission_tree_14.png}}
 	\caption{Zestawienie wyników drzewa o głębokości 14 z prawdziwymi obserwacjami}
 	\label{figure:tree14}
 \end{figure}
@@ -623,14 +623,14 @@ W \autoref{table:lstm} przedstawione zostały wartości parametrów opisujących
 \FloatBarrier
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_64.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{LSTM_64.png}}
 	\caption{Zestawienie wyników sieci LSTM z 64 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
 	\label{figure:lstm_64}
 \end{figure}
 \FloatBarrier
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_512.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{LSTM_512.png}}
 	\caption{Zestawienie wyników sieci LSTM z 512 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
 	\label{figure:lstm_512}
 \end{figure}
@@ -647,8 +647,80 @@ Przykładem obrazującym większą dokładność predykcji większego modelu mo�
 Niestety niezależnie do liczności warstwy ukrytej wszystkie sieci mają problem z wychwyceniem ogólnego trendu zmniejszania się zanieczyszczeń. Zgodnie z założeniami architektury sieć typu Long Short-Term Memory powinna być w stanie poradzić sobie z takim zadaniem. Jednakowoż trend, którego nie potrafi zauważyć żadna z sieci jest naprawdę niewielki i może być niewystarczający dla sieci do odnotowania. 
 
 Mając na uwadze te aspekty wpływu modelu na jakość wyników oraz zwiększony koszt obliczeniowy dla większych sieci neuronowych należy starać znaleźć optymalną wielkość sieci do predykcji danego szeregu. Aspektem do wzięcia pod uwagę podczas tego poszukiwania powinny być różnice w prędkości uczenia różnych sieci neuronowych.
+
 \subsubsection{Sieć rekurencyjna typu GRU}
+W ramach badania sieci Gated Recurrent Memory zebrane zostały dane analogiczne do tych dla innych analizowanych modeli predykcyjnych. W tym podrozdziale zostaną one przedstawione, omówione oraz przeanalizowane pod kątem wyboru optymalnych parametrów sieci do dalszej analizy. 
+
+W \autoref{table:gru} przedstawione zostały wartości parametrów opisujące jakość wyników predykcji z wykorzystaniem sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby neuronów w warstwie ukrytej. Prezentowane są dokładnie takie same parametry jak w innych metodach predykcyjnych. Dokładna analiza tych parametrów pozwoli na lepsze zrozumienie działania sieci opartej na architekturze Gated Recurrent Unit. 
+
+Wyraźnie widoczna jest poprawa wartości parametrów wraz z wzrostem liczby neuronów w warstwie ukrytej. Zmiana ta nie jest jednak jednolita, istnieją nawet spadki wartości indeksu Willmott'a podczas wzrostu liczby neuronów. Zjawisko to jest najpewniej lokalną anomalią, aczkolwiek warto brać pod uwagę fakt, że zwiększenie warstwy ukrytej nie musi prowadzić do lepszego wyniku. 
+
+Przyglądając się relacji wyniku testu $R^2$ do liczby neuronów w warstwie ukrytej dobitnie widoczna jest nieliniowość tej relacji. Została ona zaprezentowana na \autoref{figure:gru_neurons}, gdzie na osi x przedstawiana jest liczba neuronów, a na osi y wyniku testu $R^2$. Wyraźnie widoczny jest bardzo szybki początkowy wzrost wyniku testu przy niewielkim zwiększeniu wielkości warstwy ukrytej. To tempo wzrostu gwałtownie wyhamowuje w okolicy wartości 0.4 i pozostaje relatywnie stałe pomimo zwiększania liczby neuronów. Na tej podstawie można wywnioskować, że po osiągnięciu pewnego progu wzrost liczby neuronów w warstwie ukrytej nie poprawia jakości rozwiązania prezentowanego przez sieć neuronową. 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
+		1    & -0.5998 & 3276.1793 & 57.2379 & 0.3945 \\
+		2    & -0.3570 & 2778.8420 & 52.7147 & 0.3720 \\
+		4    & -0.0395 & 2128.6287 & 46.1371 & 0.3058 \\
+		8    & 0.1676  & 1704.5330 & 41.2860 & 0.4393 \\
+		16   & 0.2692  & 1496.4748 & 38.6843 & 0.5966 \\
+		32   & 0.3341  & 1363.7161 & 36.9285 & 0.6527 \\
+		64   & 0.3751  & 1279.7501 & 35.7736 & 0.7068 \\
+		128  & 0.3928  & 1243.4949 & 35.2632 & 0.7207 \\
+		256  & 0.3987  & 1231.2979 & 35.0899 & 0.7053 \\
+		512  & 0.4057  & 1216.9403 & 34.8847 & 0.7239 \\
+		1024 & 0.4048  & 1218.8890 & 34.9126 & 0.7308 \\
+		\hline
+	\end{tabular}
+	\caption{Parametry opisujące poprawność wyników sieci GRU}
+	\label{table:gru}
+\end{table}
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{gru_neurons.png}}
+	\caption{Wynik testu $R^2$ dla różnej liczby neuronów w warstwie ukrytej}
+	\label{figure:gru_neurons}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{GRU_2.png}}
+	\caption{Zestawienie wyników sieci GRU z dwoma neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:gru_2}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{GRU_64.png}}
+	\caption{Zestawienie wyników sieci GRU z 64 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:gru_64}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{GRU_512.png}}
+	\caption{Zestawienie wyników sieci GRU z 512 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:gru_512}
+\end{figure}
+\FloatBarrier
+
+Na \autoref{figure:gru_2}, \autoref{figure:gru_64} oraz \autoref{figure:gru_512} przedstawione zostały zestawienia wyników predykcji z realnymi danymi obserwacyjnymi. Na wykresach tych oś x reprezentuje czas w dniach, oś y natomiast reprezentuje poziom zanieczyszczenia pyłem PM10. Predykcje są zaznaczane kolorem pomarańczowym, a wartości obserwowane kolorem niebieskim. Dokładna analiza tych wykresów wraz ze zrozumieniem wcześniej omówionej \autoref{table:gru} z parametrami opisującym jakość wyników powinna umożliwić wybór optymalnej konfiguracji sieci neuronowej opartej o Gated Recurrent Unit.
+
+Na \autoref{figure:gru_2} doskonale widać jak zachowuje się sieć nie posiadająca wystarczającej możliwości przetwarzania informacji w procesie predykcyjnym. Utworzone przez z nią predykcje zupełnie nie pokrywają się z danymi wejściowymi. Taki model jest przeciążony złożonością rozwiązywanego problemu i nie nadaje się w żadnym wypadku do zastosowania w tym konkretnym problemie. Nie ma najmniejszego sensu zajmować się tak prostym modelem w analizie biorąc jego całkowitą niemożność rozwiązania postawionego mu problemu. Być może tak mała warstwa ukryta będzie adekwatna w innych przypadkach, ale w tej pracy nie może zostać wykorzystana. Z obserwacji jej można jednak wyjąć ważne wnioski i należyte przedyskutowanie jej prowadzi do lepszego zrozumienia problemu. 
+
+Zdecydowanie bardziej ciekawe w kontekście dalszej analizy są sieci neuronowe, których predykcje są obrazowane na \autoref{figure:gru_64} oraz \autoref{figure:gru_512}. Obie sieci ze znacznie większą dokładnością od poprzedniego odwzorowują zbiór wejściowy i zapewniają względnie akceptowalną jakość predykcji. Porównanie ich ze sobą może posłużyć jako podstawa do wyciągnięcia interesujących badawczo wniosków na temat sieci neuronowych w architekturze GRU. 
+
+Wyraźnie widoczne jest podobieństwo obu wykresów, obserwacja ta znajduje również odzwierciedlenie w wynikach przedstawionych w \autoref{table:gru}. Odpowiada ono również charakterowi relacji pomiędzy dokładnością wyników a liczbę neuronów warstwy ukrytej prezentowany na \autoref{figure:gru_neurons}. Widoczna jest poprawa predykcji modelu z 1024 neuronami w warstwie ukrytej - poprawnie przewiduje on większą liczbę bardzo wysokich poziomów zanieczyszczeń, podchodzi do średnich wartości zanieczyszczeń z większym poziomem zniuansowania.
+
+To podobieństwo może być również traktowane jako potencjalny problem biorąc pod uwagę wzrost złożoności obliczeniowej wraz ze wzrostem liczby neuronów. Jeżeli czterokrotny wzrost liczby neuronów nie daje proporcjonalnie lepszych wyników to warto zastanowić się czy takie dodatkowe skomplikowanie modelu ma jakikolwiek sens. Wydaje się być rozsądnym przedsięwzięciem próba odnalezienia optymalnej wielkości warstwy ukrytej dla rozwiązywanego problemu. 
+
+Obserwując wszystkie trzy rysunki można stwierdzić fakt nie radzenia sobie sieci z odczytywaniem trendu w danych wejściowych. Znając architekturę sieci oraz założenia, na których została ona zbudowana, może być to zaskakujące. Trzeba jednak uczciwie stwierdzić, że trend ten jest naprawdę niewielkich rozmiarów co może znacząco utrudniać wykrycie go przez sieć. 
+
 \subsubsection{Zestawienie otrzymanych wyników}
+Kluczowym punktem tej pracy jest zestawienie ze sobą wyników różnych metod predykcyjnych i przeanalizowanie jakości zwracanych przez nie rozwiązań. Czynności te pozwolą zbudować podstawy do wyciągania wniosków odnośnie przydatności poszczególnych metod do predykcji szeregów czasowych. W tej podsekcji porównane ze sobą wyniki, które były dokładnie przedyskutowane w poprzednich podsekcjach oraz zbudowane zostaną podstawy merytoryczne do dalszej pracy i wyciągania wniosków. 
 \subsection{Badanie skalowalności modelu GRU}
 
 \section{Wnioski}
