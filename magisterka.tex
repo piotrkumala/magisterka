@@ -27,6 +27,8 @@
 \renewcommand*\tableautorefname{Tab.}
 \renewcommand*\figureautorefname{Rys.}
 
+
+
 \begin{document}
 \begin{titlepage}
 	\begin{center}
@@ -546,28 +548,28 @@ Korzystając z tych danych można zaobserwować, że wartości parametrów popra
 \end{table}
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.35]{simple_rnn_neurons.png}}
+	\makebox[0pt]{\includegraphics[scale=0.3]{simple_rnn_neurons.png}}
 	\caption{Wynik testu $R^2$ dla różnej liczby neuronów w warstwie ukrytej}
 	\label{figure:simple_rnn_neurons}
 \end{figure}
 \FloatBarrier
  \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{simpleRNN_2.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_2.png}}
 	\caption{Zestawienie wyników prostej rekurencyjnej sieci neuronowej z dwoma neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
 	\label{figure:simple_rnn_2}
 \end{figure}
 \FloatBarrier
  \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{simpleRNN_64.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_64.png}}
 	\caption{Zestawienie wyników prostej rekurencyjnej sieci neuronowej z 64 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
 	\label{figure:simple_rnn_64}
 \end{figure}
 \FloatBarrier
  \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.5]{simpleRNN_512.png}}
+	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_512.png}}
 	\caption{Zestawienie wyników prostej rekurencyjnej sieci neuronowej z 512 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
 	\label{figure:simple_rnn_512}
 \end{figure}
@@ -578,13 +580,79 @@ Na \autoref{figure:simple_rnn_2} \autoref{figure:simple_rnn_64} \autoref{figure:
 Ciekawsze są dwa kolejne rysunki, dla 64 i 512 neuronów w warstwie ukrytej. Można zaobserwować, że te modele w odwzorowują dane wejściowe ze zdecydowanie wyższą precyzją. Warto zwrócić uwagę na fakt, że różnice pomiędzy tymi dwoma modelami nie są dramatyczne i na pewno nie proporcjonalne do różnicy w liczbie neuronów. Interesujący może być fakt, że przy zwiększeniu liczby neuronów sieć stara się bardziej dopasowywać do bardzo wysokich poziomów zanieczyszczeń. To zachowanie może implikować występowanie problemu zbytniego dopasowywania się do danych wejściowych, które było widoczne w zbyt głębokich drzewach decyzyjnych.
 
 Ostatecznie warto zauważyć, że niezależnie od liczby neuronów w warstwie ukrytej sieci mają problem z wychwyceniem długotrwałego trendu zmniejszenia się poziomu zanieczyszczeń w kolejnych latach. Dobrze rozumieją one okresowość danych wejściowych, ale zdają się nie mieć wystarczającej liczby informacji do wychwycenia trendu. 
+
 \subsubsection{Sieć rekurencyjna typu LSTM}
+W ramach badania przydatności sieci rekurencyjnej opartej na architekturze Long Short-Term Memory zebrane zostały wyniki analogiczne jak przy badaniu prostej sieci rekurencyjnej. W tym podrozdziale zostaną one przedstawione, przedyskutowane oraz przeanalizowane w izolacji od innych metod predykcyjnych. 
+
+W \autoref{table:lstm} przedstawione zostały wartości parametrów opisujących dokładność wyników predykcji w zależności od liczby neuronów w warstwie ukrytej. Są to takie same parametry jak w pozostałych metodach, więc nie zostaną one tutaj dokładniej przedstawione. Na podstawie danych w tabeli możemy zaobserwować wyraźną poprawę parametrów wraz ze wzrostem liczby neuronów w warstwie ukrytej. Relacja ta została zaprezentowana na \autoref{figure:lstm_neurons} i jest bardzo wyraźnie nie liniowa. 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
+		1    & -0.6827 & 3445.6967 & 58.7001 & 0.3979 \\
+		2    & -0.4874 & 3045.8948 & 55.1896 & 0.3871 \\
+		4    & -0.1599 & 2375.2018 & 48.7360 & 0.3169 \\
+		8    & 0.0965  & 1850.1311 & 43.0132 & 0.3006 \\
+		16   & 0.2123  & 1613.1037 & 40.1635 & 0.5075 \\
+		32   & 0.3041  & 1425.1676 & 37.7514 & 0.6350 \\
+		64   & 0.3447  & 1341.8487 & 36.6313 & 0.6796 \\
+		128  & 0.3766  & 1276.6038 & 35.7296 & 0.6992 \\
+		256  & 0.3948  & 1239.2538 & 35.2030 & 0.7154 \\
+		512  & 0.4057  & 1217.0582 & 34.8864 & 0.7341 \\
+		1024 & 0.4053  & 1217.7866 & 34.8968 & 0.7479 \\
+		\hline
+	\end{tabular}
+	\caption{Parametry opisujące poprawność wyników sieci LSTM}
+	\label{table:lstm}
+\end{table}
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{lstm_neurons.png}}
+	\caption{Wynik testu $R^2$ dla różnej liczby neuronów w warstwie ukrytej}
+	\label{figure:lstm_neurons}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{LSTM_2.png}}
+	\caption{Zestawienie wyników sieci LSTM z dwoma neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:lstm_2}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_64.png}}
+	\caption{Zestawienie wyników sieci LSTM z 64 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:lstm_64}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{simpleRNN_512.png}}
+	\caption{Zestawienie wyników sieci LSTM z 512 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:lstm_512}
+\end{figure}
+\FloatBarrier
+
+Na \autoref{figure:lstm_2}, \autoref{figure:lstm_64} oraz \autoref{figure:lstm_512} przedstawione zostały zestawienia predykcji sieci neuronowej typu LSTM z danymi obserwacyjnymi. Prezentowany jest realny i przewidziany poziom zanieczyszczenia pyłem PM10 w perspektywie czasowej. Na osi x reprezentowany jest czas w dniach, a na osi y stężenie pyłu PM10 w  $\frac{\si{\micro\gram}}{\si\meter^3}$. Rysunki te odzwierciedlają dobitniej fenomen obserwowany w \autoref{table:lstm} stanowiąc użyteczny mechanizm do zrozumienia działania modelu. 
+
+Wyraźnie wybrzmiewa całkowity brak dopasowania modelu z dwoma neuronami w warstwie ukrytej do danych wejściowych. Tak małej sieci neuronowej brakuje mocy do poprawnego przetworzenia informacji wejściowej i bardzo mocno generalizuje przez co całkowicie mija się z danymi wejściowymi. Brakuje jej również mocy obliczeniowej do przystosowania się do długofalowego trendu obecnego w danych. Taki model jest zdecydowanie nie adekwatny i nie powinien być wykorzystywany w dalszych analizach. 
+
+Natomiast zarówno modele prezentowane na \autoref{figure:lstm_64} i \autoref{figure:lstm_512} w relatywnie poprawny sposób odtwarzają dane wejściowe. Model z 512 neuronami w warstwie ukrytej zdaje się generować dokładniejsze odtworzenie zbioru wejściowego. Jednak różnica ta nie wydaje się być radykalna i na pewno nie jest proporcjonalna do zmiany liczby neuronów. Obserwacja ta umacnia wnioski płynące z \autoref{figure:lstm_neurons}, że od pewnego momentu zmiana wielkości warstwy ukrytej zaczyna mieć niewielki wpływ na jakość uzyskiwanych wyników. 
+
+Przykładem obrazującym większą dokładność predykcji większego modelu może być większa uwaga poświęcana bardzo wysokim poziomom zanieczyszczeń, które model z 64 neuronami w warstwie ukrytej co do zasady pomija w predykcjach. Taka próba dopasowywania do wszystkich wyników zbioru może prowadzić do niebezpieczeństw zbytniego dopasowywania do zbioru danych podobnego do zbyt głębokiego drzewa decyzyjnego.
+
+Niestety niezależnie do liczności warstwy ukrytej wszystkie sieci mają problem z wychwyceniem ogólnego trendu zmniejszania się zanieczyszczeń. Zgodnie z założeniami architektury sieć typu Long Short-Term Memory powinna być w stanie poradzić sobie z takim zadaniem. Jednakowoż trend, którego nie potrafi zauważyć żadna z sieci jest naprawdę niewielki i może być niewystarczający dla sieci do odnotowania. 
+
+Mając na uwadze te aspekty wpływu modelu na jakość wyników oraz zwiększony koszt obliczeniowy dla większych sieci neuronowych należy starać znaleźć optymalną wielkość sieci do predykcji danego szeregu. Aspektem do wzięcia pod uwagę podczas tego poszukiwania powinny być różnice w prędkości uczenia różnych sieci neuronowych.
 \subsubsection{Sieć rekurencyjna typu GRU}
 \subsubsection{Zestawienie otrzymanych wyników}
 \subsection{Badanie skalowalności modelu GRU}
 
 \section{Wnioski}
 
-\printbibliography
+\printbibliography[title=Bibliografia]
 
 \end{document}
