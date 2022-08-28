@@ -736,7 +736,7 @@ W trakcie poprzednich dyskusji poszczególnych modeli w izolacji można było st
 	\item Predykcja z wykorzystaniem sieci neuronowej opartej na architekturze Gated Recurrent Memory (GRU)
 \end{itemize}
 
-W celu umożliwienia dyskusji nad jakością wyników uzyskiwanych przez różne metody stworzone zostało tabelaryczne zestawienia w postaci \autoref{table:models_comparission}. Aby uniknąć niesprawiedliwych porównań w zestawieniu ujęte zostały najbardziej optymalne konfiguracje każdej metody. Porównywanie najgorszych możliwych kombinacji parametrów jednej metody z najlepszymi parametrami innej mogłoby prowadzić do nieszczerej oceny faktycznej jakości predykcji zwracanych przez model. Dla drzew decyzyjnych wybrane zostało drzewo o głębokości 5, gdyż z \autoref{figure:treer2} wynika, że jest to optymalna głębokość drzewa. 
+W celu umożliwienia dyskusji nad jakością wyników uzyskiwanych przez różne metody stworzone zostało tabelaryczne zestawienia w postaci \autoref{table:models_comparison}. Aby uniknąć niesprawiedliwych porównań w zestawieniu ujęte zostały najbardziej optymalne konfiguracje każdej metody. Porównywanie najgorszych możliwych kombinacji parametrów jednej metody z najlepszymi parametrami innej mogłoby prowadzić do nieszczerej oceny faktycznej jakości predykcji zwracanych przez model. Dla drzew decyzyjnych wybrane zostało drzewo o głębokości 5, gdyż z \autoref{figure:treer2} wynika, że jest to optymalna głębokość drzewa. 
 
 W przypadku sieci neuronowych proces dobierania optymalnych parametrów był nieco bardziej skomplikowany. O ile największa możliwa liczba neuronów w warstwie ukrytej zwracała najlepsze wyniki to zawsze zużywała najwięcej zasobów obliczeniowych. Mając na uwadze zwiększone zużycie zasobów oraz brak drastycznej poprawy wyników poprzez zwiększenie wielkości sieci podjęta została decyzja o wykorzystaniu sieci neuronowych z 256 neuronami w warstwie ukrytej. Jest to liczba neuronów, gdzie przy wzroście neuronów nie jest już odnotowywana gwałtowna poprawa zwracanych wyników oraz czas treningu sieci jest względnie akceptowalny.
 
@@ -755,10 +755,97 @@ W przypadku sieci neuronowych proces dobierania optymalnych parametrów był nie
 		\hline
 	\end{tabular}
 	\caption{Zestawienie parametrów opisujących jakość predykcji różnych metod}
-	\label{table:models_comparission}
+	\label{table:models_comparison}
 \end{table}
 
-Widzimy delikatny przeskok w jakościach predykcji pomiędzy metodami klasycznymi (regresja liniowa, drzewa decyzyjne) oraz tymi opartymi na rekurencyjnych sieciach neuronowych. Nie jest to być może duży przeskok, ale jest wyraźny na tyle, aby nie można go było pominąć w dalszych rozważaniach. Kwestia tego czy ta poprawa parametrów jest wystarczająca, aby usprawiedliwić używanie bardziej skomplikowanych sieci neuronowych jest dyskusyjna i zostanie dokładniej przedyskutowana w \hyperlink{section.6}{rozdziale 6}.
+Widzimy delikatny przeskok w jakościach predykcji pomiędzy metodami klasycznymi (regresja liniowa, drzewa decyzyjne) oraz tymi opartymi na rekurencyjnych sieciach neuronowych. Nie jest to być może duży przeskok, ale jest wyraźny na tyle, aby nie można go było pominąć w dalszych rozważaniach. Kwestia tego czy ta poprawa parametrów jest wystarczająca, aby usprawiedliwić używanie bardziej skomplikowanych sieci neuronowych jest dyskusyjna i zostanie dokładniej przedyskutowana w \hyperlink{section.6}{rozdziale 6}. Pytanie to może również dodatkowo komplikować większa ilość badań i szeroko rozumiane lepsze zrozumienie działania metod klasycznych. W celu zbudowania adekwatnej podstawy do dalszego wnioskowania należy przeanalizować inne sposoby porównywania jakości predykcji. 
+
+Nie widać podobnych różnic w wartościach parametrów trzech różnych rekurencyjnych sieci neuronowych. W zależności od tego, na którym parametrze skupiona zostanie wyciągnięte mogą być różne wnioski odnośnie relatywnej jakości predykcji z różnych metod. Z tego powodu w celu zbudowania podstaw do adekwatnego porównania wykorzystywanych sieci neuronowych należy spojrzeć na więcej aspektów działania modeli.
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{linear.png}}
+	\caption{Zestawienie wyników regresji liniowej z prawdziwymi obserwacjami}
+	\label{figure:linear_comparison}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{decission_tree_5.png}}
+	\caption{Zestawienie wyników drzewa o głębokości 5 z prawdziwymi obserwacjami}
+	\label{figure:tree_comparison}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{SimpleRNN_256.png}}
+	\caption{Zestawienie wyników prostej sieci neuronowej z 256 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:simple_rnn_comparison}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{LSTM_256.png}}
+	\caption{Zestawienie wyników sieci neuronowej opartej na architekturze LSTM z 256 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:lstm_comparison}
+\end{figure}
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{GRU_256.png}}
+	\caption{Zestawienie wyników sieci neuronowej opartej na architekturze GRU z 256 neuronami w warstwie ukrytej z prawdziwymi obserwacjami}
+	\label{figure:gru_comparison}
+\end{figure}
+\FloatBarrier
+
+Analiza graficznych zestawień wyników modeli predykcyjnych z pierwotnymi danymi może okazać się przydatnym narzędziem do tworzenia podstaw do wyciągania wniosków w dalszej części pracy. Na \autoref{figure:linear_comparison}, \autoref{figure:tree_comparison}, \autoref{figure:simple_rnn_comparison}, \autoref{figure:lstm_comparison} oraz \autoref{figure:gru_comparison} są prezentowane te właśnie zestawienia. Zostaną one teraz omówione i przeanalizowane w poszukiwaniu czynników rozróżniających modele.
+
+Najbardziej od innych rysunków odstępuje \autoref{figure:tree_comparison} i wydaje się sensowym zająć się nim w pierwszej kolejności. Widać wyraźnie, że w porównaniu do innych metod predykcje tego modelu są bardziej ,,nieciągłe''. Ze względu na problem zbytniego dopasowywania do danych wejściowych głębokość drzewa została ograniczona do tylko 5 poziomów. Oznacza to, że model posiada jedynie $2^5$ poziomów zanieczyszczeń, które może określić na podstawie danych klimatycznych. Ograniczenie to wydaje się stawiać model na pozycji gorszej od alternatyw biorąc pod uwagę charakterystykę szeregu czasowego, którego próby przewidywania są podejmowane. 
+
+Wyniki drugiej wykorzystywanej klasycznej metody predykcyjnej czyli regresji liniowej przedstawionej na \autoref{figure:linear_comparison} również wydają się różnić od wyników metod opartych na sieciach neuronowych. Regresja liniowa trzyma się bardzo mocno najczęściej występujących wartości parametrów i co do zasady osiąga w tym dobre wyniki. Problematyczny w kontekście wykorzystania tej metody może być fakt, że w porównaniu do reszty bardzo mało uwagi poświęca ona bardzo wysokim poziomom zanieczyszczeń. Pozostałe metody próbują dopasować swoje predykcje do występowania tych nietypowych stężeń pyłu PM10 co może być potencjalnie odczytywane jako ich zaleta nad regresją liniową. 
+
+Takie porównania wykresów obrazujących wyniki klasycznych metod predykcyjnych do sieci neuronowych wydają się utwierdzać poprawność obserwacji wynikających z analizy \autoref{table:models_comparison} o nieco niższej jakości otrzymywanych przez nie wyników. Obserwacja ta ma potencjał do umożliwiania wyciągnięcia interesujących wniosków odnośnie sensowności wykorzystywania rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Wnioski te zostaną przedstawione i przedyskutowane w \hyperlink{section.6}{rozdziale 6}.
+
+Podobnie jak przy porównaniu parametrów opisujących jakość wyników tak samo w analizie wykresów wyników sieci neuronowych nie widać radykalnych różnic pomiędzy różnymi architekturami sieci. Nie należy jednak pomijać tych różnic, nawet jeżeli nie są one niesłychanie widoczne to mogą mieć znaczenie podczas prób wyciągania wniosków odnośnie wydajności poszczególnych modeli. 
+
+Wszystkie modele sieci próbują dopasować się do bardzo wysokich poziomów zanieczyszczeń, ale różnią się stopniem tego dopasowania. Prosta sieć rekurencyjna dopasowuje się słabiej niż sieć typu Long Short-Term Memory, natomiast sieć typu Gated Recurrent Unit dopasowuje się najlepiej z pośród wszystkich trzech sieci. Nie są to duże różnice i pamiętając obserwację z analizy wpływu liczby neuronów w warstwie ukrytej na jakość uzyskiwanych wyników, może nasuwać się pytanie czy ta różnica nie wynika z różnic w tym wpływie w poszczególnych sieciach neuronowych. 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.35]{neurons_comparison.png}}
+	\caption{Wynik testu $R^2$ w zależności do liczby neuronów w warstwie ukrytej}
+	\label{figure:neurons_comparison}
+\end{figure}
+\FloatBarrier
+
+W celu rozwiania tej wątpliwości sporządzony został \autoref{figure:neurons_comparison} obrazujący zmianę wyniku testu $R^2$ dla różnej liczby neuronów w warstwie ukrytej dla wszystkich analizowanych sieci rekurencyjnych. Kolorem zielonym prezentowana jest ta zmiana dla prostej sieci rekurencyjnej, kolorem zielonym dla sieci opartej na architekturze Long Short-Term Memory, a kolorem niebieskim dla sieci opartej na architekturze Gated Recurrent Unit. Wykres ten umożliwia poczynienie kilku wydaje się ważnych obserwacji:
+\begin{itemize}
+	\item Prosta sieć rekurencyjna najwolniej reaguje na wzrost liczby neuronów i osiąga ostatecznie najgorszy wynik.
+	\item Sieć typu LSTM zaczyna z najgorszym wynikiem i reaguje na wzrost liczby neuronów z podobną prędkością co prosta sieć neuronowa, ale osiąga ostatecznie lepszy wynik.
+	\item Sieć typu GRU zaczyna z najlepszym wynikiem i reaguje najszybciej na wzrost liczby neuronów. Ostatecznie osiąga najlepszy wynik na równi z siecią typu LSTM, ale robi to szybciej od drugiej sieci. 
+\end{itemize}
+Obserwacje te wraz ze świadomością wzrostu wzrostu narzutu obliczeniowego przy wzroście liczby neuronów może być dobrą podstawą do wyciągania wniosków odnośnie relatywnej przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych.
+
+Innym aspektem wydajności sieci neuronowej przydatnym w formułowaniu wniosków jest prędkość uczenia sieci, rozumiana jako ilość epok uczących potrzebnych do osiągnięcia optymalnego poziomu wyuczenia. Przez optymalny poziom wyuczenia rozumiemy moment, w którym dodanie kolejnej epoki uczącej nie wpływa w znaczący sposób na osiągane wyniki. Zjawisko to można ewaluować poprzez analizę funkcji błędu w zależności od epoki uczącej. 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{loss_history.png}}
+	\caption{Wynik testu $R^2$ w zależności do liczby neuronów w warstwie ukrytej}
+	\label{figure:loss_history}
+\end{figure}
+\FloatBarrier
+
+Na \autoref{figure:loss_history} przedstawiona została taka zależność dla wszystkich porównywanych ze sobą sieci neuronowych. Kolorem niebieskim reprezentowana jest prosta sieć neuronowa, kolorem pomarańczowym sieć oparta na architekturze Long Short-Term Memory, a kolorem zielonym sieć oparta na architekturze Gated Recurrent Unit. Na osi x reprezentowane są kolejne epoki uczenia sieci, a na osi y wartość funkcji błędu. Jako funkcja błędu w procesie uczenia wykorzystywana była wartość błędu średniokwadratowego w danej epoce. 
+
+Wykres ten umożliwia odnotowanie kilku potencjalnie przydatnych przy wyciąganiu wniosków informacji:
+\begin{itemize}
+	\item Prosta sieć neuronowa rozpoczyna naukę z najmniejszą wartością błędu średniokwadratowego i uczy się średnio szybko w porównaniu do innych sieci. Ostatecznie osiąga najgorszy wynik ze wszystkich sieci, ale różnice ostatecznych wyników są bardzo niewielkie.
+	\item Sieć oparta o architekturę LSTM rozpoczyna naukę z największą wartością błędu średniokwadratowego i uczy się stosunkowo wolno. Ostatecznie udaje jej się jednak otrzymać lepszy wynik od prostej sieci neuronowej, chociaż jak zostało zauważone zostało wcześniej ostatecznie różnice są bardzo małe.
+	\item Sieć oparta na architekturze GRU rozpoczyna naukę z nieco większą wartością błędu od sieci prostej, ale uczy się zdecydowanie najszybciej. Dzięki temu ostatecznie osiąga najlepszy wynik, ale różnica tego ostatecznego wyniku od reszty sieci jest niewielka. 
+\end{itemize}
+
+Obserwacje te w dużej mierze pokrywają się z tymi poczynionymi przy analizie wpływu liczby neuronów na jakość wyników. Pozwala to wierzyć w pewną przewagę wydajnościową sieci Gated Recurrent Unit nad pozostałymi. Przewaga ta została wykorzystana w dalszych badaniach. Mając na uwadze czas potrzebny do zbadania skalowalności modelu przyjęte zostało założenie, że wybór wydajniejszej sieci skróci czas potrzebny do prawidłowego przeprowadzenia takiego badania. Wyniki uzyskane w takiej analizie skalowalności zostaną przedstawione w \hyperlink{subsection.5.2}{podrozdziale 5.2}.
 
 \subsection{Badanie skalowalności modelu GRU}
 
