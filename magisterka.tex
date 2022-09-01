@@ -849,6 +849,93 @@ Obserwacje te w dużej mierze pokrywają się z tymi poczynionymi przy analizie
 
 \subsection{Badanie skalowalności modelu GRU}
 
+W ramach badania skalowalności sieci neuronowej opartej na architekturze Gated Recurrent Unit zebrane zostały takie same dane jak przy poprzednich badaniach. W ramach tego podrozdziału zostaną one przedstawione, przedyskutowane i przeanalizowane w celu stworzenia podstaw do wyciągania wniosków odnośnie przydatności tej sieci do predykcji szeregów czasowych. 
+
+W \autoref{table:scale_comparison} zestawione zostały wartości parametrów opisujących jakość wyników predykcji sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby analizowanych punktów pomiarowych i co za tym idzie wielkości szeregu, dla którego prowadzona jest predykcja. Bliższa inspekcja tych parametrów może pozwolić na zrozumienie wpływu wielkości zbioru danych wejściowych na wydajność sieci. W trakcie tworzenia tabeli pominięte zostały wyniki punktów pomiarowych mających bardzo niewiele danych mogących zostać wykorzystanych w szeregu. Wynika to z założenia, że zmiana wyników była na tyle niewielka, że uwzględnienie ich nie byłoby wartościowe dla zestawienia. 
+
+Podczas obserwacji wyników można zauważyć bardzo wyraźny i co do zasady nie zachwiany trend spadkowy błędu średniokwadratowego. Relacja ta została przedstawiona na \autoref{figure:scale_mse} i wyraźnie maleje ze wzrostem długości badanego szeregu. Wydaje się to utwierdzać przekonanie o dobrej skalowalności stworzonego modelu. Utwierdzenie to jest tym mocniejsze, że to właśnie błąd średniokwadratowy jest używany jako funkcja błędu podczas uczenia modelu. Wydaje się to oznaczać, że zwiększenie liczy danych wejściowych ma pozytywny wpływ na jakość procesu uczenia. 
+
+Jednak obserwacje wyniku testu $R^2$ oraz wartości indeksu Willmott'a zdają się nie dawać tak optymistycznych rezultatów. Co do zasady fluktuują one wokół jednej wartości, 0.35 dla $R^2$ i 0.70 dla indeksu Willmott'a. Fluktuacje te dla tego drugiego parametru przedstawione są na \autoref{figure:scale_willmott} Dla pewnych długości szeregu wartości te są lepsze lub gorsze, ale nie widać jakiegoś długotrwałego trendu opisującego poprawnie tendencję tych wyników. Nie widać zatem pozytywnego wpływu długości szeregu na wartości tych parametrów, ale nie widać też znaczącego pogorszenia pomimo dziesięciokrotnego wzrostu wielkości zbioru wejściowego. 
+
+Zestawienie to może jest interesujące, ale nasuwają się pytania czy uzyskane relacje utrzymałyby się przy jeszcze większym wzroście długości szeregu. Niemożność powiększenia go korzystając z posiadanych danych obserwacyjnych nie pozwala jednoznacznie tego zweryfikować. 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		P. pomiarowe & Wielkość szeregu & $R^2$ & MSE & RMSE & Willmott \\
+		\hline
+		1  & 7193  & 0.4166 & 1183.4677 & 34.4016 & 0.7386 \\
+		2  & 14372 & 0.3279 & 995.0935  & 31.5451 & 0.6273 \\
+		3  & 14929 & 0.3308 & 915.0519  & 30.2498 & 0.6676 \\
+		4  & 18768 & 0.3914 & 924.4917  & 30.4055 & 0.7197 \\
+		5  & 18880 & 0.3773 & 887.3174  & 29.7879 & 0.7034 \\
+		6  & 20877 & 0.3838 & 845.1975  & 29.0723 & 0.7224 \\
+		7  & 23536 & 0.4125 & 827.2894  & 28.7626 & 0.7334 \\
+		8  & 28388 & 0.3493 & 756.8922  & 27.5117 & 0.7163 \\
+		9  & 31291 & 0.3612 & 725.9746  & 26.9439 & 0.7304 \\
+		10 & 33225 & 0.3326 & 771.0799  & 27.7683 & 0.7008 \\
+		11 & 37202 & 0.3401 & 760.2995  & 27.5735 & 0.7156 \\
+		12 & 38150 & 0.3396 & 758.2695  & 27.5367 & 0.7062 \\
+		13 & 41828 & 0.3774 & 755.3431  & 27.4835 & 0.7099 \\
+		14 & 45375 & 0.3797 & 716.1558  & 26.7611 & 0.7087 \\
+		15 & 51034 & 0.3569 & 710.9420  & 26.6635 & 0.7036 \\
+		16 & 56810 & 0.3562 & 672.1225  & 25.9253 & 0.7067 \\
+		17 & 60145 & 0.3594 & 645.1233  & 25.3993 & 0.7071 \\
+		18 & 66146 & 0.3480 & 619.7134  & 24.8940 & 0.6912 \\
+		19 & 68729 & 0.3403 & 632.2250  & 25.1441 & 0.6994 \\
+		20 & 71207 & 0.3605 & 643.4277  & 25.3659 & 0.7110 \\
+		21 & 74181 & 0.3451 & 626.0303  & 25.0206 & 0.7018 \\
+		\hline
+	\end{tabular}
+	\caption{Zestawienie parametrów opisujących jakość predykcji  zależności od wielości szeregu}
+	\label{table:scale_comparison}
+\end{table}
+
+
+\begin{figure}[!ht]
+\centering
+\makebox[0pt]{\includegraphics[scale=0.3]{scale_mse.png}}
+\caption{Błąd średniokwadratowy w zależności od długości szeregu}
+\label{figure:scale_mse}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{cities_willmott.png}}
+	\caption{Wartość indeksu Willmott'a w zależności od ilości analizowanych punktów pomiarowych}
+	\label{figure:scale_willmott}
+\end{figure}
+\FloatBarrier
+
+Podobnie jak w pozostałych przypadkach przedstawianych wyników samo zestawienie parametrów opisujących jakość wyników wydaje się nie malować pełnego obrazu analizowanej sytuacji. Zwłaszcza biorąc pod uwagę znaczenie przypisywane wynikowi testu $R^2$ w poprzednich przypadkach jego fluktuacje mogą poddawać w wątpliwość skalowalność modelu. Wydaje się więc sensownym przeanalizowanie wizualizacji predykcji w celu próby wyłapania różnic w predykcjach. 
+
+Zadanie to może być utrudnione poprzez losowy podział wejściowego szeregu na dane uczące i testujące. Otrzymane zestawienie wyników predykcji z danymi testującymi będzie różne dla różnych długości szeregu. Zadanie porównania dopasowania do zbioru testującego dla różnych długości szeregu zostało podjęte z wykorzystaniem wykresów względnie podobnych w kształcie zbiorów testujących. 
+
+Wizualizacje te są prezentowane na \autoref{figure:scale_8} oraz \autoref{figure:scale_26}. Wyraźnie widoczna jest wspomniana różnica zbiorów testowych z obu rysunków. Nie wydaje się ona jednak tak duża, aby uniemożliwić poczynienie obserwacji odnośnie zachowania modelu dla obu szeregów czasowych.
+
+Pomimo prawie czterokrotnego wzrostu długości szeregu nie widać drastycznych zmian w jakości uzyskiwanej predykcji. W obu przypadkach model zdaje się względnie poprawnie odwzorowywać dane testowe. Wydaje się to oznaczać poprawność przeprowadzonego badania, brak źle zbudowanych szeregów czasowych i odpowiednie przetwarzanie ich przez model. 
+
+Można nawet odnieść wrażenie, że dla dłuższego szeregu czasowego model lepiej przewiduje wartości. Przykładem, może być tutaj zima z przełomu roku 2006 i 2007, gdzie przy większej ilości danych model bardzo mocno dopasowuje się do kształtu danych ze zbioru testującego. Trudno stwierdzić czy jest to faktycznie lepsza predykcja czy tylko wzrost ilości danych dla tego punktu czasowego ją lepiej uwidacznia. Biorąc pod uwagę odnotowany w \autoref{table:scale_comparison} spadek wartości błędu średniokwadratowego przy wzroście długości szeregu nie można wykluczyć możliwości nieco dokładniejszej predykcji dla liczniejszego szeregu. 
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{scale_8.png}}
+	\caption{Zestawienie wyników sieci neuronowej opartej na architekturze GRU dla 8 punktów pomiarowych}
+	\label{figure:scale_8}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.4]{scale_26.png}}
+	\caption{Zestawienie wyników sieci neuronowej opartej na architekturze GRU dla 26 punktów pomiarowych}
+	\label{figure:scale_26}
+\end{figure}
+\FloatBarrier
+
+Wydaje się, że przedstawione w tym podrozdziale wykresy oraz tabela porównawcza stanowią wystarczające podstawy do wyciągania dalej idących wniosków. Warto zauważyć trudność jednoznacznego określenia długości szeregu będącej limitem skalowalności modelu. Wszystkie czynniki płynące z wyników tego badania zostaną wzięte pod uwagę podczas formułowania wniosków w \hyperlink{section.6}{rozdziale 6}.
 \section{Wnioski}
 
 \printbibliography[title=Bibliografia]
