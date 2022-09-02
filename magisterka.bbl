@@ -571,5 +571,15 @@
     \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU
     \endverb
   \endentry
+
+  \entry{krkFreeMPK}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Kiedy wprowadzana jest bezpłatna komunikacja w czasie
+  smogu?}
+    \verb{url}
+    \verb https://www.krakow.pl/aktualnosci/255525,1912,komunikat,kiedy_wprowad
+    \verb zana_jest_bezplatna_komunikacja_w_czasie_smogu_.html
+    \endverb
+  \endentry
 \enddatalist
 \endinput
