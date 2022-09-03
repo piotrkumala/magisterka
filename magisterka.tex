@@ -130,17 +130,11 @@ W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozp
 Jedną z najbardziej klasycznych metod predykcyjnych jest regresja liniowa. Jej podstawy zostały położone w pracach Legrende'a i Gauss'a na początku XIX wieku \cite{seal1967studies}. Polega ona na dopasowywaniu funkcji liniowej do danych w taki sposób, aby jak najlepiej opisywała ona kształt i właściwości danych. Najprostszym mechanizmem służącym do zapewnienia optymalnych wyników jest metoda najmniejszych kwadratów opisana po raz pierwszy przez Legrende'a w 1805 roku\cite{legendre1806nouvelles}. Polega ona na takim dopasowywaniu parametrów funkcji aby zminimalizować sumaryczny kwadrat odległości obserwacji od prostej opisanej funkcją. 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.2]{example_linear_regression.png}}
+	\makebox[0pt]{\includegraphics[scale=0.3]{example_linear_regression.png}}
 	\caption{Przykład wyniku regresji liniowej}
 \end{figure}
 \FloatBarrier
-Metoda ta jest szeroko wykorzystywana, ale nie jest pozbawiona wad. Bardzo mocno reaguje ona na elementy nietypowe co może prowadzić do nieprawidłowego kształtu funkcji. F. Anscombe  w 1973 roku zaprezentował cztery zbiory danych, które korzystając z metody najmniejszych kwadratów zwracają takie same proste pomimo tego, że kształty tychże zbiorów danych są bardzo od siebie różne \cite{anscombe1973graphs}.
-\begin{figure}[!ht]
-	\centering
-	\makebox[0pt]{\includegraphics[scale=0.6]{anscombe.png}}
-	\caption{Zbiory opisane przez Anscombe'ego i dopasowane do nich proste}
-\end{figure}
-\FloatBarrier 
+
 \subsection{Drzewa decyzyjne}
 Jedną z najszerzej używanych metod uczenia maszynowego są drzewa decyzyjne. Są one szeroko wykorzystywane ze względu na swoje nieskomplikowanie i intuicyjność w zrozumieniu wyników \cite{wu2008top}. Drzewem decyzyjnym nazywamy model predykcyjny, $h: X \rightarrow Y$, który przewiduje wartość $Y$ dla $x$ poprzez trawers drzewa od korzenia do liścia. Na każdym węźle drzewa kierunek przejścia jest wybierany poprzez rozdzielenie przestrzeni wejściowej. Najczęściej jest ono dokonywane na podstawie cech obserwacji $x$ \cite{books/daglib/0033642}. Wynikiem procesu uczenia jest drzewo pozwalające prześledzić ścieżkę jaką podąża każda obserwacja $x$ w celu przypisania jej odpowiedniej wartości. Przykładowe, bardzo uproszczone drzewo decyzyjne jest przedstawione na rysunku numer 3.
 \begin{figure}[!ht]
@@ -162,7 +156,7 @@ Podwaliny rekurencyjnych sieci neuronowych zostały stworzone w 1986 roku przez 
 Powszechnym sposobem myślenia o strukturze sieci neuronowych jest seria warstw składających się na sieć. Każda warstwa składająca się z pewnej liczby neuronów komunikuje się z następującą warstwą aż do osiągnięcia warstwy wyjściowej zwracającej wynik sieci. 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.3]{ann_layers.png}}
+	\makebox[0pt]{\includegraphics[scale=1.2]{ann_layers.png}}
 	\caption{Przykładowa sieć neuronowa z trzema warstwami}
 \end{figure}
 \FloatBarrier
@@ -171,7 +165,7 @@ W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących s
 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.3]{Recurrent_neural_network_unfold.png}}
+	\makebox[0pt]{\includegraphics[scale=0.7]{Recurrent_neural_network_unfold.png}}
 	\caption{Przykład rozwijania warstwy rekurencyjnej $h$}
 \end{figure}
 \FloatBarrier
@@ -199,12 +193,12 @@ Bramka wyjściowa natomiast kontroluje przepływ stanu komórki na zewnątrz. De
 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.4]{lstm_without_forget_gate_schema.png}}
+	\makebox[0pt]{\includegraphics[scale=0.8]{lstm_without_forget_gate_schema.png}}
 	\caption{Komórka pamięci w architekturze LSTM}
 \end{figure}
 \FloatBarrier
 
-Na powyższym rysunku przedstawiony jest schemat budowy najprostszej komórki pamięci w sieci LSTM. Wyraźnie widoczne są bramki wejściową i wyjściową operujące na sygnałach wejściowych $w_{in_ji}$, $y_{in_j}$, $net_{in_j}$ oraz wyjściowych ${w_{out_ji}}$, $y_{out_j}$, $net_{out_j}$. Widoczny jest również mechanizm zmiany stanu wewnętrznego komórki $s_{c_j}$ na podstawie przepuszczonego przez bramkę wejściową sygnału $y_{in_j}$.
+Na powyższym rysunku przedstawiony jest schemat budowy najprostszej komórki pamięci w sieci LSTM. Wyraźnie widoczne są bramki wejściową i wyjściową operujące na sygnałach wejściowych $w_{ini}$, $y^{in}$, $net_{in}$ oraz wyjściowych ${w_{outi}}$, $y^{out}$, $net_{out}$. Widoczny jest również mechanizm zmiany stanu wewnętrznego komórki $s_{c_j}$ na podstawie przepuszczonego przez bramkę wejściową sygnału $y_{in}$.
 
 Stworzona w taki sposób architektura okazała się mieć jeden poważny problem. Stan komórki wykazywał tendencje do liniowego wzrostu w kolejnych krokach czasowych. Wzrost ten mógł prowadzić do saturacji funkcji h. Saturacja ta prowadziła do przestania przyjmowania nowych błędów i zrównania wyniku komórki z wartością funkcji aktywacji bramki wyjściowej. W takich kierunkach komórka pamięci traciła swoje korzyści i wracała do zachowania typowego dla zwykłej sieci rekurencyjnej \cite{gers2000learning}.
 
@@ -212,7 +206,7 @@ Rozwiązaniem tego problemu okazało się dodanie trzeciej bramki nazywanej bram
 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.9]{lstm_with_forget_gate_schema.png}}
+	\makebox[0pt]{\includegraphics[scale=0.6]{lstm_with_forget_gate_schema.png}}
 	\caption{Komórka pamięci w architekturze LSTM z bramką zapominania}
 \end{figure}
 \FloatBarrier
@@ -225,12 +219,12 @@ W porównaniu do architektury Long Short-Term Memory Gated Recurrent Unit jest p
 
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=1]{gru_schema.png}}
+	\makebox[0pt]{\includegraphics[scale=0.8]{gru_schema.png}}
 	\caption{Komórka pamięci w architekturze GRU}
 \end{figure}
 \FloatBarrier
 
-Na powyższym rysunku przedstawiony jest schemat komórki GRU, gdzie stan komórki w obecnym kroku czasowym $h$ zmienia się w $\widetilde{h}$. Widoczne są również bramki resetu $r$ i aktualizacji $z$. 
+Na powyższym rysunku przedstawiony jest schemat komórki GRU, gdzie stan komórki w obecnym kroku czasowym $h$ zmienia się w $h'$. Widoczne są również bramki resetu $r$ i aktualizacji $z$. 
 
 Bramka reset (reset gate) decyduje czy poprzedni wewnętrzny stan komórki powinien być zachowany czy wyrzucony. Jej wartość w j-tej komórce w warstwie wyznaczamy ze wzoru:
 \begin{equation}

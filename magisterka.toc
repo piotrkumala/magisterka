@@ -4,32 +4,32 @@
 \contentsline {section}{\numberline {2}Wstęp teoretyczny}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Szereg czasowy}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Regresja liniowa}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Drzewa decyzyjne}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Rekurencyjne sieci neuronowe}{5}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Architektura LSTM}{7}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Architektura GRU}{10}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{12}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Baza danych Instytutu Meteorologii i Gospodarki Wodnej}{12}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Baza danych Głównego Inspektoratu Ochrony Środowiska}{13}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Tworzenie szeregów z obu źródeł danych}{15}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Tworzenie szeregu dla Krakowa}{15}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Tworzenie większej ilości szeregów}{16}{subsubsection.3.3.2}%
-\contentsline {section}{\numberline {4}Przeprowadzone badania}{17}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Porównanie wydajności modeli predykcyjnych}{17}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Regresja liniowa}{17}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Drzewa decyzyjne}{18}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Sieci rekurencyjne}{18}{subsubsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.2}Badanie skalowalności modelu GRU}{19}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Otrzymane wyniki}{19}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{19}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{20}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{21}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{25}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{29}{subsubsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{32}{subsubsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{36}{subsubsection.5.1.6}%
-\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{44}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Wnioski}{48}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Zasadność wykorzystania rekurencyjnych sieci neuronowych}{48}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Wykorzystanie rekurencyjnych sieci neuronowych}{50}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Dalsze kierunki badań}{52}{subsection.6.3}%
+\contentsline {subsection}{\numberline {2.3}Drzewa decyzyjne}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Rekurencyjne sieci neuronowe}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Architektura LSTM}{6}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Architektura GRU}{9}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Przygotowanie zbioru danych}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Baza danych Instytutu Meteorologii i Gospodarki Wodnej}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Baza danych Głównego Inspektoratu Ochrony Środowiska}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Tworzenie szeregów z obu źródeł danych}{14}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Tworzenie szeregu dla Krakowa}{14}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Tworzenie większej ilości szeregów}{15}{subsubsection.3.3.2}%
+\contentsline {section}{\numberline {4}Przeprowadzone badania}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Porównanie wydajności modeli predykcyjnych}{16}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Regresja liniowa}{16}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Drzewa decyzyjne}{17}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Sieci rekurencyjne}{17}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Badanie skalowalności modelu GRU}{18}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Otrzymane wyniki}{18}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{18}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{19}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{20}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{24}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{28}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{31}{subsubsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{35}{subsubsection.5.1.6}%
+\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{43}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Wnioski}{47}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Zasadność wykorzystania rekurencyjnych sieci neuronowych}{47}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Wykorzystanie rekurencyjnych sieci neuronowych}{49}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Dalsze kierunki badań}{51}{subsection.6.3}%
