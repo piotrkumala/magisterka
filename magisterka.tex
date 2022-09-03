@@ -245,7 +245,6 @@ Bramka aktualizacji (update gate) decyduje natomiast ile stanu z poprzedniego kr
 gdzie $W_z$ i $U_z$ to macierze wag analogiczne do tych występujących w bramce resetu. 
 
 Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę, że macierze $W_z, W_r, U_z, U_r$ są wyznaczane w trakcie uczenia można wysunąć kilka obserwacji. Dualizm bramek powinien prowadzić do jednej bramki będącej znacznie bardziej aktywnej od drugiej. Zjawisko to można rozumieć jako specjalizację komórek warstwy, gdzie te z aktywnymi bramkami resetu odpowiadają za pamięć krótkotrwałą, a te z aktywną bramką aktualizacji odpowiadają za pamięć długoterminową. Pamiętając, że aktywność każdej bramki jest dopasowywana dla każdej komórki w procesie uczenia możemy założyć, że podział komórek na pamięć krótkotrwałą i długotrwałą będzie w wytrenowanej sieci rozłożony w sposób optymalny. Rozumiemy przez to, że jeżeli dane treningowe na przykład nie wykazywały długofalowych trendów, a były bardziej chaotyczne i często zmieniające się to po procesie uczenia powinny dominować komórki z aktywną bramką resetu.
-\subsection{Indeks Willmott'a}
 
 \newpage
 \section{Przygotowanie zbioru danych}
@@ -273,7 +272,18 @@ W kolejnych wierszach są zapisane informacje o pomiarach z jednej stacji z cał
 	\item Rodzaju opadu [S (Śnieg) /W (Deszcz)]
 	\item Wysokości pokrywy śnieżnej [$cm$]
 \end{itemize}
+Na \autoref{figure:imgw} przedstawione zostały wartości średniej dobowej temperatury w analizowanym okresie. Na osi X reprezentowany jest czas w dniach, a na osi Y temperatura w stopniach Celsjusza. Wyraźnie widoczna jest okresowość danych zgodna z cyklem pór roku.  
+
 Dla każdego pomiaru jest zapisywany status tego pomiaru pozwalający stwierdzić czy został on przeprowadzony poprawnie i czy dane zjawisko występowało w danym dniu. W wykorzystywanych danych z okresu 2001-2020 nie było przypadku błędnego pomiaru co pozwala wierzyć w dokładność danych i skrupulatność przeprowadzanych obserwacji. 
+
+
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{imgw_description_krakow.png}}
+	\caption{Średnia temperatura dobowa w latach 2001-2020}
+	\label{figure:imgw}
+\end{figure}
+\FloatBarrier
 
 \subsection{Baza danych Głównego Inspektoratu Ochrony Środowiska}
 Główny Inspektorat Ochrony Środowiska to instytucja powołana 27 kwietnia 2001 roku \cite{giosStart}. Jako część swojej misji określa ona mierzenie stanu środowiska oraz udostępnianie wyników tych pomiarów społeczeństwu \cite{giosMission}. Ten aspekt działalności Inspektoratu gwarantuje istnienie dużej bazy wyników pomiarów danych dotyczących poziomu zanieczyszczeń powietrza, które mogą zostać wykorzystane do tworzenia szeregów czasowych. 
@@ -306,6 +316,15 @@ W kolejnych latach liczba badanych czynników zanieczyszczających oraz rozdziel
 
 
 Nie bez znaczenia jest również fakt, że ilość stacji badających różniła się znacznie pomiędzy różnymi substancjami. Ostatecznie wybrane zostało używanie jedynie średniego dobowego stężenia pyłu PM10, jako że był on badany przez największą ilość stacji przez najdłuższy możliwy czas. Czynniki te miały duży wpływ na proces budowania jednego szeregu czasowego na podstawie obu opisanych zbiorów danych, który zostanie opisany w dalszej części pracy.
+
+Na \autoref{figure:gios} przedstawiony jest poziom zanieczyszczenia pyłem PM10 na terenie Krakowa w latach 2001-2020. Na osi x reprezentowany jest czas w dniach, a na osi y poziom zanieczyszczenia w $\frac{\si{\micro\gram}}{\si\meter^3}$. Różnymi kolorami przedstawione są wyniki z różnych stacji pomiarowych leżących na obszarze Krakowa. Wyraźnie widoczna jest potrzeba korzystania z więcej niż jednej stacji pomiarowej do stworzenia stałego ciągu obserwacji w analizowanym okresie. 
+\begin{figure}[!ht]
+	\centering
+	\makebox[0pt]{\includegraphics[scale=0.3]{gios_description_krakow.png}}
+	\caption{Poziom zanieczyszczenia powietrza pyłem PM10 w Krakowie w latach 2001-2020}
+	\label{figure:gios}
+\end{figure}
+\FloatBarrier
 
 \subsection{Tworzenie szeregów z obu źródeł danych}
 Podjęta została decyzja o połączeniu obu źródeł danych w jeden szereg czasowy aby utworzony szereg był badawczo ciekawy. Celem tego działania było umożliwienie predykcji stężenia pyłu PM10 na podstawie danych klimatycznych, ponieważ zdaje się mieć to odzwierciedlenie w rzeczywistości.
