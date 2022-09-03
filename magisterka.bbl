@@ -581,5 +581,41 @@
     \verb zana_jest_bezplatna_komunikacja_w_czasie_smogu_.html
     \endverb
   \endentry
+
+  \entry{chan2020caru}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=CKH}{%
+         family={Chan},
+         familyi={C\bibinitperiod},
+         given={Ka-Hou},
+         giveni={K\bibinithyphendelim H\bibinitperiod},
+      }}%
+      {{hash=KW}{%
+         family={Ke},
+         familyi={K\bibinitperiod},
+         given={Wei},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=ISK}{%
+         family={Im},
+         familyi={I\bibinitperiod},
+         given={Sio-Kei},
+         giveni={S\bibinithyphendelim K\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{CKHKWISK1}
+    \strng{fullhash}{CKHKWISK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{International Conference on Neural Information
+  Processing}
+    \field{pages}{693\bibrangedash 703}
+    \field{title}{CARU: A content-adaptive recurrent unit for the transition of
+  hidden state in NLP}
+    \field{year}{2020}
+  \endentry
 \enddatalist
 \endinput
