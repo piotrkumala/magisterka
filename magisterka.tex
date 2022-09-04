@@ -13,6 +13,7 @@
 \usepackage{siunitx}
 \usepackage{svg}
 \usepackage[hidelinks]{hyperref}
+\usepackage[polish]{babel}
 
 \usepackage[style=ieee, backend=bibtex ,sorting=none]{biblatex}
 \addbibresource{refs.bib}
@@ -26,7 +27,7 @@
 \renewcommand*\tablename{Tabela}
 \renewcommand*\tableautorefname{Tab.}
 \renewcommand*\figureautorefname{Rys.}
-
+\DeclareFieldFormat{urldate}{dostęp: #1}
 
 
 \begin{document}
@@ -61,7 +62,7 @@
 		
 		Wydział Fizyki i Informatyki Stosowanej\\
 		Akademia Górniczo-Hutnicza im. Stanisława Staszica\\
-		Kraków, lipiec 2021r.
+		Kraków, wrzesień 2021r.
 		
 	\end{center}
 \end{titlepage}
@@ -117,10 +118,10 @@ systemów informatycznych.
 \section{Wprowadzenie i cel pracy}
 
 \subsection{Wprowadzenie}
-Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w wydawałoby się prostych urządzeniach jak telefony komórkowe zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Taki rozwój technologiczny może zostać zastosowany do próby zrozumienia i szukania rozwiązań problemów życia codziennego. Jednym z szeroko występujących w świadomości społecznej problemów jest poziom zanieczyszczenia środowiska naturalnego i zmiany klimatu. Co roku na początku zimy media raportują o wysokim poziome zanieczyszczeń powietrza w polskich miastach. Podejmowane są również działania mające na celu ograniczenie poziomu tychże zanieczyszczeń przez samorządy i instytucje centralne. Posiadanie wiarygodnych estymacji skali problemu i jego zmiany w czasie może mieć wymierne skutki w usprawnianiu reakcji na wysokie poziomy zanieczyszczeń. W tej pracy podjęta zostanie próba stworzenia wiarygodnego modelu predykcyjnego poziomu zanieczyszczeń korzystającego z rekurencyjnych sieci neuronowych.
+Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w wydawałoby się prostych urządzeniach jak telefony komórkowe zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Taki rozwój technologiczny może zostać zastosowany do próby zrozumienia i szukania rozwiązań problemów życia codziennego. Jednym z szeroko występujących w świadomości społecznej problemów jest poziom zanieczyszczenia środowiska naturalnego i zmiany klimatu. Co roku na początku zimy media raportują o wysokim poziome zanieczyszczeń powietrza w polskich miastach \cite{airPollutionPoland}. Podejmowane są również działania mające na celu ograniczenie poziomu tychże zanieczyszczeń przez samorządy i instytucje centralne. Posiadanie wiarygodnych estymacji skali problemu i jego zmiany w czasie może mieć wymierne skutki w usprawnianiu reakcji na wysokie poziomy zanieczyszczeń. W tej pracy podjęta zostanie próba stworzenia wiarygodnego modelu predykcyjnego poziomu zanieczyszczeń korzystającego z rekurencyjnych sieci neuronowych.
 
 \subsection{Cel pracy}
-Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego (Google Android LSTM). Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci nasuwa się pytanie jakie rezultaty będą one osiągać w innych zastosowaniach. W ramach tej pracy zbadana zostanie jakość predykcji szeregów czasowych płynących z modeli opartych na rekurencyjnych sieciach neuronowych. Zostaną one zestawione z klasycznymi metodami predykcyjnymi w celu stwierdzenia zasadności stosowania sieci neuronowych. Specjalna uwaga zostanie również poświęcona różnicom w jakości uzyskiwanych rozwiązań różnych architektur sieci oraz skalowalności modeli opartych na rekurencyjnych sieciach neuronowych. 
+Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego \cite{googleLSTM}. Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci nasuwa się pytanie jakie rezultaty będą one osiągać w innych zastosowaniach. W ramach tej pracy zbadana zostanie jakość predykcji szeregów czasowych płynących z modeli opartych na rekurencyjnych sieciach neuronowych. Zostaną one zestawione z klasycznymi metodami predykcyjnymi w celu stwierdzenia zasadności stosowania sieci neuronowych. Specjalna uwaga zostanie również poświęcona różnicom w jakości uzyskiwanych rozwiązań różnych architektur sieci oraz skalowalności modeli opartych na rekurencyjnych sieciach neuronowych. 
 
 \section{Wstęp teoretyczny}
 \subsection{Szereg czasowy}

@@ -23,6 +23,33 @@
     \verb{url}
     \verb https://www.apple.com/pl/newsroom/2020/11/apple-unleashes-m1/
     \endverb
+    \field{urlday}{27}
+    \field{urlmonth}{07}
+    \field{urlyear}{2022}
+  \endentry
+
+  \entry{airPollutionPoland}{online}{}
+    \field{labeltitlesource}{title}
+  \field{title}{https://powietrze.malopolska.pl/baza/jakosc-powietrza-w-polsce-na-tle-unii-europejskiej/}
+    \verb{url}
+    \verb https://powietrze.malopolska.pl/baza/jakosc-powietrza-w-polsce-na-tle
+    \verb -unii-europejskiej/
+    \endverb
+    \field{urlday}{03}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
+  \endentry
+
+  \entry{googleLSTM}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{The neural networks behind Google Voice transcription}
+    \verb{url}
+    \verb https://ai.googleblog.com/2015/08/the-neural-networks-behind-google-v
+    \verb oice.html
+    \endverb
+    \field{urlday}{02}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{seal1967studies}{article}{}
@@ -70,30 +97,6 @@
     \field{title}{Nouvelles m{\'e}thodes pour la d{\'e}termination des orbites
   des com{\`e}tes; par AM Legendre...}
     \field{year}{1806}
-  \endentry
-
-  \entry{anscombe1973graphs}{article}{}
-    \name{author}{1}{}{%
-      {{hash=AFJ}{%
-         family={Anscombe},
-         familyi={A\bibinitperiod},
-         given={Francis\bibnamedelima J},
-         giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Taylor \& Francis}%
-    }
-    \strng{namehash}{AFJ1}
-    \strng{fullhash}{AFJ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{1}
-    \field{pages}{17\bibrangedash 21}
-    \field{title}{Graphs in statistical analysis}
-    \field{volume}{27}
-    \field{journaltitle}{The american statistician}
-    \field{year}{1973}
   \endentry
 
   \entry{wu2008top}{article}{}
@@ -504,6 +507,9 @@
     \verb{url}
     \verb https://www.imgw.pl/instytut/zadania-statutowe
     \endverb
+    \field{urlday}{15}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{giosStart}{online}{}
@@ -513,6 +519,9 @@
     \verb https://www.gios.gov.pl/pl/o-urzedzie/zadania-inspekcji-ochrony-srodo
     \verb wiska
     \endverb
+    \field{urlday}{16}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{giosMission}{online}{}
@@ -521,6 +530,9 @@
     \verb{url}
     \verb https://www.gios.gov.pl/pl/o-urzedzie/strategia
     \endverb
+    \field{urlday}{16}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{sklearnLinearRegression}{online}{}
@@ -530,6 +542,9 @@
     \verb https://scikit-learn.org/stable/modules/generated/sklearn.linear_mode
     \verb l.LinearRegression.html
     \endverb
+    \field{urlday}{20}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{sklearnDecissionTrees}{online}{}
@@ -538,6 +553,9 @@
     \verb{url}
     \verb https://scikit-learn.org/stable/modules/tree.html#tree
     \endverb
+    \field{urlday}{21}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{dotLanguage}{online}{}
@@ -546,6 +564,9 @@
     \verb{url}
     \verb http://www.graphviz.org/doc/info/lang.html
     \endverb
+    \field{urlday}{21}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{tfSimpleRNN}{online}{}
@@ -554,6 +575,9 @@
     \verb{url}
     \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/SimpleRNN
     \endverb
+    \field{urlday}{22}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{tfLSTM}{online}{}
@@ -562,6 +586,9 @@
     \verb{url}
     \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM
     \endverb
+    \field{urlday}{22}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{tfGRU}{online}{}
@@ -570,6 +597,9 @@
     \verb{url}
     \verb https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU
     \endverb
+    \field{urlday}{22}
+    \field{urlmonth}{08}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{krkFreeMPK}{online}{}
@@ -580,6 +610,9 @@
     \verb https://www.krakow.pl/aktualnosci/255525,1912,komunikat,kiedy_wprowad
     \verb zana_jest_bezplatna_komunikacja_w_czasie_smogu_.html
     \endverb
+    \field{urlday}{01}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
   \endentry
 
   \entry{chan2020caru}{inproceedings}{}
