@@ -52,6 +52,17 @@
     \field{urlyear}{2022}
   \endentry
 
+  \entry{GUS}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Szeregi czasowe}
+    \verb{url}
+    \verb https://stat.gov.pl/metainformacje/szeregi-czasowe-4712/
+    \endverb
+    \field{urlday}{04}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
+  \endentry
+
   \entry{seal1967studies}{article}{}
     \name{author}{1}{}{%
       {{hash=SHL}{%
