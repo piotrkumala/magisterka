@@ -123,6 +123,7 @@ Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problem�
 \subsection{Cel pracy}
 Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego \cite{googleLSTM}. Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci nasuwa się pytanie: jakie rezultaty będą one osiągać w innych zastosowaniach? W ramach tej pracy zbadana zostanie jakość predykcji szeregów czasowych płynących z modeli opartych na rekurencyjnych sieciach neuronowych. Zostaną one zestawione z klasycznymi metodami predykcyjnymi w celu stwierdzenia zasadności stosowania sieci neuronowych. Specjalna uwaga zostanie również poświęcona różnicom w jakości uzyskiwanych rozwiązań różnych architektur sieci oraz skalowalności modeli opartych na rekurencyjnych sieciach neuronowych. 
 
+\newpage
 \section{Wstęp teoretyczny}
 \subsection{Szereg czasowy}
 W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozpoczęciem dalszych dywagacji należy zdefiniować samo pojęcie szeregu czasowego, aby uniknąć nieścisłości. Podążając za Głównym Urzędem Statystycznym szeregiem czasowym nazywamy ciąg obserwacji ilustrujący kształt zjawiska w kolejnych okresach czasu \cite{GUS}. Obserwacją można określić zbiór cech opisujących zjawisko w danym punkcie czasu. Rozumiejąc w taki sposób pojęcie szeregu czasowego można w prosty sposób określić cel systemu predykcyjnego. System ten powinien być w stanie przewidzieć wartość pewnej cechy w kolejnym punkcie czasu na podstawie poprzednich obserwacji. Można również określić, że predykcja będzie tym lepsza im bardziej zgodna z posiadanymi obserwacjami. 
@@ -159,12 +160,6 @@ Rekurencyjne sieci neuronowe to sieci neuronowe posiadające pętlę sprzężeni
 Podwaliny rekurencyjnych sieci neuronowych zostały stworzone w 1986 roku przez D. Rumelhart'a. Opisywał on sposób uczenia sieci neuronowych poprzez propagację wsteczną błędu \cite{rumelhart1986learning}. Zauważył on, że korzystając z tej metody uczenia można wypracować sieć, która rekurencyjnie wyznaczy wartości wag neuronów w swojej warstwie ukrytej. Potrzeba opracowania nowego sposobu uczenia wynikała z istnienia zadań niemożliwych do rozwiązania poprzez proste połączenie jednostek wejściowych z wyjściowymi.
 
 Powszechnym sposobem myślenia o strukturze sieci neuronowych jest seria warstw składających się na sieć. Każda warstwa składająca się z pewnej liczby neuronów komunikuje się z następną warstwą aż do osiągnięcia warstwy wyjściowej zwracającej wynik sieci. 
-\begin{figure}[!ht]
-	\centering
-	\makebox[0pt]{\includegraphics[scale=0.8]{ann_layers.png}}
-	\caption{Przykładowa sieć neuronowa z trzema warstwami}
-\end{figure}
-\FloatBarrier
 
 W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących się ze sobą, a jedna rekurencyjna warstwa zmieniająca się w czasie. W celu lepszego zrozumienia struktury i sposobu działania takiej sieci często dokonywany jest proces rozwijania w czasie warstwy rekurencyjnej.
 
@@ -348,6 +343,7 @@ Przy badaniu przydatności rekurencyjnych sieci neuronowych do predykcji czasowy
 
 W tym celu zbudowane zostały szeregi czasowe dla każdej odpowiadającej sobie geograficznie i czasowo pary punktów pomiarowych z Instytutu Meteorologii i Gospodarki Wodnej oraz Głównego Inspektoratu Ochrony Środowiska. W przypadkach, gdzie występowały wiele punktów mierzących stężenie pyłu PM10 przeprowadzano uśrednianie wyników pomiarów analogicznie do przypadku krakowskiego. Mniejsza uwaga została również poświęcona potrzebie ciągłości szeregu, jako że braki w pewnym fragmencie czasu były ,,przykrywane'' przez inne szeregi. Korzystając z takiej metodologii sporządzone zostały szeregi dla wszystkich sensownych par punktów pomiarowych obu instytucji.
 
+\newpage
 \section{Przeprowadzone badania}
 W celu zbadania przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych zestawione ze sobą zostały jakości wyników różnych modeli predykcyjnych. Analizowano zarówno klasyczne metody predykcyjne jak i nowocześniejsze wykorzystujące sieci neuronowe. Celem takiego porównywania było wyłonienie najbardziej obiecującego badawczo modelu predykcyjnego w celu dalszej analizy jego wydajności. Dalsza analiza jego wydajności polegała na zbadaniu zmian zachowania modelu przy zwiększającej się ilości danych. 
 
@@ -407,6 +403,7 @@ W ramach badania przeprowadzone zostało łącznie dwadzieścia dziewięć proce
 Przeprowadzone zostały identyczne pomiary wydajności modelu oraz wizualne zestawienia wyników predykcji z danymi rzeczywistymi. Sporządzony został również wykres wartości indeksu Willmott'a dla każdego przeprowadzonego procesu uczenia i walidacji modelu.
 
 Przyjęcie takiej metodologii badania skalowalności pozwala wierzyć, że otrzymane wyniki będą pomocne w określeniu przydatności tejże sieci do predykcji szeregów czasowych. Wyniki te zostaną przedstawione w podsekcji \hyperlink{subsection.5.2}{5.2}.
+
 \newpage
 \section{Otrzymane wyniki}
 W ramach tego rozdziału przedstawione zostaną wyniki wszystkich przeprowadzonych badań. Zostanie również przeprowadzona analiza wyników każdej metody z osobna oraz analiza porównawcza wyników wielu metod. Celem tej analizy jest zapewnienie pełnego kontekstu niezbędnego do wyciągania wniosków, które zostaną omówione w kolejnym rozdziale. 
@@ -957,6 +954,7 @@ Można nawet odnieść wrażenie, że dla dłuższego szeregu czasowego model GR
 
 Przedstawione w tym podrozdziale wykresy oraz tabela porównawcza stanowią wystarczające podstawy do wyciągania dalej idących wniosków. Warto zauważyć trudność jednoznacznego określenia długości szeregu będącej limitem skalowalności modelu. Wszystkie czynniki płynące z wyników tego badania zostaną wzięte pod uwagę podczas formułowania wniosków w \hyperlink{section.6}{rozdziale 6}.
 
+\newpage
 \section{Wnioski}
 W poprzednich rozdziałach przedstawione zostały badania przeprowadzone w celu określenia użyteczności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Przybliżona została metodologia badań oraz uzyskane wyniki zostały przeanalizowane w celu zapewnienia podstaw do wyciągania dalszych wniosków. W ramach tego rozdziału wnioski te zostaną sformułowane i ugruntowane w otrzymanych wynikach. Zostaną również przedstawione kierunki potencjalnych dalszych badań mogących zwiększyć zrozumienie zagadnienia.
 
