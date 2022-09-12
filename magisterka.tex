@@ -676,7 +676,7 @@ Mając na uwadze te aspekty wpływu modelu na jakość wyników oraz zwiększony
 \subsubsection{Sieć rekurencyjna typu GRU}
 W ramach badania sieci Gated Recurrent Memory dane zostały zebrane analogicznie jak w innych analizowanych modelach predykcyjnych. W tym podrozdziale zostaną one przedstawione oraz przeanalizowane pod kątem wyboru optymalnych parametrów sieci do dalszej analizy. 
 
-W \autoref{table:gru} przedstawione zostały wartości parametrów opisujące jakość wyników predykcji z wykorzystaniem sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby neuronów w warstwie ukrytej. Prezentowane są dokładnie takie same parametry jak w innych metodach predykcyjnych. Dokładna analiza tych parametrów pozwoli na lepsze zrozumienie działania sieci opartej na architekturze Gated Recurrent Unit. 
+W \autoref{table:gru} przedstawione zostały wartości parametrów opisujące jakość wyników predykcji z wykorzystaniem sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby neuronów w warstwie ukrytej. Prezentowane są dokładnie takie same parametry jak w innych metodach predykcyjnych. Dokładna analiza tych parametrów pozwoli na lepsze zrozumienie działania sieci opartej na architekturze Gated Recurrent Unit. Wyłuszczone zostały wyniki sieci z potencjalnie optymalną ilością neuronów w warstwie ukrytej. 
 
 Wyraźnie widoczna jest poprawa wartości parametrów wraz z wzrostem liczby neuronów w warstwie ukrytej. Zmiana ta nie jest jednak jednolita, istnieją nawet spadki wartości indeksu Willmott'a podczas wzrostu liczby neuronów. Zjawisko to jest najpewniej lokalną anomalią, aczkolwiek warto brać pod uwagę fakt, że zwiększenie warstwy ukrytej nie musi prowadzić do lepszego wyniku. 
 
@@ -688,17 +688,17 @@ Przyglądając się relacji wyniku testu $R^2$ do liczby neuronów w warstwie uk
 		\hline
 		Liczba neuronów w warstwie ukrytej & $R^2$ & MSE & RMSE & Willmott \\
 		\hline
-		1    & -0.5998 & 3276.1793 & 57.2379 & 0.3945 \\
-		2    & -0.3570 & 2778.8420 & 52.7147 & 0.3720 \\
-		4    & -0.0395 & 2128.6287 & 46.1371 & 0.3058 \\
-		8    & 0.1676  & 1704.5330 & 41.2860 & 0.4393 \\
-		16   & 0.2692  & 1496.4748 & 38.6843 & 0.5966 \\
-		32   & 0.3341  & 1363.7161 & 36.9285 & 0.6527 \\
-		64   & 0.3751  & 1279.7501 & 35.7736 & 0.7068 \\
-		128  & 0.3928  & 1243.4949 & 35.2632 & 0.7207 \\
-		256  & 0.3987  & 1231.2979 & 35.0899 & 0.7053 \\
-		512  & 0.4057  & 1216.9403 & 34.8847 & 0.7239 \\
-		1024 & 0.4048  & 1218.8890 & 34.9126 & 0.7308 \\
+		1    & -0,60 & 3276,18 & 57,24 & 0,395 \\
+		2    & -0,36 & 2778,84 & 52,71 & 0,372 \\
+		4    & -0,05 & 2128,63 & 46,14 & 0,306 \\
+		8    & 0,17  & 1704,53 & 41,29 & 0,439 \\
+		16   & 0,27  & 1496,47 & 38,68 & 0,597 \\
+		32   & 0,33  & 1363,72 & 36,93 & 0,653 \\
+		64   & 0,38  & 1279,75 & 35,77 & 0,707 \\
+		\textbf{128}  & \textbf{0,39}  & \textbf{1243,49} & \textbf{35,26} & \textbf{0,721} \\
+		\textbf{256}  & \textbf{0,40}  & \textbf{1231,30} & \textbf{35,09} & \textbf{0,705} \\
+		512  & 0,40  & 1216,94 & 34,88 & 0,724 \\
+		1024 & 0,41  & 1218,89 & 34,91 & 0,731 \\
 		\hline
 	\end{tabular}
 	\caption{Parametry opisujące poprawność wyników sieci GRU}
