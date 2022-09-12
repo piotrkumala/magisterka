@@ -53,7 +53,7 @@
 		
 		\vspace{1cm}
 		
-		{\Large Opiekun: \textbf{dr hab. inż. Piotr A. Kowalski}}
+		{\Large Opiekun: \textbf{dr hab. inż. Piotr A. Kowalski, prof. AGH}}
 		\vfill
 		
 		\
@@ -62,7 +62,7 @@
 		
 		Wydział Fizyki i Informatyki Stosowanej\\
 		Akademia Górniczo-Hutnicza im. Stanisława Staszica\\
-		Kraków, wrzesień 2021r.
+		Kraków, wrzesień 2022 r.
 		
 	\end{center}
 \end{titlepage}
@@ -128,7 +128,7 @@ Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez najwi�
 W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozpoczęciem dalszych dywagacji należy zdefiniować samo pojęcie szeregu czasowego, aby uniknąć nieścisłości. Podążając za Głównym Urzędem Statystycznym szeregiem czasowym nazywamy ciąg obserwacji ilustrujący kształt zjawiska w kolejnych okresach czasu \cite{GUS}. Obserwacją można określić zbiór cech opisujących zjawisko w danym punkcie czasu. Rozumiejąc w taki sposób pojęcie szeregu czasowego można w prosty sposób określić cel systemu predykcyjnego. System ten powinien być w stanie przewidzieć wartość pewnej cechy w kolejnym punkcie czasu na podstawie poprzednich obserwacji. Można również określić, że predykcja będzie tym lepsza im bardziej zgodna z posiadanymi obserwacjami. 
 
 \subsection{Regresja liniowa}
-Jedną z najbardziej klasycznych metod predykcyjnych jest regresja liniowa. Jej podstawy zostały położone w pracach Legrende'a i Gauss'a na początku XIX wieku \cite{seal1967studies}. Polega ona na dopasowywaniu funkcji liniowej do danych w taki sposób, aby jak najlepiej opisywała ona kształt i właściwości danych. Najprostszym mechanizmem służącym do zapewnienia optymalnych wyników jest metoda najmniejszych kwadratów opisana po raz pierwszy przez Legrende'a w 1805 roku\cite{legendre1806nouvelles}. Polega ona na takim dopasowywaniu parametrów funkcji aby zminimalizować sumaryczny kwadrat odległości obserwacji od prostej opisanej funkcją. 
+Jedną z najbardziej klasycznych metod predykcyjnych jest regresja liniowa. Jej podstawy zostały położone w pracach Legrende'a i Gauss'a na początku XIX wieku \cite{seal1967studies}. Polega ona na dopasowywaniu funkcji liniowej do danych w taki sposób, aby jak najlepiej opisywała ona kształt i właściwości danych. Najprostszym mechanizmem służącym do zapewnienia optymalnych wyników jest metoda najmniejszych kwadratów opisana po raz pierwszy przez Legrende'a w 1805 roku \cite{legendre1806nouvelles}. Polega ona na takim dopasowywaniu parametrów funkcji aby zminimalizować sumaryczny kwadrat odległości obserwacji od prostej opisanej funkcją. 
 
 Na \autoref{figure:linear_example} przedstawione zostało przykładowe wykorzystanie regresji liniowej. Linia prosta dopasowana jest do zbioru danych oznaczonych punktami. Przykład ten obrazuje pewne niedogodności płynące z użycia metody najmniejszych kwadratów. Prosta powstała dzięki minimalizacji uśrednionego błędu lepiej odwzorowuje niektóre punkty od innych. Wartości znajdujące się bliżej średniej są o wiele lepiej reprezentowane w wyniku regresji. 
 \begin{figure}[!ht]
@@ -873,7 +873,7 @@ W ramach badania skalowalności sieci neuronowej opartej na architekturze Gated 
 
 W \autoref{table:scale_comparison} zestawione zostały wartości parametrów opisujących jakość wyników predykcji sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby analizowanych punktów pomiarowych i co za tym idzie wielkości szeregu, dla którego prowadzona jest predykcja. Bliższa inspekcja tych parametrów może pozwolić na zrozumienie wpływu wielkości zbioru danych wejściowych na wydajność sieci. W trakcie tworzenia tabeli pominięte zostały wyniki punktów pomiarowych mających bardzo niewiele danych mogących zostać wykorzystanych w szeregu. Wynika to z założenia, że zmiana wyników była na tyle niewielka, że uwzględnienie ich nie byłoby wartościowe dla zestawienia. 
 
-Podczas obserwacji wyników można zauważyć bardzo wyraźny i co do zasady nie zachwiany trend spadkowy błędu średniokwadratowego. Relacja ta została przedstawiona na \autoref{figure:scale_mse} i wyraźnie maleje ze wzrostem długości badanego szeregu. Wydaje się to utwierdzać przekonanie o dobrej skalowalności stworzonego modelu. Utwierdzenie to jest tym mocniejsze, że to właśnie błąd średniokwadratowy jest używany jako funkcja błędu podczas uczenia modelu. Oznacza to, że zwiększenie liczy danych wejściowych ma pozytywny wpływ na jakość procesu uczenia. 
+Podczas obserwacji wyników można zauważyć bardzo wyraźny i co do zasady niezachwiany trend spadkowy błędu średniokwadratowego. Relacja ta została przedstawiona na \autoref{figure:scale_mse} i wyraźnie maleje ze wzrostem długości badanego szeregu. Wydaje się to utwierdzać przekonanie o dobrej skalowalności stworzonego modelu. Utwierdzenie to jest tym mocniejsze, że to właśnie błąd średniokwadratowy jest używany jako funkcja błędu podczas uczenia modelu. Oznacza to, że zwiększenie liczy danych wejściowych ma pozytywny wpływ na jakość procesu uczenia. 
 
 Jednak obserwacje wyniku testu $R^2$ oraz wartości indeksu Willmott'a zdają się nie dawać tak optymistycznych rezultatów. Co do zasady fluktuują one wokół jednej wartości, 0.35 dla $R^2$ i 0.70 dla indeksu Willmott'a. Fluktuacje te dla tego drugiego parametru przedstawione są na \autoref{figure:scale_willmott}. Dla pewnych długości szeregu czasowego, wartości te są lepsze lub gorsze, ale nie widać długotrwałego trendu opisującego poprawnie tendencję tych wyników. Nie widać zatem pozytywnego wpływu długości szeregu na wartości tych parametrów, ale nie widać też znaczącego pogorszenia pomimo dziesięciokrotnego wzrostu wielkości zbioru wejściowego. 
 
