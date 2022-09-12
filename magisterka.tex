@@ -171,7 +171,7 @@ W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących s
 \end{figure}
 \FloatBarrier
 
-W powyższym przykładzie przedstawionym na \autoref{figure:unfolded_rnn} należy zauważyć, że w wersji rozwiniętej $h_{t-1}, h_t i h_{t+1}$ nie są osobnymi warstwami, a jedynie reprezentacją warstwy $h$ w różnych krokach czasowych. 
+W \autoref{figure:unfolded_rnn} przedstawiono sposób rozwijania warstwy rekurencyjnej. Warto odnotować, że w wersji rozwiniętej $h_{t-1}, h_t i h_{t+1}$ nie są osobnymi warstwami, a jedynie reprezentacją warstwy $h$ w różnych krokach czasowych. 
 
 Na przestrzeni lat powstało wiele wariacji na temat architektury rekurencyjnych sieci neuronowych odpowiadających na różne problemy i stawiane im wymagania. W dalszym ciągu pracy przedstawione zostaną wybrane architektury, które mogą zostać wykorzystane do rozwiązania postawionego problemu predykcji szeregu czasowego.
 
@@ -624,8 +624,8 @@ W \autoref{table:lstm} przedstawione zostały wartości parametrów opisujących
 		32   & 0,30  & 1425,17 & 37,75 & 0,635 \\
 		64   & 0,34  & 1341,85 & 36,63 & 0,680 \\
 		128  & 0,38  & 1276,60 & 35,73 & 0,699 \\
-		256  & 0,39  & 1239,25 & 35,20 & 0,715 \\
-		512  & 0,41  & 1217,06 & 34,89 & 0,734 \\
+		\textbf{256}  & \textbf{0,39}  & \textbf{1239,25} & \textbf{35,20} & \textbf{0,715} \\
+		\textbf{512}  & \textbf{0,41}  & \textbf{1217,06} & \textbf{34,89} & \textbf{0,734} \\
 		1024 & 0,41  & 1217,79 & 34,90 & 0,748 \\
 		\hline
 	\end{tabular}
@@ -768,11 +768,11 @@ W przypadku sieci neuronowych proces dobierania optymalnych parametrów był nie
 		\hline
 		Metoda predykcji & $R^2$ & MSE & RMSE & Willmott \\
 		\hline
-		Regresja liniowa & 0.3230 & 1386.2897 & 37.2329 & 0.6719 \\
-		Drzewa decyzyjne & 0.3276 & 1376.8134 & 37.1054 & 0.6878\\
-		Prosta sieć rekurencyjna & 0.3865  & 1256.3483 & 35.4450 & 0.7190 \\
-		Sieć LSTM & 0.3948  & 1239.2538 & 35.2030 & 0.7154 \\
-		Sieć GRU & 0.3987  & 1231.2979 & 35.0899 & 0.7053 \\
+		Regresja liniowa		 & 0,32  & 1386,29 & 37,23 & 0,672 \\
+		Drzewa decyzyjne 		 & 0,33  & 1376,81 & 37,11 & 0,688 \\
+		Prosta sieć rekurencyjna & 0,39  & 1256,35 & 35,45 & 0,719 \\
+		Sieć LSTM 				 & 0,39  & 1239,25 & 35,20 & 0,715 \\
+		Sieć GRU 				 & 0,40  & 1231,30 & 35,09 & 0,705 \\
 		\hline
 	\end{tabular}
 	\caption{Zestawienie parametrów opisujących jakość predykcji różnych metod}
@@ -886,27 +886,27 @@ Zestawienie to może jest interesujące, ale nasuwają się pytania czy uzyskane
 		\hline
 		P. pomiarowe & Wielkość szeregu & $R^2$ & MSE & RMSE & Willmott \\
 		\hline
-		1  & 7193  & 0.4166 & 1183.4677 & 34.4016 & 0.7386 \\
-		2  & 14372 & 0.3279 & 995.0935  & 31.5451 & 0.6273 \\
-		3  & 14929 & 0.3308 & 915.0519  & 30.2498 & 0.6676 \\
-		4  & 18768 & 0.3914 & 924.4917  & 30.4055 & 0.7197 \\
-		5  & 18880 & 0.3773 & 887.3174  & 29.7879 & 0.7034 \\
-		6  & 20877 & 0.3838 & 845.1975  & 29.0723 & 0.7224 \\
-		7  & 23536 & 0.4125 & 827.2894  & 28.7626 & 0.7334 \\
-		8  & 28388 & 0.3493 & 756.8922  & 27.5117 & 0.7163 \\
-		9  & 31291 & 0.3612 & 725.9746  & 26.9439 & 0.7304 \\
-		10 & 33225 & 0.3326 & 771.0799  & 27.7683 & 0.7008 \\
-		11 & 37202 & 0.3401 & 760.2995  & 27.5735 & 0.7156 \\
-		12 & 38150 & 0.3396 & 758.2695  & 27.5367 & 0.7062 \\
-		13 & 41828 & 0.3774 & 755.3431  & 27.4835 & 0.7099 \\
-		14 & 45375 & 0.3797 & 716.1558  & 26.7611 & 0.7087 \\
-		15 & 51034 & 0.3569 & 710.9420  & 26.6635 & 0.7036 \\
-		16 & 56810 & 0.3562 & 672.1225  & 25.9253 & 0.7067 \\
-		17 & 60145 & 0.3594 & 645.1233  & 25.3993 & 0.7071 \\
-		18 & 66146 & 0.3480 & 619.7134  & 24.8940 & 0.6912 \\
-		19 & 68729 & 0.3403 & 632.2250  & 25.1441 & 0.6994 \\
-		20 & 71207 & 0.3605 & 643.4277  & 25.3659 & 0.7110 \\
-		21 & 74181 & 0.3451 & 626.0303  & 25.0206 & 0.7018 \\
+		1  & 7193  & 0,42 & 1183,47 & 34,40 & 0,739 \\
+		2  & 14372 & 0,33 & 995,09  & 31,55 & 0,627 \\
+		3  & 14929 & 0,33 & 915,05  & 30,25 & 0,668 \\
+		4  & 18768 & 0,39 & 924,49  & 30,41 & 0,720 \\
+		5  & 18880 & 0,38 & 887,32  & 29,79 & 0,703 \\
+		6  & 20877 & 0,38 & 845,20  & 29,07 & 0,722 \\
+		7  & 23536 & 0,41 & 827,29  & 28,76 & 0,733 \\
+		8  & 28388 & 0,35 & 756,89  & 27,51 & 0,716 \\
+		9  & 31291 & 0,36 & 725,97  & 26,94 & 0,730 \\
+		10 & 33225 & 0,33 & 771,08  & 27,77 & 0,701 \\
+		11 & 37202 & 0,34 & 760,30  & 27,57 & 0,716 \\
+		12 & 38150 & 0,34 & 758,27  & 27,54 & 0,706 \\
+		13 & 41828 & 0,38 & 755,34  & 27,48 & 0,710 \\
+		14 & 45375 & 0,38 & 716,16  & 26,76 & 0,709 \\
+		15 & 51034 & 0,36 & 710,94  & 26,66 & 0,704 \\
+		16 & 56810 & 0,36 & 672,12  & 25,93 & 0,707 \\
+		17 & 60145 & 0,36 & 645,12  & 25,40 & 0,707 \\
+		18 & 66146 & 0,35 & 619,71  & 24,89 & 0,691 \\
+		19 & 68729 & 0,34 & 632,23  & 25,14 & 0,699 \\
+		20 & 71207 & 0,36 & 643,43  & 25,37 & 0,711 \\
+		21 & 74181 & 0,35 & 626,03  & 25,02 & 0,702 \\
 		\hline
 	\end{tabular}
 	\caption{Zestawienie parametrów opisujących jakość predykcji  zależności od wielości szeregu}
