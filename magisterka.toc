@@ -2,6 +2,7 @@
 \contentsline {section}{\numberline {1}Wprowadzenie i cel pracy}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Wprowadzenie}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Cel pracy}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Repozytorium kodu}{2}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Wstęp teoretyczny}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Szereg czasowy}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Regresja liniowa}{3}{subsection.2.2}%
