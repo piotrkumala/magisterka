@@ -226,20 +226,27 @@ W porównaniu do architektury Long Short-Term Memory, Gated Recurrent Unit jest 
 	\centering
 	\makebox[0pt]{\includegraphics[scale=0.8]{gru_schema.png}}
 	\caption{Komórka pamięci w architekturze GRU}
+	\label{figure:gru_example}
 \end{figure}
 \FloatBarrier
 
-Na powyższym rysunku przedstawiony jest schemat komórki GRU, gdzie stan komórki w obecnym kroku czasowym $h$ zmienia się w $h'$. Widoczne są również bramki resetu $r$ i aktualizacji $z$. 
-
-Bramka reset (reset gate) decyduje czy poprzedni wewnętrzny stan komórki powinien być zachowany czy odrzucony. Jej wartość w j-tej komórce w warstwie wyznaczamy ze wzoru:
+Na \autoref{figure:gru_example} przedstawiony jest schemat komórki GRU, gdzie stan komórki z poprzedniego kroku to $h_{t-1}$, potencjalny nowy stan komórki to $h'_t$ oraz nowy stan to $h_t$. Widoczne są również bramki resetu $r_t$ i aktualizacji $z_t$ ze swoimi sigmoidalnymi funkcjami aktywacji. Zaznaczone są również wyznaczane w procesie uczenia wagi poszczególnych operacji $W_r, U_r, W_z, U_z, W, U$. Na podstawie tego schematu można zauważyć, że potencjalny nowy stan komórki jest wyliczany ze wzoru:
 \begin{equation}
-	r_j = \sigma([W_rx]_j + [U_rh_{t-1}]_j),
+	h'_t = tanh(Wx_t + U(r_t * h_{t-1}))
+\end{equation}
+Idąc dalej można skonstruować również wzór na ostatecznie wybrany nowy stan:
+\begin{equation}
+	h_t = z_th_{t-1} + (1 - z_t)h'_t
+\end{equation}
+Bramka reset (reset gate) decyduje czy poprzedni wewnętrzny stan komórki powinien być zachowany czy odrzucony. Jej wartość w chwili t wyznaczamy ze wzoru:
+\begin{equation}
+	r_t = \sigma([W_rx_t] + [U_rh_{t-1}]),
 \end{equation} 
 gdzie $W_r$ i $U_r$ to macierze wag, których wartości są wyznaczane w trakcie uczenia sieci. Przy takich założeniach można zauważyć, że jeżeli wartość bramki reset będzie bliska zeru to stan komórki będzie często usuwany.
 
 Bramka aktualizacji (update gate) decyduje natomiast jak duża część stanu z poprzedniego kroku czasowego powinna zostać zapamiętana w obecnym kroku. Wartość bramki w j-tej komórce warstwy wyznaczamy ze wzoru:
 \begin{equation}
-	z_j = \sigma([W_zx]_j + [U_zh_{t-1}]_j),
+	z_t = \sigma([W_zx_t] + [U_zh_{t-1}]),
 \end{equation} 
 gdzie $W_z$ i $U_z$ to macierze wag analogiczne do tych występujących w bramce resetu. 
 
