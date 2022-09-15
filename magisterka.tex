@@ -27,6 +27,10 @@
 \renewcommand*\tablename{Tabela}
 \renewcommand*\tableautorefname{Tab.}
 \renewcommand*\figureautorefname{Rys.}
+\renewcommand*\equationautorefname{równaniu}
+\renewcommand*\subsectionautorefname{podsekcji}
+\renewcommand*\subsubsectionautorefname{podsekcji}
+\renewcommand*\sectionautorefname{rozdziale}
 \DeclareFieldFormat{urldate}{dostęp: #1}
 
 
@@ -129,9 +133,11 @@ Cały kod powstały w ramach jest dostępny na platformie Github. Dostępne jest
 \newpage
 \section{Wstęp teoretyczny}
 \subsection{Szereg czasowy}
+\label{subsection:introduction:timeSeries}
 W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozpoczęciem dalszych dywagacji należy zdefiniować samo pojęcie szeregu czasowego, aby uniknąć nieścisłości. Podążając za Głównym Urzędem Statystycznym szeregiem czasowym nazywamy ciąg obserwacji ilustrujący kształt zjawiska w kolejnych okresach czasu \cite{GUS}. Obserwacją można określić zbiór cech opisujących zjawisko w danym punkcie czasu. Rozumiejąc w taki sposób pojęcie szeregu czasowego można w prosty sposób określić cel systemu predykcyjnego. System ten powinien być w stanie przewidzieć wartość pewnej cechy w kolejnym punkcie czasu na podstawie poprzednich obserwacji. Można również określić, że predykcja będzie tym lepsza im bardziej zgodna z posiadanymi obserwacjami. 
 
 \subsection{Regresja liniowa}
+\label{subsection:introduction:linearRegression}
 Jedną z najbardziej klasycznych metod predykcyjnych jest regresja liniowa. Jej podstawy zostały położone w pracach Legrende'a i Gauss'a na początku XIX wieku \cite{seal1967studies}. Polega ona na dopasowywaniu funkcji liniowej do danych w taki sposób, aby jak najlepiej opisywała ona kształt i właściwości danych. Najprostszym mechanizmem służącym do zapewnienia optymalnych wyników jest metoda najmniejszych kwadratów opisana po raz pierwszy przez Legrende'a w 1805 roku \cite{legendre1806nouvelles}. Polega ona na takim dopasowywaniu parametrów funkcji aby zminimalizować sumaryczny kwadrat odległości obserwacji od prostej opisanej funkcją. 
 
 Na \autoref{figure:linear_example} przedstawione zostało przykładowe wykorzystanie regresji liniowej. Linia prosta dopasowana jest do zbioru danych oznaczonych punktami. Przykład ten obrazuje pewne niedogodności płynące z użycia metody najmniejszych kwadratów. Prosta powstała dzięki minimalizacji uśrednionego błędu lepiej odwzorowuje niektóre punkty od innych. Wartości znajdujące się bliżej średniej są o wiele lepiej reprezentowane w wyniku regresji. 
@@ -144,6 +150,7 @@ Na \autoref{figure:linear_example} przedstawione zostało przykładowe wykorzyst
 \FloatBarrier
 
 \subsection{Drzewa decyzyjne}
+\label{subsection:introduction:tree}
 Jedną z najszerzej używanych metod uczenia maszynowego są drzewa decyzyjne. Są one powszechnie wykorzystywane ze względu na swoją prostotę oraz możliwość intuicyjnego zrozumienia wyników \cite{wu2008top}. Drzewem decyzyjnym nazywamy model predykcyjny, $h: X \rightarrow Y$, który przewiduje wartość $Y$ dla $x$ poprzez trawers drzewa od korzenia do liścia. Na każdym węźle drzewa kierunek przejścia jest wybierany poprzez rozdzielenie przestrzeni wejściowej. Najczęściej jest ono dokonywane na podstawie cech obserwacji $x$ \cite{books/daglib/0033642}. Wynikiem procesu uczenia jest drzewo pozwalające prześledzić ścieżkę jaką podąża każda obserwacja $x$ w celu przypisania jej odpowiedniej wartości. Przykładowe, bardzo uproszczone drzewo decyzyjne jest przedstawione na \autoref{figure:tree_example}.
 \begin{figure}[!ht]
 	\centering
@@ -158,6 +165,7 @@ Na podstawie tego przykładu można łatwo zaobserwować główną zaletę drzew
 Drzewa decyzyjne mogą być wykorzystywane w problemach regresyjnych, to znaczy dla ciągłej dziedziny rozwiązań $Y$. Należy jednak pamiętać, że w takim przypadku  należy uważać na możliwość zbytniego dopasowywania drzewa do danych trenujących. Problem ten objawia się stworzeniem zbyt szczegółowego drzewa, które nie generalizuje odpowiednio danych nieobecnych w zbiorze uczącym.
 
 \subsection{Rekurencyjne sieci neuronowe}
+\label{subsection:introduction:simpleRNN}
 Rekurencyjne sieci neuronowe to sieci neuronowe posiadające pętlę sprzężenia zwrotnego w swojej warstwie rekurencyjnej. Taka struktura pozwala im ,,zapamiętywać'' informacje przez pewien okres czasu i wykorzystywać w dalszych predykcjach \cite{reviewOfANN2018}. Umiejętność ta pozwala na założenie, że rekurencyjna sieć neuronowa powinna dobrze zachowywać się w predykcji szeregu czasowego dzięki ,,zapamiętywaniu'' wartości w poprzednich krokach czasowych. 
 
 Podwaliny rekurencyjnych sieci neuronowych zostały stworzone w 1986 roku przez D. Rumelhart'a. Opisywał on sposób uczenia sieci neuronowych poprzez propagację wsteczną błędu \cite{rumelhart1986learning}. Zauważył on, że korzystając z tej metody uczenia można wypracować sieć, która rekurencyjnie wyznaczy wartości wag neuronów w swojej warstwie ukrytej. Potrzeba opracowania nowego sposobu uczenia wynikała z istnienia zadań niemożliwych do rozwiązania poprzez proste połączenie jednostek wejściowych z wyjściowymi.
@@ -180,6 +188,7 @@ Na przestrzeni lat powstało wiele wariacji na temat architektury rekurencyjnych
 
 
 \subsection{Architektura LSTM}
+\label{subsection:introduction:LSTM}
 Sieci typu Long Short-Term Memory(LSTM) powstały jako próba rozwiązania problemów występujących w klasycznych sieciach rekurencyjnych. Problemy te dotyczyły w dużej mierze aspektu rekurencyjnych sieci neuronowych pozwalającego ,,zapamiętywać'' poprzednie kroki czasowe. Zauważono, że korzystając z mechanizmu propagacji wstecznej przesyłany do następnych kroków czasowych sygnał błędu (sposób sieci na ,,zapamiętanie'' poprzednich przypadków) ma tendencję do znikania lub eksplodowania. 
 
 Zniknięciem sygnału błędu nazwać można sytuację, w której dąży on do zera w kolejnych krokach czasowych. Jest ona problemem w procesie uczenia, ponieważ może doprowadzić do bardzo dużego przedłużenia procesu lub nawet całkowicie uniemożliwić poprawne nauczenie sieci.
@@ -217,7 +226,7 @@ Rozwiązaniem tego problemu okazało się dodanie trzeciej bramki nazywanej bram
 \FloatBarrier
 \newpage
 \subsection{Architektura GRU}
-
+\label{subsection:introduction:GRU}
 Architektura Gated Recurrent Unit (GRU) została zaproponowana przez K. Cho w 2014 roku \cite{https://doi.org/10.48550/arxiv.1406.1078}. Oryginalnie została zaprojektowana do pracy w sieciach typu enkoder-dekoder do tłumaczenia tekstu jako alternatywa dla używanych wcześniej komórek z funkcją aktywacji tangens hiperboliczny. Decyzja o próbie wykorzystania jednostki rekurencyjnej działającej na bramkach była motywowana sukcesem sieci LSTM.
 
 W porównaniu do architektury Long Short-Term Memory, Gated Recurrent Unit jest prostsza do zaimplementowania i mniej wymagająca obliczeniowo. Dzieje się tak dzięki zmniejszeniu ilości bramek kontrolujących pamięć komórki. Podczas gdy LSTM do poprawnego działania wymaga użycia trzech bramek (wejściowej, wyjściowej i zapominania) to wewnątrz jednostki GRU występują jedynie dwie bramki (aktualizacja i reset). 
@@ -251,6 +260,111 @@ Bramka aktualizacji (update gate) decyduje natomiast jak duża część stanu z 
 gdzie $W_z$ i $U_z$ to macierze wag analogiczne do tych występujących w bramce resetu. 
 
 Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę, że macierze $W_z, W_r, U_z, U_r$ są wyznaczane w trakcie uczenia można wysunąć kilka obserwacji. Dualizm bramek powinien prowadzić do jednej bramki będącej znacznie bardziej aktywnej od drugiej. Zjawisko to można rozumieć jako specjalizację komórek warstwy, gdzie te z aktywnymi bramkami resetu odpowiadają za pamięć krótkotrwałą, a te z aktywną bramką aktualizacji odpowiadają za pamięć długotrwałą. Pamiętając, że aktywność każdej bramki jest dopasowywana dla każdej komórki w procesie uczenia możemy założyć, że podział komórek na pamięć krótkotrwałą i długotrwałą będzie w wytrenowanej sieci rozłożony w sposób optymalny. Rozumiemy przez to, że jeżeli dane treningowe, na przykład nie wykazywały długofalowych trendów, a były bardziej chaotyczne i często zmieniające się to po procesie uczenia powinny dominować komórki z aktywną bramką resetu.
+
+\newpage
+\section{Zagadnienie predykcji szeregu czasowego}
+W celu zbadania przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych zestawione ze sobą zostały jakości wyników różnych modeli predykcyjnych. Analizowano zarówno klasyczne metody predykcyjne jak i nowocześniejsze wykorzystujące sieci neuronowe. Celem takiego porównywania było wyłonienie najbardziej obiecującego badawczo modelu predykcyjnego w celu dalszej analizy jego wydajności. Dalsza analiza jego wydajności polegała na zbadaniu zmian zachowania modelu przy zwiększającej się ilości danych. 
+
+W tym rozdziale przedstawiona zostanie samo zagadnienie predykcji, potencjalne metody mogące zostać wykorzystane, metodologia badania użyteczności rekurencyjnych sieci neuronowych dla tego zastosowania oraz miary jakości predykcji wykorzystywane w tych badaniach. 
+\subsection{Predykcja szeregu czasowego}
+Podążając za definicją szeregu czasowego przedstawioną w \autoref{subsection:introduction:timeSeries} sformułowane zostanie zagadnienie predykcji szeregu czasowego. Można określić zagadnienie predykcji szeregu czasowego jako próbę wyznaczenia wartości szeregu czasowego na podstawie poprzednich obserwacji. Cel ten jest osiągany korzystając z metod matematycznych pozwalających na podstawie wektorów cech wejściowych $X =[x_0, x_1, x_2, ...]$ przewidzieć wartość cechy $y$ w pewnym momencie czasu. Opis ten nie jest oczywiście wyczerpujący, występują modele wykorzystujące jedynie historyczne wartości $y$ bez zwracania uwagi na pozostałe cechy. Jednak w ramach tej pracy takie wyjątki nie będą używane i przedstawiony wyżej opis jest wystarczający.
+
+Istnieje wiele modeli matematycznych znajdujących zastosowanie w procesie predykcji, w ramach tego rozdziału przedstawione zostaną wybrane modele statystyczne i uczenia maszynowego. Szczególna uwaga badawcza zostanie poświęcona modelom opartym na rekurencyjnych sieciach neuronowych w celu zbadania ich użyteczności w takim zastosowaniu.
+
+Dokładność uzyskanej predykcji jest kluczowym aspektem pozwalającym na określenie jej przydatności. Dokładność ta jest intuicyjnie zrozumiała - im bliższa przewidziana wartość faktycznym wartościom tym lepszy jest model predykcyjny. Zmierzenie tak rozumianej jakości predykcji nie jest zadaniem trywialnym, z tego powodu powstało wiele miar opisujących jakość modelu predykcyjnego. Niektóre z tych miar zostaną przybliżone w ramach \autoref{section:measures}.
+
+\subsection{Miary jakości predykcji}
+\label{section:measures}
+Jak zaznaczono wcześniej istnieje wiele miar opisujących jakość predykcji. W tym podrozdziale przedstawione zostaną niektóre miary wykorzystywane w dalszej części tej pracy. 
+\subsubsection{Współczynnik determinacji $R^2$}
+Współczynnik $R^2$ został po raz pierwszy przedstawiony przez Sewall'a Wright'a w 1921 roku \cite{ctx9250754850005154}. Opisuje on jak dobrze model predykcyjny dopasowuje się do danych obserwacyjnych. Jego wartość wyznaczana jest ze wzoru:
+\begin{equation}
+	R^2 = 1 - \frac{\sum_{i=1}^{N}(\hat{y_i} - \bar{y})^2}{\sum_{i=1}^{N}(y_i - \bar{y})^2} 
+\end{equation}
+gdzie:\newline
+$y_i$ - i-ta obserwacja zmiennej y, \newline
+$\hat{y_i}$ - i-ta przewidziana wartość zmiennej  \newline
+$\bar{y}$ - średnia arytmetyczna empirycznych wartości zmiennej $y$.
+
+Wartości wyliczane w ten sposób są łatwe do interpretacji. Wartość 1 oznacza idealne dopasowanie, a coraz mniejsze wartości oznaczają coraz gorsze dopasowanie. 
+\subsubsection{Błąd średniokwadratowy}
+Błąd średniokwadratowy jest miarą tego jak różnią się wyniki predykcji od danych obserwacyjnych. Jest ona wyliczana ze wzoru:
+\begin{equation}
+	MSE = \frac{1}{n}\sum_{i=1}^{N}(y_i - \hat{y_i})^2
+	\label{equation:rmse}
+\end{equation}
+gdzie:\newline
+$y_i$ - i-ta obserwacja zmiennej y, \newline
+$\hat{y_i}$ - i-ta przewidziana wartość zmiennej  \newline
+
+Często wykorzystywany jest pierwiastek kwadratowy błędu średniokwadratowego, ze względu na łatwość jego interpretacji. Jest on interpretowany jako średnia odległość przewidywanych wartości od obserwacji i wyliczany ze wzoru:
+\begin{equation}
+	RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{N}(y_i - \hat{y_i})^2}
+\end{equation}
+Symbole używane w tym wzorze są takie same jak w \autoref{equation:rmse}.
+
+\subsubsection{Indeks Willmott'a}
+Indeks Willmott'a nazywany również indeksem zgodności został przedstawiony przez Cort'a Willmott'a w 1981 roku \cite{doi:10.1080/02723646.1981.10642213}. Opisuje on jak dobrze model predykcyjny oddaje dane obserwacyjne. Nie mierzy on korelacji, a raczej sprawdza jak bardzo model predykcyjny jest pozbawiony błędów. Wartości indeksu są znormalizowane do przedziału $[0, 1]$ i wyliczane ze wzoru:
+\begin{equation}
+	d = 1 - \frac{\sum_{i=1}^N (O_i - P_i)^2}{\sum_{i=1}^{N}(|P_i - \bar{O}| + |O_i - \bar{O}|)^2}
+\end{equation}
+gdzie:\newline
+$O_i$ - i-ta obserwacja zmiennej \newline
+$P_i$ - i-ta przewidziana wartość zmiennej \newline
+$\bar{O}$ - średnia arytmetyczna empirycznych wartości zmiennej $y$.
+
+\subsection{Modele predykcyjne}
+Pierwszym stadium analizy było zbadanie różnych metod predykcji szeregów czasowych na przykładzie prostego szeregu czasowego. W tym etapie analizy jako zbiór danych wykorzystywany jest szereg zbudowany dla Krakowa, opisany w rozdziale \autoref{subsection:data:Krakow}. Celem tego procesu jest porównanie jakości wyników zwracanych przez modele oparte na rekurencyjnych sieciach neuronowych z klasycznymi metodami predykcji. Poszukiwany jest również najlepszy model rekurencyjny mogący zostać wykorzystany w dalszych badaniach. 
+
+\subsubsection{Regresja liniowa}
+Pierwszą metodą zastosowaną do predykcji była regresja liniowa, jako że jest ona jedną z najstarszych i dobrze przebadanych metod predykcyjnych. Jest ona dokładnie opisana w \autoref{subsection:introduction:linearRegression}. Jej wyniki pełniły w dalszych rozważaniach rolę grupy kontrolnej dla wyników uzyskiwanych przez inne metody.
+
+Regresja liniowa została przeprowadzona korzystając z metod udostępnionych w ramach biblioteki ,,sklearn'' dla języka Python. Biblioteka ta daje możliwość przeprowadzenia prostej regresji liniowej metodą najmniejszych kwadratów \cite{sklearnLinearRegression}.
+
+W celu poprawnego podziału danych na zbiór uczący i testujący wykorzystana została metoda ,,train\_test\_split'' z tej samej biblioteki ,,sklearn''. Zdefiniowano tej metodzie, że 20\% danych powinno stanowić zbiór testujący, a pozostałe dane powinny być użyte do uczenia modelu. 
+
+W celu umożliwienia ewaluacji wyników działania metody, sporządzony został wykres zestawiający przewidziane wartości z wynikami pomiarów oraz wyliczone zostało kilka charakterystyk pozwalających na porównanie. Charakterystyki te są opisane w \autoref{section:measures}.
+
+Uzyskane w tej metodzie wyniki zostaną dokładnie przedyskutowane w \autoref{subsection:results:linearRegression} oraz zestawione z wynikami pozostałych metod w \autoref{subsection:results:summary}.
+
+\subsubsection{Zintegrowany model autoregresyjny ze średnią ruchomą}
+\subsubsection{Proste wygładzanie wykładnicze}
+\subsubsection{Model liniowy Holt'a}
+\subsubsection{Model Holt'a - Winters'a}
+\subsubsection{Drzewa decyzyjne}
+Drugą zastosowaną metodą była regresja z wykorzystaniem drzew decyzyjnych, jako że jest ona jedną z najszerzej wykorzystywanych metod uczenia maszynowego. Jej dokładniejszy opis jest zawarty w \autoref{subsection:introduction:tree}. Podobnie jak w przypadku regresji liniowej, uzyskane wyniki pełnią funkcję grupy kontrolnej. Warty odnotowania jest również fakt użyteczności graficznych reprezentacji procesu decyzyjnego do zrozumienia nie tylko sposobu podejmowania decyzji, ale również struktury danych wejściowych. 
+
+Regresja z wykorzystaniem drzew decyzyjnych została przeprowadzona za pomocą metod udostępnionych w bibliotece ,,sklearn'' dla języka Python. Biblioteka ta definiuje drzewa decyzyjne jako nieparametryczną metodę nadzorowanego uczenia używaną do klasyfikacji i regresji \cite{sklearnDecissionTrees}. Aspekt regresyjny został wykorzystany w prowadzonych badaniach. 
+
+Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej wyliczanych charakterystyk można znaleźć w \autoref{section:measures}.
+
+Dla ułatwienia zrozumienia otrzymywanych wyników sporządzony został również rysunek ostatecznego drzewa decyzyjnego. Rysunek ten został wykonany korzystając z języka opisu grafów DOT \cite{dotLanguage}.
+
+Wyniki regresji z wykorzystaniem drzew decyzyjnych zostaną dokładnie przedstawione w \autoref{subsection:results:tree} oraz porównane z wynikami innych metod w \autoref{subsection:results:summary}.
+
+\subsubsection{Sieci rekurencyjne}
+\label{subsection:research:RNN}
+W ramach badania przydatności rekurencyjnych sieci neuronowych do badania szeregów czasowych rozważane były trzy rodzaje architektury sieci neuronowej. Badano zachowanie prostej rekurencyjnej sieci neuronowej, sieci typu LSTM oraz GRU. Architektury te są dokładniej przedstawione w odpowiednio: \autoref{subsection:introduction:simpleRNN}, \autoref{subsection:introduction:LSTM} oraz \autoref{subsection:introduction:GRU}. Uzyskane w ten sposób wyniki zostaną przeanalizowane w kontekście przydatności tej metody oraz w kontekście jej wydajności w porównaniu do nowocześniejszych architektur sieci rekurencyjnych. 
+
+Sieć neuronowa posiadała również proste warstwy wejściowe i wyjściowe wymagane do poprawnej pracy warstw ukrytych z wykorzystywanym w badaniach zbiorem danych.
+Dla każdej rozważanej architektury tworzona była oparta na niej warstwa ukryta, dostarczana w ramach biblioteki ,,TensorFlow'' dla języka Python. Dla prostej sieci rekurencyjnej była to ,,SimpleRNN'' \cite{tfSimpleRNN}, dla sieci Long Short-Term Memory  warstwa ,,LSTM'' \cite{tfLSTM}, a dla sieci Gated Recurrent Unit warstwa ,,GRU'' \cite{tfGRU}.
+
+Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej szczegółów wyliczanych charakterystyk można znaleźć w \autoref{section:measures}.
+Badany był również wpływ liczby neuronów w warstwie ukrytej na jakość uzyskiwanych wyników. 
+
+Wyniki predykcji zostaną dokładnie przedstawione w podsekcjach odpowiadających każdej w zastosowanych architektur oraz porównane z wynikami innych metod w \autoref{subsection:results:summary}.
+
+
+\subsection{Badanie skalowalności modelu GRU}
+Jak zauważono poprzednio, skalowalność modelu ma duże znaczenie przy określaniu jego przydatności do predykcji szeregów czasowych. W celu zbadania skalowalności modelu opartego na architekturze Gated Recurrent Unit przeprowadzono serię uczenia i testowania dla szeregów czasowych o zwiększającej się liczbie elementów. 
+
+Sieć neuronowa posiadała analogiczną budowę do sieci GRU opisanej w \autoref{subsection:research:RNN}. Wymagane były zmiany w warstwie wejściowej umożliwiające współpracę z różnymi wymiarami danych wejściowych.
+
+W ramach badania przeprowadzone zostało łącznie dwadzieścia dziewięć procesów uczenia i walidacji stworzonego modelu. W każdym kolejnym kroku badania do wejściowego szeregu czasowego dodawany był nowy szereg czasowy dla położenia geograficznego nie ujętego w poprzednich danych. 
+
+Przeprowadzone zostały identyczne pomiary wydajności modelu oraz wizualne zestawienia wyników predykcji z danymi rzeczywistymi. Sporządzony został również wykres wartości indeksu Willmott'a dla każdego przeprowadzonego procesu uczenia i walidacji modelu.
+
+Przyjęcie takiej metodologii badania skalowalności pozwala wierzyć, że otrzymane wyniki będą pomocne w określeniu przydatności tejże sieci do predykcji szeregów czasowych. Wyniki te zostaną przedstawione w \autoref{subsection:results:scale}.
 
 \newpage
 \section{Zagadnienie predykcji zanieczyszczenia powietrza}
@@ -338,6 +452,7 @@ Podjęta została decyzja o połączeniu obu źródeł danych w jeden szereg cza
 Różnice w położeniu sieci stacji pomiarowych Instytutu Meteorologii i Gospodarki Wodnej oraz Głównego Inspektoratu Ochrony Środowiska stanowiły poważny problem przy próbie połączenia ich w jeden spójny szereg czasowy. Brak uwzględnienia tego ograniczenia doprowadziłby do całkowitego braku sensownego kontekstu geograficznego w otrzymanym szeregu czasowego. Problem ten został rozwiązany poprzez przygotowywanie osobnych szeregów czasowych dla wybranych stacji Instytutu i Inspektoratu o podobnym położeniu geograficznym. Sposób tworzenia takiego szeregu zostanie przedstawiony na podstawie Krakowa, następnie przedyskutowany zostanie problem tworzenia większej ilości takich szeregów. 
 
 \subsubsection{Tworzenie szeregu dla Krakowa}
+\label{subsection:data:Krakow}
 Stacja pomiarowa Instytutu Meteorologii i Gospodarki Wodnej w Krakowie posiada jedną stację pomiarową w Krakowie, której wyniki zostały ujęte w danych klimatycznych wykorzystywanych w tej pracy. Natomiast Główny Inspektorat Ochrony Środowiska w okresie będącym tematem zainteresowania tej pracy, posiadał wiele różnych punktów pomiarowych na terenie miasta. Punkty te często pojawiały się w środku okresu 2000-2020, zmieniały swoje położenie, przestawały prowadzić pomiary lub robiły przerwę w rejestrowaniu zanieczyszczeń na kilka lat. Z tego powodu nie można było skorzystać z wyników każdej ze stacji pomiarowych Instytutu jako podstawy do budowania szeregu czasowego bez jego niepotrzebnego skrócenia lub przerw utrudniających analizę. Dodatkowo ponieważ stacje GIOŚ znajdowały się w różnych częściach Krakowa, zestawianie ich z jedynym punktem pomiarowym IMGW prowadziłoby do szeregu niekoniecznie poprawnie osadzonego geograficznie. Warto również zauważyć, że niektóre stacje pomiarowe zanieczyszczenia powietrza były w obszarach z dużą ilością ruchu samochodowego, inne natomiast w obszarach ze zdecydowanie mniejszym poziomem ruchu samochodowego w okolicy. Takie rozłożenie punktów pomiarowych mogłoby sprawić, że szereg powstały na podstawie danych z jedynej stacji IMGW i jednej stacji GIOŚ mógłby być niepoprawny. Jego niepoprawność łatwo zrozumieć na przykładzie, w którym do predykcji zanieczyszczenia nad bardzo ruchliwą ulicą korzystamy jedynie z danych klimatycznych z całkowicie innej części miasta. Taka predykcja najpewniej byłaby w stanie wychwycić pewne trendy (np. ludzie częściej korzystający z samochodów w zimie), lecz nie byłyby to kompletne dane potrzebne do wiarygodnej predykcji. Pomijałoby to również wahania warunków pogodowych w różnych częściach miasta, które również mogą wpływać na zanieczyszczenie powietrza.
 
 Aby rozwiązać powyższe problemy stworzony został szereg oparty na danych klimatycznych dostarczanych przez Instytut Meteorologii i Gospodarki Wodnej dla Krakowa oraz średnią arytmetyczną stężenia pyłu PM10 rejestrowanego przez punkty pomiarowe Głównego Inspektoratu Ochrony Środowiska znajdujące się w Krakowie. Takie podejście pozwoliło na stworzenie badawczo interesującego szeregu czasowego, który operował na średnich wartościach zanieczyszczeń w całym Krakowie bez przerw w pomiarach lub błędów. 
@@ -355,66 +470,7 @@ Przy badaniu przydatności rekurencyjnych sieci neuronowych do predykcji czasowy
 
 W tym celu zbudowane zostały szeregi czasowe dla każdej odpowiadającej sobie geograficznie i czasowo pary punktów pomiarowych z Instytutu Meteorologii i Gospodarki Wodnej oraz Głównego Inspektoratu Ochrony Środowiska. W przypadkach, gdzie występowały wiele punktów mierzących stężenie pyłu PM10 przeprowadzano uśrednianie wyników pomiarów analogicznie do przypadku krakowskiego. Mniejsza uwaga została również poświęcona potrzebie ciągłości szeregu, jako że braki w pewnym fragmencie czasu były ,,przykrywane'' przez inne szeregi. Korzystając z takiej metodologii sporządzone zostały szeregi dla wszystkich sensownych par punktów pomiarowych obu instytucji.
 
-\newpage
-\section{Przeprowadzone badania}
-W celu zbadania przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych zestawione ze sobą zostały jakości wyników różnych modeli predykcyjnych. Analizowano zarówno klasyczne metody predykcyjne jak i nowocześniejsze wykorzystujące sieci neuronowe. Celem takiego porównywania było wyłonienie najbardziej obiecującego badawczo modelu predykcyjnego w celu dalszej analizy jego wydajności. Dalsza analiza jego wydajności polegała na zbadaniu zmian zachowania modelu przy zwiększającej się ilości danych. 
-
-W tym rozdziale przedstawiona zostanie metodologia obu etapów analizy przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. 
-\subsection{Porównanie wydajności modeli predykcyjnych}
-Pierwszym stadium analizy było zbadanie różnych metod predykcji szeregów czasowych na przykładzie prostego szeregu czasowego. W tym etapie analizy jako zbiór danych wykorzystywany jest szereg zbudowany dla Krakowa, opisany w rozdziale \hyperlink{subsubsection.3.3.1}{3.3.1}. Celem tego procesu jest porównanie jakości wyników zwracanych przez modele oparte na rekurencyjnych sieciach neuronowych z klasycznymi metodami predykcji. Poszukiwany jest również najlepszy model rekurencyjny mogący zostać wykorzystany w dalszych badaniach. 
-
-\subsubsection{Regresja liniowa}
-Pierwszą metodą zastosowaną do predykcji była regresja liniowa, jako że jest ona jedną z najstarszych i dobrze przebadanych metod predykcyjnych. Jej wyniki pełniły w dalszych rozważaniach rolę grupy kontrolnej dla wyników uzyskiwanych przez inne metody.
-
-Regresja liniowa została przeprowadzona korzystając z metod udostępnionych w ramach biblioteki ,,sklearn'' dla języka Python. Biblioteka ta daje możliwość przeprowadzenia prostej regresji liniowej metodą najmniejszych kwadratów \cite{sklearnLinearRegression}.
-
-W celu poprawnego podziału danych na zbiór uczący i testujący wykorzystana została metoda ,,train\_test\_split'' z tej samej biblioteki ,,sklearn''. Zdefiniowano tej metodzie, że 20\% danych powinno stanowić zbiór testujący, a pozostałe dane powinny być użyte do uczenia modelu. 
-
-W celu umożliwienia ewaluacji wyników działania metody, sporządzony został wykres zestawiający przewidziane wartości z wynikami pomiarów oraz wyliczone zostało kilka charakterystyk pozwalających na porównanie. Charakterystyki te to:
-\begin{center}
-	\begin{itemize}
-		\item Wynik testu $R^2$
-		\item Błąd średniokwadratowy
-		\item Pierwiastek błędu średniokwadratowego
-		\item Wartość indeksu Willmott'a
-	\end{itemize}
-\end{center}
-
-Uzyskane w tej metodzie wyniki zostaną dokładnie przedyskutowane w podsekcji \hyperlink{subsubsection.5.1.1}{5.1.1} oraz zestawione z wynikami pozostałych metod w podsekcji \hyperlink{subsubsection.5.1.6}{5.1.6}.
-
-\subsubsection{Drzewa decyzyjne}
-Drugą zastosowaną metodą była regresja z wykorzystaniem drzew decyzyjnych, jako że jest ona jedną z najszerzej wykorzystywanych metod uczenia maszynowego. Podobnie jak w przypadku regresji liniowej, uzyskane wyniki pełnią funkcję grupy kontrolnej. Warty odnotowania jest również fakt użyteczności graficznych reprezentacji procesu decyzyjnego do zrozumienia nie tylko sposobu podejmowania decyzji, ale również struktury danych wejściowych. 
-
-Regresja z wykorzystaniem drzew decyzyjnych została przeprowadzona za pomocą metod udostępnionych w bibliotece ,,sklearn'' dla języka Python. Biblioteka ta definiuje drzewa decyzyjne jako nieparametryczną metodę nadzorowanego uczenia używaną do klasyfikacji i regresji \cite{sklearnDecissionTrees}. Aspekt regresyjny został wykorzystany w prowadzonych badaniach. 
-
-Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej szczegółów podziału i wyliczanych charakterystyk można znaleźć w podsekcji \hyperlink{subsubsection.4.1.1}{4.1.1}.
-
-Dla ułatwienia zrozumienia otrzymywanych wyników sporządzony został również rysunek ostatecznego drzewa decyzyjnego. Rysunek ten został wykonany korzystając z języka opisu grafów DOT \cite{dotLanguage}.
-
-Wyniki regresji z wykorzystaniem drzew decyzyjnych zostaną dokładnie przedstawione w podsekcji \hyperlink{5.1.2}{5.1.2} oraz porównane z wynikami innych metod w podsekcji \hyperlink{5.1.6}{5.1.6}.
-
-\subsubsection{Sieci rekurencyjne}
-W ramach badania przydatności rekurencyjnych sieci neuronowych do badania szeregów czasowych rozważane były trzy rodzaje architektury sieci neuronowej. Badano zachowanie prostej rekurencyjnej sieci neuronowej, sieci typu LSTM oraz GRU. Uzyskane w ten sposób wyniki zostaną przeanalizowane w kontekście przydatności tej metody oraz w kontekście jej wydajności w porównaniu do nowocześniejszych architektur sieci rekurencyjnych. 
-
-Sieć neuronowa posiadała również proste warstwy wejściowe i wyjściowe wymagane do poprawnej pracy warstw ukrytych z wykorzystywanym w badaniach zbiorem danych.
-Dla każdej rozważanej architektury tworzona była oparta na niej warstwa ukryta, dostarczana w ramach biblioteki ,,TensorFlow'' dla języka Python. Dla prostej sieci rekurencyjnej była to ,,SimpleRNN'' \cite{tfSimpleRNN}, dla sieci Long Short-Term Memory  warstwa ,,LSTM'' \cite{tfLSTM}, a dla sieci Gated Recurrent Unit warstwa ,,GRU'' \cite{tfGRU}.
-
-Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej szczegółów podziału i wyliczanych charakterystyk można znaleźć w podsekcji \hyperlink{subsubsection.4.1.1}{4.1.1}.
-Badany był również wpływ liczby neuronów w warstwie ukrytej na jakość uzyskiwanych wyników. 
-
-Wyniki predykcji zostaną dokładnie przedstawione w podsekcjach odpowiadających każdej w zastosowanych architektur oraz porównane z wynikami innych metod w podsekcji \hyperlink{5.1.6}{5.1.6}.
-
-
-\subsection{Badanie skalowalności modelu GRU}
-Jak zauważono poprzednio, skalowalność modelu ma duże znaczenie przy określaniu jego przydatności do predykcji szeregów czasowych. W celu zbadania skalowalności modelu opartego na architekturze Gated Recurrent Unit przeprowadzono serię uczenia i testowania dla szeregów czasowych o zwiększającej się liczbie elementów. 
-
-Sieć neuronowa posiadała analogiczną budowę do sieci GRU opisanej w podsekcji \hyperlink{subsubsection.4.1.3}{4.1.3}. Wymagane były zmiany w warstwie wejściowej umożliwiające współpracę z różnymi wymiarami danych wejściowych.
-
-W ramach badania przeprowadzone zostało łącznie dwadzieścia dziewięć procesów uczenia i walidacji stworzonego modelu. W każdym kolejnym kroku badania do wejściowego szeregu czasowego dodawany był nowy szereg czasowy dla położenia geograficznego nie ujętego w poprzednich danych. 
-
-Przeprowadzone zostały identyczne pomiary wydajności modelu oraz wizualne zestawienia wyników predykcji z danymi rzeczywistymi. Sporządzony został również wykres wartości indeksu Willmott'a dla każdego przeprowadzonego procesu uczenia i walidacji modelu.
-
-Przyjęcie takiej metodologii badania skalowalności pozwala wierzyć, że otrzymane wyniki będą pomocne w określeniu przydatności tejże sieci do predykcji szeregów czasowych. Wyniki te zostaną przedstawione w podsekcji \hyperlink{subsection.5.2}{5.2}.
+\subsection{Wykorzystanie stworzonego szeregu w procesie predykcyjnym}
 
 \newpage
 \section{Numeryczna analiza zagadnienia predykcji koncentracji PM10}
@@ -424,6 +480,7 @@ W ramach tego rozdziału przedstawione zostaną wyniki wszystkich przeprowadzony
 W tym podrozdziale poświęcona zostanie szczególna uwaga wynikom uzyskiwanym przez poszczególne modele, problemom występującym w procesie badawczym oraz zestawieniu wyników wszystkich metod. Oczekuje się, że opis wyników oraz ich analiza przedstawią wystarczający poziom dokładności pozwalający przenieść uwagę na wyciąganie wniosków.
  
 \subsubsection{Regresja liniowa}
+\label{subsection:results:linearRegression}
 W procesie badania efektywności regresji liniowej do predykcji szeregu czasowego uzyskane zostały parametry opisujące poprawność predykcji oraz wizualne zestawienie wartości przewidywanych i realnych. W tej podsekcji zostaną one przedstawione oraz omówione. 
 
 W pierwszej kolejności opisane zostaną uzyskane wartości parametrów określające poprawność wyników. Wyliczone zostały parametry:
@@ -461,6 +518,7 @@ Wykres ten pokazuje, że regresja metodą najmniejszych kwadratów dobrze przyst
 \end{figure}
 \FloatBarrier
 \subsubsection{Drzewa decyzyjne}
+\label{subsection:results:tree}
 Podczas badania efektywności drzew decyzyjnych do predykcji szeregów czasowych stworzone zostały zostały parametry opisujące jakość wyników, zestawienie predykcji z danymi pomiarowymi oraz wizualizacja drzewa decyzyjnego. Stworzono również zestawienie jakości wyników predykcji w zależności od dozwolonej głębokości drzewa. 
 
 W \autoref{table:2} przedstawione zostały wyniki parametrów opisujących jakość otrzymanych predykcji. Przedstawione w tabeli są:
@@ -543,6 +601,7 @@ Sporządzona została również wizualizacja procesu decyzyjnego dla drzewa o g�
 Taka wizualizacja pozwala na lepsze zrozumienie zbioru danych i znaczenia różnych parametrów klimatycznych obecnych w szeregu czasowym. Za pierwszy punkt podziału oba drzewa przyjmują fakt występowania przymrozku w danym dniu. Dalsza analiza pozwala zaobserwować inne ciekawe sytuacje bezpośrednio wpływające na poziom zanieczyszczeń. Na przykład zarówno w lewej jak i prawej części drzewa, fakt występowania opadu atmosferycznego implikuje zwiększony poziom zanieczyszczeń. 
 
 \subsubsection{Prosta sieć rekurencyjna}
+\label{subsection:results:simpleRNN}
 W ramach badania przydatności prostej sieci rekurencyjnej uzyskane zostały wartości parametrów opisujących jakość wyników modelu oraz graficzne reprezentacje rozwiązania dostarczanego przez model. Wyniki te zostaną przedstawione i przedyskutowane w ramach tej podsekcji.
 
 
@@ -616,6 +675,7 @@ Ciekawsze są dwa kolejne rysunki przedstawiające 64 i 512 neuronów w warstwie
 Ostatecznie warto zauważyć, że niezależnie od liczby neuronów w warstwie ukrytej, sieci mają problem z wychwyceniem długotrwałego trendu zmniejszenia się poziomu zanieczyszczeń w kolejnych latach. Dobrze rozumieją one okresowość danych wejściowych, ale zdają się nie mieć wystarczającej liczby informacji do wychwycenia trendu. 
 \newpage
 \subsubsection{Sieć rekurencyjna typu LSTM}
+\label{subsection:results:LSTM}
 W ramach badania przydatności sieci rekurencyjnej opartej na architekturze Long Short-Term Memory zebrane zostały wyniki analogicznie jak przy badaniu prostej sieci rekurencyjnej. W tym podrozdziale zostaną one przedstawione oraz przeanalizowane w izolacji od innych metod predykcyjnych. 
 
 W \autoref{table:lstm} przedstawione zostały wartości parametrów opisujących dokładność wyników predykcji w zależności od liczby neuronów w warstwie ukrytej. Są to takie same parametry jak w pozostałych metodach, więc nie zostaną one tutaj dokładniej przedstawione. Na podstawie danych w tabeli możemy zaobserwować wyraźną poprawę parametrów wraz ze wzrostem liczby neuronów w warstwie ukrytej. Relacja ta została zaprezentowana na \autoref{figure:lstm_neurons} i jest bardzo wyraźnie nieliniowa. Na podstawie analizy tej relacji w \autoref{table:lstm} wyróżnione zostały wyniki sieci z potencjalnie optymalnymi wielkościami warstwy ukrytej.
@@ -684,6 +744,7 @@ Niestety, niezależnie do liczności warstwy ukrytej wszystkie sieci mają probl
 Mając na uwadze te aspekty wpływu modelu na jakość wyników oraz zwiększony koszt obliczeniowy dla większych sieci neuronowych należy starać znaleźć optymalną wielkość sieci do predykcji danego szeregu. Aspektem ważnym do rozważenia podczas tego poszukiwania powinny być różnice w prędkości uczenia różnych sieci neuronowych.
 
 \subsubsection{Sieć rekurencyjna typu GRU}
+\label{subsection:results:GRU}
 W ramach badania sieci Gated Recurrent Memory dane zostały zebrane analogicznie jak w innych analizowanych modelach predykcyjnych. W tym podrozdziale zostaną one przedstawione oraz przeanalizowane pod kątem wyboru optymalnych parametrów sieci do dalszej analizy. 
 
 W \autoref{table:gru} przedstawione zostały wartości parametrów opisujące jakość wyników predykcji z wykorzystaniem sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby neuronów w warstwie ukrytej. Prezentowane są dokładnie takie same parametry jak w innych metodach predykcyjnych. Dokładna analiza tych parametrów pozwoli na lepsze zrozumienie działania sieci opartej na architekturze Gated Recurrent Unit. Wyłuszczone zostały wyniki sieci z potencjalnie optymalną ilością neuronów w warstwie ukrytej. 
@@ -756,6 +817,7 @@ To podobieństwo może być również traktowane jako potencjalny problem biorą
 Obserwując wszystkie trzy rysunki można stwierdzić fakt nie radzenia sobie sieci z odczytywaniem trendu w danych wejściowych. Znając architekturę sieci oraz założenia, na których została ona zbudowana, może być to zaskakujące. Trzeba jednak uczciwie stwierdzić, że trend ten jest stosunkowo niewielkich rozmiarów co może znacząco utrudniać wykrycie go przez sieć. 
 
 \subsubsection{Zestawienie otrzymanych wyników}
+\label{subsection:results:summary}
 Kluczowym punktem tej pracy jest zestawienie ze sobą wyników różnych metod predykcyjnych i przeanalizowanie jakości zwracanych przez nie rozwiązań. Czynności te pozwolą zbudować podstawy do wyciągania wniosków odnośnie przydatności poszczególnych metod do predykcji szeregów czasowych. W tej podsekcji porównane zostaną wyniki, które były dokładnie przedyskutowane w poprzednich podsekcjach oraz zbudowane zostaną podstawy merytoryczne do dalszej pracy i wyciągania wniosków. 
 
 W trakcie poprzednich analiz poszczególnych modeli w izolacji można było stracić z oczu cel tej pracy i zapomnieć jakie metody predykcyjne są analizowane w ramach tej pracy. Być może z tego powodu warte jest przypomnienie metod, porównywanych w dalszej części tego podrozdziału, są to:
@@ -789,7 +851,7 @@ W przypadku sieci neuronowych proces dobierania optymalnych parametrów był nie
 	\label{table:models_comparison}
 \end{table}
 
-Widoczny jest subtelny przeskok w jakościach predykcji pomiędzy metodami klasycznymi (regresja liniowa, drzewa decyzyjne) oraz tymi opartymi na rekurencyjnych sieciach neuronowych. Nie jest to być może duży przeskok, ale jest na tyle znaczący, że nie można go pominąć w dalszych rozważaniach. Kwestia tego czy ta poprawa parametrów jest wystarczająca, aby usprawiedliwić używanie bardziej skomplikowanych sieci neuronowych jest dyskusyjna i zostanie dokładniej omówiona w \hyperlink{section.6}{rozdziale 6}. Kwestia ta może również dodatkowo komplikować większa ilość badań i szeroko rozumiane lepsze zrozumienie działania metod klasycznych. W celu zbudowania adekwatnej podstawy do dalszego wnioskowania należy przeanalizować inne sposoby porównywania jakości predykcji. 
+Widoczny jest subtelny przeskok w jakościach predykcji pomiędzy metodami klasycznymi (regresja liniowa, drzewa decyzyjne) oraz tymi opartymi na rekurencyjnych sieciach neuronowych. Nie jest to być może duży przeskok, ale jest na tyle znaczący, że nie można go pominąć w dalszych rozważaniach. Kwestia tego czy ta poprawa parametrów jest wystarczająca, aby usprawiedliwić używanie bardziej skomplikowanych sieci neuronowych jest dyskusyjna i zostanie dokładniej omówiona w \autoref{section:conclusions}. Kwestia ta może również dodatkowo komplikować większa ilość badań i szeroko rozumiane lepsze zrozumienie działania metod klasycznych. W celu zbudowania adekwatnej podstawy do dalszego wnioskowania należy przeanalizować inne sposoby porównywania jakości predykcji. 
 
 Nie widać podobnych przeskoków w wartościach parametrów trzech różnych rekurencyjnych sieci neuronowych. W zależności od tego, na którym parametrze skupiona zostanie uwaga, wyciągnięte mogą być różne wnioski odnośnie relatywnej jakości predykcji z różnych metod. Z tego powodu w celu zbudowania podstaw do adekwatnego porównania wykorzystywanych sieci neuronowych należy spojrzeć na więcej aspektów działania modeli.
 
@@ -835,7 +897,7 @@ Najbardziej od innych rysunków odstępuje \autoref{figure:tree_comparison} i wy
 
 Wyniki drugiej wykorzystywanej klasycznej metody predykcyjnej czyli regresji liniowej przedstawionej na \autoref{figure:linear_comparison} również wydają się różnić od wyników metod opartych na sieciach neuronowych. Regresja liniowa trzyma się bardzo mocno najczęściej występujących wartości parametrów i co do zasady osiąga w tym dobre wyniki. Problematyczny w kontekście wykorzystania tej metody może być fakt, że w porównaniu do reszty bardzo mało uwagi poświęca ona bardzo wysokim poziomom zanieczyszczeń. Pozostałe metody próbują dopasować swoje predykcje do występowania tych nietypowych stężeń pyłu PM10 co może być potencjalnie odczytywane jako ich zaleta nad regresją liniową. 
 
-Takie porównania wykresów obrazujących wyniki klasycznych metod predykcyjnych do sieci neuronowych wydają się utwierdzać poprawność obserwacji wynikających z analizy \autoref{table:models_comparison} o nieco niższej jakości otrzymywanych przez nie wyników. Obserwacja ta ma potencjał do umożliwiania wyciągnięcia interesujących wniosków odnośnie sensowności wykorzystywania rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Wnioski te zostaną przedstawione w \hyperlink{section.6}{rozdziale 6}.
+Takie porównania wykresów obrazujących wyniki klasycznych metod predykcyjnych do sieci neuronowych wydają się utwierdzać poprawność obserwacji wynikających z analizy \autoref{table:models_comparison} o nieco niższej jakości otrzymywanych przez nie wyników. Obserwacja ta ma potencjał do umożliwiania wyciągnięcia interesujących wniosków odnośnie sensowności wykorzystywania rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Wnioski te zostaną przedstawione w \autoref{section:conclusions}.
 
 Podobnie jak przy porównaniu parametrów opisujących jakość wyników, tak samo w analizie wykresów wyników sieci neuronowych nie widać radykalnych różnic pomiędzy różnymi architekturami sieci. Nie należy jednak pomijać tych różnic. Nawet jeżeli nie są one najbardziej widoczne to mogą mieć znaczenie podczas prób wyciągania wniosków odnośnie wydajności poszczególnych modeli. 
 
@@ -876,10 +938,10 @@ Wykres ten umożliwia odnotowanie kilku potencjalnie przydatnych przy wyciągani
 	\item Sieć oparta na architekturze GRU rozpoczyna naukę z nieco większą wartością błędu od sieci prostej, ale uczy się zdecydowanie najszybciej. Dzięki temu osiąga najlepszy wynik, ale różnica tego ostatecznego wyniku od reszty sieci jest niewielka. 
 \end{itemize}
 
-Obserwacje te w dużej mierze pokrywają się z tymi poczynionymi przy analizie wpływu liczby neuronów na jakość wyników. Pozwala to wierzyć w pewną przewagę wydajnościową sieci Gated Recurrent Unit nad pozostałymi. Przewaga ta została wykorzystana w dalszych badaniach. Mając na uwadze czas potrzebny do zbadania skalowalności modelu przyjęte zostało założenie, że wybór wydajniejszej sieci skróci czas potrzebny do prawidłowego przeprowadzenia takiego badania. Wyniki uzyskane w takiej analizie skalowalności zostaną przedstawione w \hyperlink{subsection.5.2}{podrozdziale 5.2}.
+Obserwacje te w dużej mierze pokrywają się z tymi poczynionymi przy analizie wpływu liczby neuronów na jakość wyników. Pozwala to wierzyć w pewną przewagę wydajnościową sieci Gated Recurrent Unit nad pozostałymi. Przewaga ta została wykorzystana w dalszych badaniach. Mając na uwadze czas potrzebny do zbadania skalowalności modelu przyjęte zostało założenie, że wybór wydajniejszej sieci skróci czas potrzebny do prawidłowego przeprowadzenia takiego badania. Wyniki uzyskane w takiej analizie skalowalności zostaną przedstawione w \autoref{subsection:results:scale}.
 
 \subsection{Badanie skalowalności modelu GRU}
-
+\label{subsection:results:scale}
 W ramach badania skalowalności sieci neuronowej opartej na architekturze Gated Recurrent Unit zebrane zostały takie same dane jak przy poprzednich badaniach. W ramach tego podrozdziału zostaną one przedstawione i przeanalizowane w celu stworzenia podstaw do wyciągania wniosków odnośnie przydatności tej sieci do predykcji szeregów czasowych. 
 
 W \autoref{table:scale_comparison} zestawione zostały wartości parametrów opisujących jakość wyników predykcji sieci neuronowej w architekturze GRU. Są one ukazane w zależności od liczby analizowanych punktów pomiarowych i co za tym idzie wielkości szeregu, dla którego prowadzona jest predykcja. Bliższa inspekcja tych parametrów może pozwolić na zrozumienie wpływu wielkości zbioru danych wejściowych na wydajność sieci. W trakcie tworzenia tabeli pominięte zostały wyniki punktów pomiarowych mających bardzo niewiele danych mogących zostać wykorzystanych w szeregu. Wynika to z założenia, że zmiana wyników była na tyle niewielka, że uwzględnienie ich nie byłoby wartościowe dla zestawienia. 
@@ -966,10 +1028,11 @@ Można nawet odnieść wrażenie, że dla dłuższego szeregu czasowego model GR
 \end{figure}
 \FloatBarrier
 
-Przedstawione w tym podrozdziale wykresy oraz tabela porównawcza stanowią wystarczające podstawy do wyciągania dalej idących wniosków. Warto zauważyć trudność jednoznacznego określenia długości szeregu będącej limitem skalowalności modelu. Wszystkie czynniki płynące z wyników tego badania zostaną wzięte pod uwagę podczas formułowania wniosków w \hyperlink{section.6}{rozdziale 6}.
+Przedstawione w tym podrozdziale wykresy oraz tabela porównawcza stanowią wystarczające podstawy do wyciągania dalej idących wniosków. Warto zauważyć trudność jednoznacznego określenia długości szeregu będącej limitem skalowalności modelu. Wszystkie czynniki płynące z wyników tego badania zostaną wzięte pod uwagę podczas formułowania wniosków w \autoref{section:conclusions}.
 
 \newpage
 \section{Wnioski}
+\label{section:conclusions}
 W poprzednich rozdziałach przedstawione zostały badania przeprowadzone w celu określenia użyteczności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Przybliżona została metodologia badań oraz uzyskane wyniki zostały przeanalizowane w celu zapewnienia podstaw do wyciągania dalszych wniosków. W ramach tego rozdziału wnioski te zostaną sformułowane i ugruntowane w otrzymanych wynikach. Zostaną również przedstawione kierunki potencjalnych dalszych badań mogących zwiększyć zrozumienie zagadnienia.
 
 \subsection{Zasadność wykorzystania rekurencyjnych sieci neuronowych}
@@ -992,6 +1055,7 @@ Ciężko wyobrazić sobie przykład szeregu czasowego, który kompletnie ignoruj
 Biorąc pod uwagę jak duża jest przewaga rekurencyjnych sieci neuronowych nad klasycznymi metodami w praktycznych, rzeczywistych zastosowaniach, przytaczanie innych przewag wydaje się zbyteczne. Biorąc pod uwagę spełnienie głównego celu predykcji szeregów czasowych, czyli umożliwianie podejmowania działań redukujących ryzyko płynące ze zjawiska opisywanego przez szereg, ciężko znaleźć ograniczenia mogące podważyć użyteczność sieci rekurencyjnych. Ze znaczącą dozą pewności można stwierdzić, że rekurencyjne sieci neuronowe są odpowiednie do przeprowadzania predykcji szeregów czasowych.
 
 \subsection{Wykorzystanie rekurencyjnych sieci neuronowych}
+\label{subsection:conclusions:usage}
 W trakcie badań sporo uwagi poświęcone zostało wykorzystaniu różnych architektur rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. W trakcie tych badań poczynione zostało wiele interesujących obserwacji mogących posłużyć do formułowania wniosków odnośnie użycia tych sieci. W ramach tego podrozdziału zostaną przedstawione te wnioski oraz ich zasadność w praktycznych zastosowaniach badanych sieci neuronowych. 
 
 Różnice w uzyskiwanych wynikach nie były w żadnym wypadku radykalne, aczkolwiek nie należy ich pomijać podczas formułowania wniosków. Widoczny jest wzrost jakości wyników przy przejściach z prostej rekurencyjnej sieci neuronowej do sieci typu LSTM oraz potem do sieci GRU. Zbieżność kolejności powstawania tych architektur sieci ze wzrostem ich wyników nie jest przypadkowa. Można stwierdzić, że razem z rozwojem dziedziny rekurencyjnych sieci neuronowych, poprawiają się ich możliwości predykcyjne oraz jakość zwracanych wyników. Fakt ten był rozumiany w innych, bardziej typowych zastosowaniach tych sieci, ale występowanie takiej poprawy w zastosowaniach predykcyjnych pozwala optymistycznie patrzeć na dalszy rozwój tej dziedziny sztucznej inteligencji. 
@@ -1013,7 +1077,7 @@ Pierwszym obszarem badań, którego kontynuacja może przynieść interesujące 
 
 W ramach tej pracy wyciągnięte zostały wnioski odnośnie ogólnej przydatności rekurencyjnych sieci neuronowych do predykcji większości szeregów czasowych. Wydaje się odpowiednim przeprowadzenie większej ilości badań na różnych szeregach, aby umocnić lub obalić ten wniosek. Istnieje pewne prawdopodobieństwo, że wyciągnięte wnioski zależą w pewnej mierze od specyficznego szeregu czasowego stworzonego na potrzeby tej pracy. Powtórzenie tych badań dla innych szeregów zdaje się więc umożliwić wyeliminowanie lub przynajmniej wyraźne zredukowanie tego prawdopodobieństwa. 
 
-W \hyperlink{subsection.6.2}{podrozdziale 6.2} zauważono również poprawę wyników przy korzystaniu z bardziej nowoczesnych architektur rekurencyjnych sieci neuronowych. Wydaje się więc interesujące przeprowadzenie podobnych badań jak w tej pracy, ale z wykorzystaniem jeszcze bardziej nowoczesnych sieci. Przykładem takiej sieci, która nie jest ujęta w ramach tego badania jest sieć Content-Adaptive Recurrent Unit zaproponowana w 2020 roku \cite{chan2020caru}. Sieć ta obecnie nie jest zaimplementowana w najpopularniejszych bibliotekach i dlatego nie została uwzględniona w tym badaniu. Jednak przydatność CARU i innych jeszcze nie powstałych sieci może być bardzo interesującym kierunkiem badań w przyszłości. 
+W \autoref{subsection:conclusions:usage} zauważono również poprawę wyników przy korzystaniu z bardziej nowoczesnych architektur rekurencyjnych sieci neuronowych. Wydaje się więc interesujące przeprowadzenie podobnych badań jak w tej pracy, ale z wykorzystaniem jeszcze bardziej nowoczesnych sieci. Przykładem takiej sieci, która nie jest ujęta w ramach tego badania jest sieć Content-Adaptive Recurrent Unit zaproponowana w 2020 roku \cite{chan2020caru}. Sieć ta obecnie nie jest zaimplementowana w najpopularniejszych bibliotekach i dlatego nie została uwzględniona w tym badaniu. Jednak przydatność CARU i innych jeszcze nie powstałych sieci może być bardzo interesującym kierunkiem badań w przyszłości. 
 
 \newpage
 \printbibliography[title=Bibliografia]
