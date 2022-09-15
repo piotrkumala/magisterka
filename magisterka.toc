@@ -18,30 +18,30 @@
 \contentsline {subsubsection}{\numberline {3.2.3}Indeks Willmott'a}{14}{subsubsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.3}Modele predykcyjne}{15}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Regresja liniowa}{15}{subsubsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.4}Zintegrowany model autoregresyjny ze średnią ruchomą}{15}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Proste wygładzanie wykładnicze}{15}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Model liniowy Holt'a}{15}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Model Holt'a - Winters'a}{15}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Drzewa decyzyjne}{15}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Sieci rekurencyjne}{16}{subsubsection.3.4.5}%
-\contentsline {subsection}{\numberline {3.5}Badanie skalowalności modelu GRU}{16}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Zagadnienie predykcji zanieczyszczenia powietrza}{18}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Baza danych Instytutu Meteorologii i Gospodarki Wodnej}{18}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Baza danych Głównego Inspektoratu Ochrony Środowiska}{19}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Tworzenie szeregów z obu źródeł danych}{21}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Tworzenie szeregu dla Krakowa}{21}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}Skalowalność predykcji}{23}{subsubsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.4}Wykorzystanie stworzonego szeregu w procesie predykcyjnym}{23}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Numeryczna analiza zagadnienia predykcji koncentracji PM10}{24}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{24}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{24}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{25}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{30}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{34}{subsubsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{37}{subsubsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{41}{subsubsection.5.1.6}%
-\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{49}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Wnioski}{54}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Zasadność wykorzystania rekurencyjnych sieci neuronowych}{54}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Wykorzystanie rekurencyjnych sieci neuronowych}{56}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Dalsze kierunki badań}{57}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {3.3.2}Zintegrowany model autoregresyjny ze średnią ruchomą (ARIMA)}{15}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Proste wygładzanie wykładnicze}{16}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Model liniowy Holt'a}{16}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Model Holt'a-Winters'a}{17}{subsubsection.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}Drzewa decyzyjne}{17}{subsubsection.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.7}Sieci rekurencyjne}{18}{subsubsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.4}Badanie skalowalności modelu GRU}{18}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Zagadnienie predykcji zanieczyszczenia powietrza}{19}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Baza danych Instytutu Meteorologii i Gospodarki Wodnej}{19}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Baza danych Głównego Inspektoratu Ochrony Środowiska}{20}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Tworzenie szeregów z obu źródeł danych}{22}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Tworzenie szeregu dla Krakowa}{22}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Skalowalność predykcji}{24}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Wykorzystanie stworzonego szeregu w procesie predykcyjnym}{24}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Numeryczna analiza zagadnienia predykcji koncentracji PM10}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Porównanie wydajności modeli predykcyjnych}{25}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Regresja liniowa}{25}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Drzewa decyzyjne}{26}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Prosta sieć rekurencyjna}{31}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Sieć rekurencyjna typu LSTM}{35}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}Sieć rekurencyjna typu GRU}{38}{subsubsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.6}Zestawienie otrzymanych wyników}{42}{subsubsection.5.1.6}%
+\contentsline {subsection}{\numberline {5.2}Badanie skalowalności modelu GRU}{50}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Wnioski}{55}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Zasadność wykorzystania rekurencyjnych sieci neuronowych}{55}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Wykorzystanie rekurencyjnych sieci neuronowych}{57}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Dalsze kierunki badań}{58}{subsection.6.3}%

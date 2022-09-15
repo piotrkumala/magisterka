@@ -583,6 +583,99 @@
     \field{urlyear}{2022}
   \endentry
 
+  \entry{arima}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Non-seasonal ARIMA models}
+    \verb{url}
+    \verb https://otexts.com/fpp2/non-seasonal-arima.html
+    \endverb
+    \field{urlday}{13}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
+  \endentry
+
+  \entry{ar}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Autoregressive models}
+    \verb{url}
+    \verb https://otexts.com/fpp2/AR.html
+    \endverb
+    \field{urlday}{13}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
+  \endentry
+
+  \entry{ma}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Moving average models}
+    \verb{url}
+    \verb https://otexts.com/fpp2/MA.html
+    \endverb
+    \field{urlday}{13}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
+  \endentry
+
+  \entry{ses}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Simple exponential smoothing}
+    \verb{url}
+    \verb https://otexts.com/fpp2/ses.html
+    \endverb
+    \field{urlday}{14}
+    \field{urlmonth}{09}
+    \field{urlyear}{2022}
+  \endentry
+
+  \entry{holt2004forecasting}{article}{}
+    \name{author}{1}{}{%
+      {{hash=HCC}{%
+         family={Holt},
+         familyi={H\bibinitperiod},
+         given={Charles\bibnamedelima C},
+         giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{HCC1}
+    \strng{fullhash}{HCC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{5\bibrangedash 10}
+    \field{title}{Forecasting seasonals and trends by exponentially weighted
+  moving averages}
+    \field{volume}{20}
+    \field{journaltitle}{International journal of forecasting}
+    \field{year}{2004}
+  \endentry
+
+  \entry{winters1960forecasting}{article}{}
+    \name{author}{1}{}{%
+      {{hash=WPR}{%
+         family={Winters},
+         familyi={W\bibinitperiod},
+         given={Peter\bibnamedelima R},
+         giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {INFORMS}%
+    }
+    \strng{namehash}{WPR1}
+    \strng{fullhash}{WPR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{324\bibrangedash 342}
+    \field{title}{Forecasting sales by exponentially weighted moving averages}
+    \field{volume}{6}
+    \field{journaltitle}{Management science}
+    \field{year}{1960}
+  \endentry
+
   \entry{sklearnDecissionTrees}{online}{}
     \field{labeltitlesource}{title}
     \field{title}{Decission Trees}

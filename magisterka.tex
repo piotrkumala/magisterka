@@ -327,10 +327,85 @@ W celu umożliwienia ewaluacji wyników działania metody, sporządzony został 
 
 Uzyskane w tej metodzie wyniki zostaną dokładnie przedyskutowane w \autoref{subsection:results:linearRegression} oraz zestawione z wynikami pozostałych metod w \autoref{subsection:results:summary}.
 
-\subsubsection{Zintegrowany model autoregresyjny ze średnią ruchomą}
+\subsubsection{Zintegrowany model autoregresyjny ze średnią ruchomą (ARIMA)}
+\label{subsection:arima}
+Model ARIMA jest połączeniem modelu autoregresyjnego (AR) oraz średniej ruchomej (MA) z integracją wejściowego szeregu. Integracja to proces, w którym dzięki początkowemu krokowi rozróżniającemu (differencing) można zapewnić stacjonarność szeregu czasowego \cite{arima}. Jest to model statystyczny szeroko wykorzystywany do celów predykcyjnych. 
+
+W celu zrozumienia modelu ARIMA należy zrozumieć osobno modele AR i MA. Model autoregresyjny przeprowadza predykcję zmiennej na podstawie kombinacji liniowej jej poprzednich wartości \cite{ar}. Model autoregresyjny rzędu $p$ można wyrazić wzorem: 
+\begin{equation}
+	y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + ... + \phi_p y_{t-p} + \epsilon_t
+	\label{equation:ar}
+\end{equation}
+gdzie $\phi$ to parametry, $c$ to stała, a $\epsilon_t$ to biały szum. Model taki jest często zapisywany jako AR(p) podkreślając znaczenie wartości $p$.
+
+Model średniej ruchomej natomiast dokonuje predykcji na podstawie poprzednich błędów predykcji \cite{ma}. Taki model rzędu $q$ jest wyrażony wzorem:
+\begin{equation}
+	y_t = c + \epsilon_t + \theta_1\epsilon_{t-1} + \theta_2\epsilon_{t-2} + ... + \theta_q\epsilon_{t-q}
+		\label{equation:ma}
+\end{equation}
+gdzie $\theta$ to parametry, $c$ to stała, a $\epsilon_t$ to biały szum.
+Model ten jest zapisywany jako MA(q) pokazując znaczenie $q$ w jego działaniu. 
+
+Dzięki połączeniu metody AR opisanej w \autoref{equation:ar} oraz metody MA opisanej w \autoref{equation:ma} można zapisać wzór modelu ARIMA:
+\begin{equation}
+	y'_t = c 
+	+ \phi_1 y'_{t-1} + ... + \phi_p y'_{t-p}  
+	+ \theta_1\epsilon_{t-1} +  ... + \theta_q\epsilon_{t-q} 
+	+ \epsilon_t
+\end{equation}
+gdzie $y'_t$ to szereg czasowy rozróżniany d-razy. Model taki jest często zapisywany jako ARIMA(p,d,q) zaznaczając znaczenie tych parametrów w jego działaniu. 
+
+Model ten nie został wykorzystany w dalszych badaniach i jest tutaj przybliżony jako przykład metody statystycznej predykcji szeregu czasowego. 
+
 \subsubsection{Proste wygładzanie wykładnicze}
+Proste wygładzanie wykładnicze przeprowadza predykcję na podstawie poprzednich obserwacji. Metoda wygładzania wykładniczego zakłada, że im starsza obserwacja tym mniejszy ma ona wpływ na predykcję i wagi kolejnych obserwacji maleją wykładniczo \cite{ses}. Taki sposób predykcji można zapisać wzorem: 
+\begin{equation}
+	\hat{y}_{T+1|T} = \alpha y_T + \alpha(1-\alpha)y_{T-1} + \alpha(1-\alpha)^2y_{T-2} + ...
+\end{equation}  
+Zmienna $\alpha$ jest nazywana parametrem wygładzania, gdyż określa ona jak szybko spada waga coraz starszych obserwacji. Przyjmuje ona wartości z przedziału $[0,1]$
+
+Metoda ta jest bardzo prosta i wydaje się nie być wystarczająca dla rozwiązywanego problemu. Nie zostanie ona wykorzystana w ramach tej pracy i została przedstawiona jako przykład możliwej do wykorzystania metody. 
+
 \subsubsection{Model liniowy Holt'a}
-\subsubsection{Model Holt'a - Winters'a}
+Metoda Holt'a została stworzona jako rozwinięcie metody wykładniczego wygładzania w 1959 roku \cite{holt2004forecasting}. Pozwala ona na przeprowadzanie predykcji na danych posiadających trend. Predykcja jest prowadzona na podstawie wzoru: 
+\begin{equation}
+	\hat{y}_{t+ht} = l_t + hb_t
+\end{equation}
+Składowa $l_t$ określa estymowaną wartość zmiennej bez uwzględniania trendu i jest opisana wzorem:
+\begin{equation}
+	l_t = \alpha y_t + (1-\alpha)(l_{t - 1} + b_{t-1})
+\end{equation}
+Zmienna $\alpha$ jest tak samo jak w wykładniczym wygładzaniu parametrem wygładzania. 
+
+Składowa $b_t$ natomiast określa estymowany wpływ trendu na wartość zmiennej i jest wyrażona jako:
+\begin{equation}
+	b_t = \beta'(l_t - l_{t-1}) + (1 - \beta')b_{t-1}
+	\label{equation:holt:bt}
+\end{equation}
+Zmienna $\beta'$ jest parametrem wygładzania trendu i przyjmuje wartości z przedziału $[0,1]$
+
+Metoda Holt'a pozwala na predykcje szeregu czasowego posiadającego trend, ale nie jest to wystarczające na potrzeby badań prowadzonych w ramach tej pracy. Nie zostanie ona więc wykorzystana i jest jedynie przykładem potencjalnie użytecznej metody. 
+
+\subsubsection{Model Holt'a-Winters'a}
+\label{subsection:holt-winters}
+W metodzie Holt'a nie jest uwzględniania okresowość danych, nazywana sezonowością ze względu na charakter prowadzonych predykcji, dla których została zaproponowana. W tego powodu została ona rozwinięta przez P. Winters'a w 1960 roku poprzez dodanie czynnika uwzględniającego sezonowość w szeregu czasowym \cite{winters1960forecasting}. Predykcja ta jest prowadzona na podstawie wzoru:
+\begin{equation}
+	\hat{y}_{t+h|t} = l_t + hb_t + s_{t + h - m(k+1)}
+\end{equation}
+We wzorze tym $m$ oznacza częstotliwość sezonowości danych, na przykład liczbę pór roku w roku. Natomiast $k$ to część całkowita z $(h-1)/m$. Czynnik $l_t$ ma takie samo znaczenie jak w metodzie Holt'a, ale jest wyliczany w inny sposób:
+\begin{equation}
+	l_t = \alpha(y_t - s_{t-m}) + (1 - \alpha)(l_{t-1} + b_{t-1})
+\end{equation}
+Czynnik $b_t$ określający trend nie podlega zmianie względem metody Holt'a, więc sposób wyliczania go jest opisany w \autoref{equation:holt:bt}.
+
+Nowy jest natomiast czynnik sezonowy $s_t$ wyliczany ze wzoru: 
+\begin{equation}
+	s_t = \gamma(y_t - l_{t-1} - b_{t-1}) + (1-\gamma)s_{t-m}
+\end{equation}
+Podobnie jak w pozostałych czynnikach $\gamma$ jest parametrem wygładzania. Wyraźnie widać, że czynnik ten jest wyliczany jako średnia ważona wartości w obecnym sezonie oraz tej samej wartości w poprzednim sezonie ($m$ kroków czasowych temu).
+
+Metoda ta również nie nie została zastosowana w dalszych badaniach i służy jako przykład potencjalnie przydatnej metody.
+
 \subsubsection{Drzewa decyzyjne}
 Drugą zastosowaną metodą była regresja z wykorzystaniem drzew decyzyjnych, jako że jest ona jedną z najszerzej wykorzystywanych metod uczenia maszynowego. Jej dokładniejszy opis jest zawarty w \autoref{subsection:introduction:tree}. Podobnie jak w przypadku regresji liniowej, uzyskane wyniki pełnią funkcję grupy kontrolnej. Warty odnotowania jest również fakt użyteczności graficznych reprezentacji procesu decyzyjnego do zrozumienia nie tylko sposobu podejmowania decyzji, ale również struktury danych wejściowych. 
 
@@ -1078,6 +1153,8 @@ Pierwszym obszarem badań, którego kontynuacja może przynieść interesujące 
 W ramach tej pracy wyciągnięte zostały wnioski odnośnie ogólnej przydatności rekurencyjnych sieci neuronowych do predykcji większości szeregów czasowych. Wydaje się odpowiednim przeprowadzenie większej ilości badań na różnych szeregach, aby umocnić lub obalić ten wniosek. Istnieje pewne prawdopodobieństwo, że wyciągnięte wnioski zależą w pewnej mierze od specyficznego szeregu czasowego stworzonego na potrzeby tej pracy. Powtórzenie tych badań dla innych szeregów zdaje się więc umożliwić wyeliminowanie lub przynajmniej wyraźne zredukowanie tego prawdopodobieństwa. 
 
 W \autoref{subsection:conclusions:usage} zauważono również poprawę wyników przy korzystaniu z bardziej nowoczesnych architektur rekurencyjnych sieci neuronowych. Wydaje się więc interesujące przeprowadzenie podobnych badań jak w tej pracy, ale z wykorzystaniem jeszcze bardziej nowoczesnych sieci. Przykładem takiej sieci, która nie jest ujęta w ramach tego badania jest sieć Content-Adaptive Recurrent Unit zaproponowana w 2020 roku \cite{chan2020caru}. Sieć ta obecnie nie jest zaimplementowana w najpopularniejszych bibliotekach i dlatego nie została uwzględniona w tym badaniu. Jednak przydatność CARU i innych jeszcze nie powstałych sieci może być bardzo interesującym kierunkiem badań w przyszłości. 
+
+Wartym odnotowania jest również fakt pominięcia w badaniach kilku metod statystycznych jak na przykład metody ARIMA opisanej w \autoref{subsection:arima} lub metody Holt'a-Winters'a opisanej w \autoref{subsection:holt-winters}. Dodatkowe przebadanie tych metod i porównanie jakości predykcji przez nie zwracanych z rekurencyjnymi sieciami neuronowymi pozwoli na lepsze zrozumienie tematu i jest ciekawym kierunkiem dalszych badań. 
 
 \newpage
 \printbibliography[title=Bibliografia]
