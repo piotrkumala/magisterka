@@ -122,19 +122,19 @@ systemów informatycznych.
 \section{Wprowadzenie i cel pracy}
 
 \subsection{Wprowadzenie}
-Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w pozornie prostych urządzeniach takich jak telefony komórkowe zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Taki rozwój technologiczny może zostać zastosowany do próby zrozumienia i szukania rozwiązań problemów życia codziennego. Jednym z szeroko występujących w świadomości społecznej problemów jest poziom zanieczyszczenia środowiska naturalnego i zmiany klimatu. Co roku na początku zimy media raportują o wysokim poziome zanieczyszczeń powietrza w polskich miastach \cite{airPollutionPoland}. Podejmowane są również działania mające na celu ograniczenie poziomu tychże zanieczyszczeń przez samorządy i instytucje centralne. Posiadanie wiarygodnych estymacji skali problemu i jego zmiany w czasie może oferować wymierne korzyści w usprawnianiu reakcji na wysokie poziomy zanieczyszczeń. W tej pracy podjęta zostanie próba stworzenia wiarygodnego modelu predykcyjnego poziomu zanieczyszczeń korzystającego z rekurencyjnych sieci neuronowych.
+Sieci neuronowe są coraz powszechniej używane do rozwiązywania wielu problemów życia codziennego. Nawet w pozornie prostych urządzeniach takich jak telefony komórkowe zawierane są układy elektroniczne specjalizujące się w obliczeniach korzystających z sieci neuronowych \cite{appleNeuralEngine}. Taki rozwój technologiczny może zostać zastosowany do próby zrozumienia i szukania rozwiązań codziennych problemów. Jednym z szeroko występujących w świadomości społecznej problemów jest poziom zanieczyszczenia środowiska naturalnego i zmiany klimatu. Co roku na początku zimy media raportują o wysokim poziome zanieczyszczeń powietrza w polskich miastach \cite{airPollutionPoland}. Podejmowane są również działania mające na celu ograniczenie poziomu tychże zanieczyszczeń przez samorządy i instytucje centralne. Posiadanie wiarygodnych estymacji skali problemu i jego zmiany w czasie może oferować wymierne korzyści w usprawnianiu reakcji na wysokie poziomy zanieczyszczeń. W tej pracy podjęta zostanie próba stworzenia wiarygodnego modelu predykcyjnego poziomu zanieczyszczeń korzystającego z rekurencyjnych sieci neuronowych.
 
 \subsection{Cel pracy}
 Rekurencyjne sieci neuronowe są szeroko wykorzystywane i rozwijane przez największe firmy technologiczne. Są one stosowane między innymi do rozpoznawania pisma odręcznego i tekstu dyktowanego \cite{googleLSTM}. Mając na uwadze ilość wysiłku wkładanego w ulepszanie tychże sieci nasuwa się pytanie: jakie rezultaty będą one osiągać w innych zastosowaniach? W ramach tej pracy zbadana zostanie jakość predykcji szeregów czasowych płynących z modeli opartych na rekurencyjnych sieciach neuronowych. Zostaną one zestawione z klasycznymi metodami predykcyjnymi w celu stwierdzenia zasadności stosowania sieci neuronowych. Specjalna uwaga zostanie również poświęcona różnicom w jakości uzyskiwanych rozwiązań różnych architektur sieci oraz skalowalności modeli opartych na rekurencyjnych sieciach neuronowych. 
 
 \subsection{Repozytorium kodu}
-Cały kod powstały w ramach jest dostępny na platformie Github. Dostępne jest repozytorium z kodem programu pod adresem \url{https://github.com/piotrkumala/magisterka-kod}. Natomiast kod samej pracy, wraz ze wszystkimi wykorzystywanymi rysunkami jest dostępny pod adresem \url{https://github.com/piotrkumala/magisterka}. Repozytoria te są udostępniane publicznie, a dostęp do nich nie jest w żaden sposób ograniczany. 
+Cały kod powstały w ramach tej pracy jest dostępny na platformie Github. Udostępnione jest repozytorium z kodem programu pod adresem \url{https://github.com/piotrkumala/magisterka-kod}. Natomiast kod samej pracy, wraz ze wszystkimi wykorzystywanymi rysunkami jest dostępny pod adresem \url{https://github.com/piotrkumala/magisterka}. Repozytoria te są udostępniane publicznie, a dostęp do nich nie jest w żaden sposób ograniczany. 
 
 \newpage
 \section{Wstęp teoretyczny}
 \subsection{Szereg czasowy}
 \label{subsection:introduction:timeSeries}
-W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozpoczęciem dalszych dywagacji należy zdefiniować samo pojęcie szeregu czasowego, aby uniknąć nieścisłości. Podążając za Głównym Urzędem Statystycznym szeregiem czasowym nazywamy ciąg obserwacji ilustrujący kształt zjawiska w kolejnych okresach czasu \cite{GUS}. Obserwacją można określić zbiór cech opisujących zjawisko w danym punkcie czasu. Rozumiejąc w taki sposób pojęcie szeregu czasowego można w prosty sposób określić cel systemu predykcyjnego. System ten powinien być w stanie przewidzieć wartość pewnej cechy w kolejnym punkcie czasu na podstawie poprzednich obserwacji. Można również określić, że predykcja będzie tym lepsza im bardziej zgodna z posiadanymi obserwacjami. 
+W ramach pracy podejmowane będą próby predykcji szeregu czasowego. Przed rozpoczęciem dalszych dywagacji należy zdefiniować samo pojęcie szeregu czasowego, aby uniknąć nieścisłości. Podążając za Głównym Urzędem Statystycznym, szeregiem czasowym nazywamy ciąg obserwacji ilustrujący kształt zjawiska w kolejnych okresach czasu \cite{GUS}. Obserwacją można określić zbiór cech opisujących zjawisko w danym punkcie czasu. Rozumiejąc w taki sposób pojęcie szeregu czasowego można w prosty sposób określić cel systemu predykcyjnego. System ten powinien być w stanie przewidzieć wartość pewnej cechy w kolejnym punkcie czasu na podstawie poprzednich obserwacji. Można również określić, że predykcja będzie tym lepsza im bardziej zgodna z posiadanymi obserwacjami. 
 
 \subsection{Regresja liniowa}
 \label{subsection:introduction:linearRegression}
@@ -172,7 +172,7 @@ Podwaliny rekurencyjnych sieci neuronowych zostały stworzone w 1986 roku przez 
 
 Powszechnym sposobem myślenia o strukturze sieci neuronowych jest seria warstw składających się na sieć. Każda warstwa składająca się z pewnej liczby neuronów komunikuje się z następną warstwą aż do osiągnięcia warstwy wyjściowej zwracającej wynik sieci. 
 
-W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących się ze sobą, a jedna rekurencyjna warstwa zmieniająca się w czasie. W celu lepszego zrozumienia struktury i sposobu działania takiej sieci często dokonywany jest proces rozwijania w czasie warstwy rekurencyjnej.
+W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących się ze sobą, a jedna rekurencyjna warstwa zmieniająca się w czasie. W celu lepszego zrozumienia struktury i sposobu działania takiej sieci, często dokonywany jest proces rozwijania w czasie warstwy rekurencyjnej.
 
 \begin{figure}[!ht]
 	\centering
@@ -182,14 +182,14 @@ W przypadku sieci rekurencyjnej nie jest tworzona seria warstw komunikujących s
 \end{figure}
 \FloatBarrier
 
-W \autoref{figure:unfolded_rnn} przedstawiono sposób rozwijania warstwy rekurencyjnej. Warto odnotować, że w wersji rozwiniętej $h_{t-1}, h_t i h_{t+1}$ nie są osobnymi warstwami, a jedynie reprezentacją warstwy $h$ w różnych krokach czasowych. 
+Na \autoref{figure:unfolded_rnn} przedstawiono sposób rozwijania warstwy rekurencyjnej. Warto odnotować, że w wersji rozwiniętej $h_{t-1}, h_t i h_{t+1}$ nie są osobnymi warstwami, a jedynie reprezentacją warstwy $h$ w różnych krokach czasowych. 
 
 Na przestrzeni lat powstało wiele wariacji na temat architektury rekurencyjnych sieci neuronowych odpowiadających na różne problemy i stawiane im wymagania. W dalszym ciągu pracy przedstawione zostaną wybrane architektury, które mogą zostać wykorzystane do rozwiązania postawionego problemu predykcji szeregu czasowego.
 
 
 \subsection{Architektura LSTM}
 \label{subsection:introduction:LSTM}
-Sieci typu Long Short-Term Memory(LSTM) powstały jako próba rozwiązania problemów występujących w klasycznych sieciach rekurencyjnych. Problemy te dotyczyły w dużej mierze aspektu rekurencyjnych sieci neuronowych pozwalającego ,,zapamiętywać'' poprzednie kroki czasowe. Zauważono, że korzystając z mechanizmu propagacji wstecznej przesyłany do następnych kroków czasowych sygnał błędu (sposób sieci na ,,zapamiętanie'' poprzednich przypadków) ma tendencję do znikania lub eksplodowania. 
+Sieci typu Long Short-Term Memory(LSTM) powstały jako próba rozwiązania problemów występujących w klasycznych sieciach rekurencyjnych. Problemy te dotyczyły w dużej mierze aspektu rekurencyjnych sieci neuronowych pozwalającego ,,zapamiętywać'' poprzednie kroki czasowe. Zauważono, że korzystając z mechanizmu propagacji wstecznej, sygnał błędu przesyłany do następnych kroków czasowych (sposób sieci na ,,zapamiętanie'' poprzednich przypadków) ma tendencję do znikania lub eksplodowania. 
 
 Zniknięciem sygnału błędu nazwać można sytuację, w której dąży on do zera w kolejnych krokach czasowych. Jest ona problemem w procesie uczenia, ponieważ może doprowadzić do bardzo dużego przedłużenia procesu lub nawet całkowicie uniemożliwić poprawne nauczenie sieci.
 
@@ -214,7 +214,7 @@ Bramka wyjściowa natomiast kontroluje przepływ stanu komórki na zewnątrz. De
 
 Na \autoref{figure:lstm_architecture} przedstawiony jest schemat budowy najprostszej komórki pamięci w sieci LSTM. Wyraźnie widoczne są bramki wejściowa i wyjściowa operujące na sygnałach wejściowych $w_{ini}$, $y^{in}$, $net_{in}$ oraz wyjściowych ${w_{outi}}$, $y^{out}$, $net_{out}$. Widoczny jest również mechanizm zmiany stanu wewnętrznego komórki $s_{c_j}$ na podstawie przepuszczonego przez bramkę wejściową sygnału $y_{in}$.
 
-Stworzona w taki sposób architektura okazała się mieć jeden poważny problem. Stan komórki wykazywał tendencje do liniowego wzrostu w kolejnych krokach czasowych. Wzrost ten mógł prowadzić do saturacji funkcji h. Saturacja ta prowadziła do zaprzestania przyjmowania nowych błędów i zrównania wyniku komórki z wartością funkcji aktywacji bramki wyjściowej. W takich kierunkach komórka pamięci traciła swoje korzyści i wracała do zachowania typowego dla zwykłej sieci rekurencyjnej \cite{gers2000learning}.
+Stworzona w taki sposób architektura okazała się mieć jeden poważny problem. Stan komórki wykazywał tendencje do liniowego wzrostu w kolejnych krokach czasowych. Wzrost ten mógł prowadzić do saturacji funkcji h. Saturacja ta prowadziła do zaprzestania przyjmowania nowych błędów i zrównania wyniku komórki z wartością funkcji aktywacji bramki wyjściowej. W takich przypadkach komórka pamięci traciła swoje korzyści i wracała do zachowania typowego dla zwykłej sieci rekurencyjnej \cite{gers2000learning}.
 
 Rozwiązaniem tego problemu okazało się dodanie trzeciej bramki nazywanej bramką zapominania. Zauważono, że przechowywanie w pamięci komórki danych przez bardzo długi często sprawia, że dane te są nieaktualne. Bramka zapominania kontroluje kiedy i ile przechowywanego stanu komórki $s_{c_j}$ należy zapomnieć. Dzięki usuwaniu z pamięci przestarzałych błędów wyeliminowany został problem saturacji funkcji h. Bramka zapominania stała się integralna częścią architektury LSTM. 
 
@@ -247,36 +247,36 @@ Idąc dalej można skonstruować również wzór na ostatecznie wybrany nowy sta
 \begin{equation}
 	h_t = z_th_{t-1} + (1 - z_t)h'_t
 \end{equation}
-Bramka reset (reset gate) decyduje czy poprzedni wewnętrzny stan komórki powinien być zachowany czy odrzucony. Jej wartość w chwili t wyznaczamy ze wzoru:
+Bramka reset (reset gate) decyduje czy poprzedni wewnętrzny stan komórki powinien być zachowany czy odrzucony. Jej wartość w chwili $t$ wyznaczamy ze wzoru:
 \begin{equation}
 	r_t = \sigma([W_rx_t] + [U_rh_{t-1}]),
 \end{equation} 
 gdzie $W_r$ i $U_r$ to macierze wag, których wartości są wyznaczane w trakcie uczenia sieci. Przy takich założeniach można zauważyć, że jeżeli wartość bramki reset będzie bliska zeru to stan komórki będzie często usuwany.
 
-Bramka aktualizacji (update gate) decyduje natomiast jak duża część stanu z poprzedniego kroku czasowego powinna zostać zapamiętana w obecnym kroku. Wartość bramki w j-tej komórce warstwy wyznaczamy ze wzoru:
+Bramka aktualizacji (update gate) decyduje natomiast jak duża część stanu z poprzedniego kroku czasowego powinna zostać zapamiętana w obecnym kroku. Wartość bramki w chwili $t$ wyznaczamy ze wzoru:
 \begin{equation}
 	z_t = \sigma([W_zx_t] + [U_zh_{t-1}]),
 \end{equation} 
 gdzie $W_z$ i $U_z$ to macierze wag analogiczne do tych występujących w bramce resetu. 
 
-Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę, że macierze $W_z, W_r, U_z, U_r$ są wyznaczane w trakcie uczenia można wysunąć kilka obserwacji. Dualizm bramek powinien prowadzić do jednej bramki będącej znacznie bardziej aktywnej od drugiej. Zjawisko to można rozumieć jako specjalizację komórek warstwy, gdzie te z aktywnymi bramkami resetu odpowiadają za pamięć krótkotrwałą, a te z aktywną bramką aktualizacji odpowiadają za pamięć długotrwałą. Pamiętając, że aktywność każdej bramki jest dopasowywana dla każdej komórki w procesie uczenia możemy założyć, że podział komórek na pamięć krótkotrwałą i długotrwałą będzie w wytrenowanej sieci rozłożony w sposób optymalny. Rozumiemy przez to, że jeżeli dane treningowe, na przykład nie wykazywały długofalowych trendów, a były bardziej chaotyczne i często zmieniające się to po procesie uczenia powinny dominować komórki z aktywną bramką resetu.
+Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę, że macierze $W_z, W_r, U_z, U_r$ są wyznaczane w trakcie uczenia, można wysunąć kilka obserwacji. Dualizm bramek powinien prowadzić do jednej bramki będącej znacznie bardziej aktywnej od drugiej. Zjawisko to można rozumieć jako specjalizację komórek warstwy, gdzie te z aktywnymi bramkami resetu odpowiadają za pamięć krótkotrwałą, a te z aktywną bramką aktualizacji odpowiadają za pamięć długotrwałą. Pamiętając, że aktywność każdej bramki jest dopasowywana dla każdej komórki w procesie uczenia możemy założyć, że podział komórek na pamięć krótkotrwałą i długotrwałą będzie w wytrenowanej sieci rozłożony w sposób optymalny. Rozumiemy przez to, że jeżeli dane treningowe, na przykład nie wykazywały długofalowych trendów, a były bardziej chaotyczne i często zmieniające się to po procesie uczenia powinny dominować komórki z aktywną bramką resetu.
 
 \newpage
 \section{Zagadnienie predykcji szeregu czasowego}
 \label{section:methods}
 W celu zbadania przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych zestawione ze sobą zostały jakości wyników różnych modeli predykcyjnych. Analizowano zarówno klasyczne metody predykcyjne jak i nowocześniejsze wykorzystujące sieci neuronowe. Celem takiego porównywania było wyłonienie najbardziej obiecującego badawczo modelu predykcyjnego w celu dalszej analizy jego wydajności. Dalsza analiza jego wydajności polegała na zbadaniu zmian zachowania modelu przy zwiększającej się ilości danych. 
 
-W tym rozdziale przedstawiona zostanie samo zagadnienie predykcji, potencjalne metody mogące zostać wykorzystane, metodologia badania użyteczności rekurencyjnych sieci neuronowych dla tego zastosowania oraz miary jakości predykcji wykorzystywane w tych badaniach. 
+W tym rozdziale przedstawione zostanie samo zagadnienie predykcji, potencjalne metody mogące zostać wykorzystane, metodologia badania użyteczności rekurencyjnych sieci neuronowych dla tego zastosowania oraz miary jakości predykcji wykorzystywane w tych badaniach. 
 \subsection{Predykcja szeregu czasowego}
 Podążając za definicją szeregu czasowego przedstawioną w \autoref{subsection:introduction:timeSeries} sformułowane zostanie zagadnienie predykcji szeregu czasowego. Można określić zagadnienie predykcji szeregu czasowego jako próbę wyznaczenia wartości szeregu czasowego na podstawie poprzednich obserwacji. Cel ten jest osiągany korzystając z metod matematycznych pozwalających na podstawie wektorów cech wejściowych $X =[x_0, x_1, x_2, ...]$ przewidzieć wartość cechy $y$ w pewnym momencie czasu. Opis ten nie jest oczywiście wyczerpujący, występują modele wykorzystujące jedynie historyczne wartości $y$ bez zwracania uwagi na pozostałe cechy. Jednak w ramach tej pracy takie wyjątki nie będą używane i przedstawiony wyżej opis jest wystarczający.
 
 Istnieje wiele modeli matematycznych znajdujących zastosowanie w procesie predykcji, w ramach tego rozdziału przedstawione zostaną wybrane modele statystyczne i uczenia maszynowego. Szczególna uwaga badawcza zostanie poświęcona modelom opartym na rekurencyjnych sieciach neuronowych w celu zbadania ich użyteczności w takim zastosowaniu.
 
-Dokładność uzyskanej predykcji jest kluczowym aspektem pozwalającym na określenie jej przydatności. Dokładność ta jest intuicyjnie zrozumiała - im bliższa przewidziana wartość faktycznym wartościom tym lepszy jest model predykcyjny. Zmierzenie tak rozumianej jakości predykcji nie jest zadaniem trywialnym, z tego powodu powstało wiele miar opisujących jakość modelu predykcyjnego. Niektóre z tych miar zostaną przybliżone w ramach \autoref{section:measures}.
+Dokładność uzyskanej predykcji jest kluczowym aspektem pozwalającym na określenie jej przydatności. Dokładność ta jest intuicyjnie zrozumiała - im bliższa przewidziana wartość faktycznej wartości, tym lepszy jest model predykcyjny. Zmierzenie tak rozumianej jakości predykcji nie jest zadaniem trywialnym, z tego powodu powstało wiele miar opisujących jakość modelu predykcyjnego. Niektóre z tych miar zostaną przybliżone w ramach \autoref{section:measures}.
 
 \subsection{Miary jakości predykcji}
 \label{section:measures}
-Jak zaznaczono wcześniej istnieje wiele miar opisujących jakość predykcji. W tym podrozdziale przedstawione zostaną niektóre miary wykorzystywane w dalszej części tej pracy. 
+Jak zaznaczono wcześniej, istnieje wiele miar opisujących jakość predykcji. W tym podrozdziale przedstawione zostaną niektóre miary wykorzystywane w dalszej części tej pracy. 
 \subsubsection{Współczynnik determinacji $R^2$}
 Współczynnik $R^2$ został po raz pierwszy przedstawiony przez Sewall'a Wright'a w 1921 roku \cite{ctx9250754850005154}. Opisuje on jak dobrze model predykcyjny dopasowuje się do danych obserwacyjnych. Jego wartość wyznaczana jest ze wzoru:
 \begin{equation}
@@ -305,7 +305,7 @@ Często wykorzystywany jest pierwiastek kwadratowy błędu średniokwadratowego,
 Symbole używane w tym wzorze są takie same jak w \autoref{equation:rmse}.
 
 \subsubsection{Indeks Willmott'a}
-Indeks Willmott'a nazywany również indeksem zgodności został przedstawiony przez Cort'a Willmott'a w 1981 roku \cite{doi:10.1080/02723646.1981.10642213}. Opisuje on jak dobrze model predykcyjny oddaje dane obserwacyjne. Nie mierzy on korelacji, a raczej sprawdza jak bardzo model predykcyjny jest pozbawiony błędów. Wartości indeksu są znormalizowane do przedziału $[0, 1]$ i wyliczane ze wzoru:
+Indeks Willmott'a nazywany również indeksem zgodności, został przedstawiony przez Cort'a Willmott'a w 1981 roku \cite{doi:10.1080/02723646.1981.10642213}. Opisuje on jak dobrze model predykcyjny oddaje dane obserwacyjne. Nie mierzy on korelacji, a raczej sprawdza jak bardzo model predykcyjny jest pozbawiony błędów. Wartości indeksu są znormalizowane do przedziału $[0, 1]$ i wyliczane ze wzoru:
 \begin{equation}
 	d = 1 - \frac{\sum_{i=1}^N (O_i - P_i)^2}{\sum_{i=1}^{N}(|P_i - \bar{O}| + |O_i - \bar{O}|)^2}
 \end{equation}
@@ -315,7 +315,7 @@ $P_i$ - i-ta przewidziana wartość zmiennej \newline
 $\bar{O}$ - średnia arytmetyczna empirycznych wartości zmiennej $y$.
 
 \subsection{Modele predykcyjne}
-Pierwszym stadium analizy było zbadanie różnych metod predykcji szeregów czasowych na przykładzie prostego szeregu czasowego. W tym etapie analizy jako zbiór danych wykorzystywany jest szereg zbudowany dla Krakowa, opisany w rozdziale \autoref{subsection:data:Krakow}. Celem tego procesu jest porównanie jakości wyników zwracanych przez modele oparte na rekurencyjnych sieciach neuronowych z klasycznymi metodami predykcji. Poszukiwany jest również najlepszy model rekurencyjny mogący zostać wykorzystany w dalszych badaniach. 
+Pierwszym stadium analizy było zbadanie różnych metod predykcji szeregów czasowych na przykładzie prostego szeregu czasowego. W tym etapie analizy jako zbiór danych wykorzystywany jest szereg zbudowany dla Krakowa, opisany w \autoref{subsection:data:Krakow}. Celem tego procesu jest porównanie jakości wyników zwracanych przez modele oparte na rekurencyjnych sieciach neuronowych z klasycznymi metodami predykcji. Poszukiwany jest również najlepszy model rekurencyjny mogący zostać wykorzystany w dalszych badaniach. 
 
 \subsubsection{Regresja liniowa}
 Pierwszą metodą zastosowaną do predykcji była regresja liniowa, jako że jest ona jedną z najstarszych i dobrze przebadanych metod predykcyjnych. Jest ona dokładnie opisana w \autoref{subsection:introduction:linearRegression}. Jej wyniki pełniły w dalszych rozważaniach rolę grupy kontrolnej dla wyników uzyskiwanych przez inne metody.
@@ -330,7 +330,7 @@ Uzyskane w tej metodzie wyniki zostaną dokładnie przedyskutowane w \autoref{su
 
 \subsubsection{Zintegrowany model autoregresyjny ze średnią ruchomą (ARIMA)}
 \label{subsection:arima}
-Model ARIMA jest połączeniem modelu autoregresyjnego (AR) oraz średniej ruchomej (MA) z integracją wejściowego szeregu. Integracja to proces, w którym dzięki początkowemu krokowi rozróżniającemu (differencing) można zapewnić stacjonarność szeregu czasowego \cite{arima}. Jest to model statystyczny szeroko wykorzystywany do celów predykcyjnych. 
+Model ARIMA jest połączeniem modelu autoregresyjnego (AR) oraz średniej ruchomej (MA) z integracją wejściowego szeregu. Integracja to proces, w którym dzięki początkowemu krokowi rozróżniającemu (differencing), można zapewnić stacjonarność szeregu czasowego \cite{arima}. Jest to model statystyczny szeroko wykorzystywany do celów predykcyjnych. 
 
 W celu zrozumienia modelu ARIMA należy zrozumieć osobno modele AR i MA. Model autoregresyjny przeprowadza predykcję zmiennej na podstawie kombinacji liniowej jej poprzednich wartości \cite{ar}. Model autoregresyjny rzędu $p$ można wyrazić wzorem: 
 \begin{equation}
@@ -359,13 +359,13 @@ gdzie $y'_t$ to szereg czasowy rozróżniany d-razy. Model taki jest często zap
 Model ten nie został wykorzystany w dalszych badaniach i jest tutaj przybliżony jako przykład metody statystycznej predykcji szeregu czasowego. 
 
 \subsubsection{Proste wygładzanie wykładnicze}
-Proste wygładzanie wykładnicze przeprowadza predykcję na podstawie poprzednich obserwacji. Metoda wygładzania wykładniczego zakłada, że im starsza obserwacja tym mniejszy ma ona wpływ na predykcję i wagi kolejnych obserwacji maleją wykładniczo \cite{ses}. Taki sposób predykcji można zapisać wzorem: 
+Proste wygładzanie wykładnicze przeprowadza predykcję na podstawie poprzednich obserwacji. Metoda wygładzania wykładniczego zakłada, że im starsza obserwacja tym mniejszy ma ona wpływ na predykcję. Wpływ kolejnych obserwacji maleje wykładniczo \cite{ses}. Taki sposób predykcji można zapisać wzorem: 
 \begin{equation}
 	\hat{y}_{T+1|T} = \alpha y_T + \alpha(1-\alpha)y_{T-1} + \alpha(1-\alpha)^2y_{T-2} + ...
 \end{equation}  
 Zmienna $\alpha$ jest nazywana parametrem wygładzania, gdyż określa ona jak szybko spada waga coraz starszych obserwacji. Przyjmuje ona wartości z przedziału $[0,1]$
 
-Metoda ta jest bardzo prosta i wydaje się nie być wystarczająca dla rozwiązywanego problemu. Nie zostanie ona wykorzystana w ramach tej pracy i została przedstawiona jako przykład możliwej do wykorzystania metody. 
+Metoda ta jest bardzo prosta i wydaje się nie być wystarczająca dla rozwiązywanego problemu, jako że nie bierze pod uwagę trendu i sezonowości. Nie zostanie ona wykorzystana w ramach tej pracy i została przedstawiona jako przykład możliwej do wykorzystania metody. 
 
 \subsubsection{Model liniowy Holt'a}
 Metoda Holt'a została stworzona jako rozwinięcie metody wykładniczego wygładzania w 1959 roku \cite{holt2004forecasting}. Pozwala ona na przeprowadzanie predykcji na danych posiadających trend. Predykcja jest prowadzona na podstawie wzoru: 
@@ -385,7 +385,7 @@ Składowa $b_t$ natomiast określa estymowany wpływ trendu na wartość zmienne
 \end{equation}
 Zmienna $\beta'$ jest parametrem wygładzania trendu i przyjmuje wartości z przedziału $[0,1]$
 
-Metoda Holt'a pozwala na predykcje szeregu czasowego posiadającego trend, ale nie jest to wystarczające na potrzeby badań prowadzonych w ramach tej pracy. Nie zostanie ona więc wykorzystana i jest jedynie przykładem potencjalnie użytecznej metody. 
+Metoda Holt'a pozwala na predykcje szeregu czasowego posiadającego trend, jednak nie jest to wystarczające na potrzeby badań prowadzonych w ramach tej pracy. Nie zostanie ona więc wykorzystana i jest jedynie przykładem potencjalnie użytecznej metody. 
 
 \subsubsection{Model Holt'a-Winters'a}
 \label{subsection:holt-winters}
@@ -412,7 +412,7 @@ Drugą zastosowaną metodą była regresja z wykorzystaniem drzew decyzyjnych, j
 
 Regresja z wykorzystaniem drzew decyzyjnych została przeprowadzona za pomocą metod udostępnionych w bibliotece ,,sklearn'' dla języka Python. Biblioteka ta definiuje drzewa decyzyjne jako nieparametryczną metodę nadzorowanego uczenia używaną do klasyfikacji i regresji \cite{sklearnDecissionTrees}. Aspekt regresyjny został wykorzystany w prowadzonych badaniach. 
 
-Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej wyliczanych charakterystyk można znaleźć w \autoref{section:measures}.
+Zastosowany został podział na zbiór uczący i testujący analogicznie jak w przypadku regresji liniowej. Tak samo analogiczne podejście zostało przyjęte w liczeniu charakterystyk porównawczych wyników. Więcej informacji o wyliczanych charakterystykach można znaleźć w \autoref{section:measures}.
 
 Dla ułatwienia zrozumienia otrzymywanych wyników sporządzony został również rysunek ostatecznego drzewa decyzyjnego. Rysunek ten został wykonany korzystając z języka opisu grafów DOT \cite{dotLanguage}.
 
@@ -444,7 +444,7 @@ Przyjęcie takiej metodologii badania skalowalności pozwala wierzyć, że otrzy
 
 \newpage
 \section{Zagadnienie predykcji zanieczyszczenia powietrza}
-Odpowiednie dane są niezbędne w celu zbadania użyteczności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Z tego powodu w celu stworzenia badawczo ciekawych szeregów czasowych przeznaczona została adekwatna ilość czasu. Przeanalizowano wiele możliwych zbiorów danych aby ich użyć do zbudowania szeregów czasowych. Ostatecznie podjęta została decyzja o połączeniu danych klimatycznych agregowanych przez Instytut Meteorologii i Gospodarki Wodnej oraz danych o zanieczyszczeniu powietrza zbieranych przez Główny Inspektorat Ochrony Środowiska. Oba te zbiory, sposób połączenia ich w szereg czasowy i napotkane trudności zostaną opisane w tym rozdziale. 
+Odpowiednie dane są niezbędne w celu zbadania użyteczności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych. Z tego powodu w celu stworzenia badawczo ciekawych szeregów czasowych przeznaczona została adekwatna ilość czasu. Przeanalizowano wiele możliwych zbiorów danych w celu użycia ich do zbudowania szeregów czasowych. Ostatecznie podjęta została decyzja o połączeniu danych klimatycznych agregowanych przez Instytut Meteorologii i Gospodarki Wodnej oraz danych o zanieczyszczeniu powietrza zbieranych przez Główny Inspektorat Ochrony Środowiska. Oba te zbiory, sposób połączenia ich w szereg czasowy i napotkane trudności zostaną opisane w tym rozdziale. 
 
 \subsection{Baza danych Instytutu Meteorologii i Gospodarki Wodnej}
 Instytut Meteorologii i Gospodarki Wodnej to instytucja zajmująca się prognozowaniem pogody i sporządzaniem ekspertyz meteorologicznych. Cel ten jest realizowany między innymi poprzez przeprowadzanie systematycznych pomiarów i obserwacji korzystając z sieci stacji pomiarowych \cite{imgwTask}. Ten aspekt działalności Instytutu implikuje istnienie obszernej bazy danych pomiarowych, które są udostępniane publicznie ponieważ celem Instytutu jest służba społeczeństwu. Ten zbiór danych pomiarowych został wykorzystany do budowy szeregów czasowych. 
@@ -547,8 +547,7 @@ Przy badaniu przydatności rekurencyjnych sieci neuronowych do predykcji czasowy
 W tym celu zbudowane zostały szeregi czasowe dla każdej odpowiadającej sobie geograficznie i czasowo pary punktów pomiarowych z Instytutu Meteorologii i Gospodarki Wodnej oraz Głównego Inspektoratu Ochrony Środowiska. W przypadkach, gdzie występowały wiele punktów mierzących stężenie pyłu PM10 przeprowadzano uśrednianie wyników pomiarów analogicznie do przypadku krakowskiego. Mniejsza uwaga została również poświęcona potrzebie ciągłości szeregu, jako że braki w pewnym fragmencie czasu były ,,przykrywane'' przez inne szeregi. Korzystając z takiej metodologii sporządzone zostały szeregi dla wszystkich sensownych par punktów pomiarowych obu instytucji.
 
 \subsection{Wykorzystanie stworzonego szeregu w procesie predykcyjnym}
-Wszystkie opisane w tym rozdziale szeregi zostały przystosowane do wykorzystania w modelach predykcyjnych przedstawionych w \autoref{section:methods}. W tym celu potrzebne było zdefiniowanie wektora wejściowego do modelu $X$ oraz poszukiwanej estymowanej cechy $y$. W celu utrzymania wiarygodności prowadzonych badań we wszystkich stworzonych szeregach podział ten był taki sam. Wszystkie dane wykorzystywane przez modele predykcyjne są w rozdzielczości dobowej.
-
+Wszystkie opisane w tym rozdziale szeregi zostały przystosowane do wykorzystania w modelach predykcyjnych przedstawionych w \autoref{section:methods}. W tym celu potrzebne było zdefiniowanie wektora wejściowego do modelu $X$ oraz poszukiwanej estymowanej cechy $y$. W celu utrzymania wiarygodności prowadzonych badań, we wszystkich stworzonych szeregach podział ten był taki sam. Wszystkie dane wykorzystywane przez modele predykcyjne są w rozdzielczości dobowej.
 Wektor $X$ składa się z następujących cech:
 \begin{itemize}
 	\item Data przeprowadzonego pomiaru (zakres od 01.01.2001 do 31.12.2020)
@@ -558,7 +557,7 @@ Wektor $X$ składa się z następujących cech:
 	\item Minimalna dobowa temperatura przy gruncie [$\si\celsius$]
 	\item Dobowa suma opadów [$\si{\milli\meter}$]
 \end{itemize}
-Natomiast $y$ to średnia dobowa wartość stężenia pyłu PM10 [$\frac{\si{\micro\gram}}{\si\meter^3}$]. Przed przekazaniem tak podzielonego szeregu do modelu predykcyjnego przeprowadzana została operacja usunięcia z niego dni, w których nie były przeprowadzane żadne pomiary. Brak przeprowadzenia takiej operacji skutkował w równomiernym spadku wydajności wszystkich modeli i został uznany za niepotrzebną komplikację. 
+Natomiast $y$ to średnia dobowa wartość stężenia pyłu PM10 [$\frac{\si{\micro\gram}}{\si\meter^3}$]. Przed przekazaniem tak podzielonego szeregu do modelu predykcyjnego przeprowadzana została operacja usunięcia z niego dni, w których nie były przeprowadzane żadne pomiary. Brak przeprowadzenia takiej operacji skutkował równomiernym spadkiem wydajności wszystkich modeli i został uznany za niepotrzebną komplikację. 
 
 \newpage
 \section{Numeryczna analiza zagadnienia predykcji koncentracji PM10}
@@ -1167,7 +1166,7 @@ W ramach tej pracy wyciągnięte zostały wnioski odnośnie ogólnej przydatnoś
 
 W \autoref{subsection:conclusions:usage} zauważono również poprawę wyników przy korzystaniu z bardziej nowoczesnych architektur rekurencyjnych sieci neuronowych. Wydaje się więc interesujące przeprowadzenie podobnych badań jak w tej pracy, ale z wykorzystaniem jeszcze bardziej nowoczesnych sieci. Przykładem takiej sieci, która nie jest ujęta w ramach tego badania jest sieć Content-Adaptive Recurrent Unit zaproponowana w 2020 roku \cite{chan2020caru}. Sieć ta obecnie nie jest zaimplementowana w najpopularniejszych bibliotekach i dlatego nie została uwzględniona w tym badaniu. Jednak przydatność CARU i innych jeszcze nie powstałych sieci może być bardzo interesującym kierunkiem badań w przyszłości. 
 
-Wartym odnotowania jest również fakt pominięcia w badaniach kilku metod statystycznych jak na przykład metody ARIMA opisanej w \autoref{subsection:arima} lub metody Holt'a-Winters'a opisanej w \autoref{subsection:holt-winters}. Dodatkowe przebadanie tych metod i porównanie jakości predykcji przez nie zwracanych z rekurencyjnymi sieciami neuronowymi pozwoli na lepsze zrozumienie tematu i jest ciekawym kierunkiem dalszych badań. 
+Wartym odnotowania jest również fakt pominięcia w badaniach kilku metod statystycznych jak na przykład metody ARIMA opisanej w \autoref{subsection:arima} lub metody Holt'a-Winters'a opisanej w \autoref{subsection:holt-winters}. Dodatkowe przebadanie tych metod i porównanie ich z rekurencyjnymi sieciami neuronowymi pozwoli na lepsze zrozumienie tematu i jest interesującym kierunkiem dalszych badań. 
 
 \newpage
 \printbibliography[title=Bibliografia]
