@@ -263,6 +263,7 @@ Wiedząc w jaki sposób zachowują się oba typy bramek oraz biorąc pod uwagę
 
 \newpage
 \section{Zagadnienie predykcji szeregu czasowego}
+\label{section:methods}
 W celu zbadania przydatności rekurencyjnych sieci neuronowych do predykcji szeregów czasowych zestawione ze sobą zostały jakości wyników różnych modeli predykcyjnych. Analizowano zarówno klasyczne metody predykcyjne jak i nowocześniejsze wykorzystujące sieci neuronowe. Celem takiego porównywania było wyłonienie najbardziej obiecującego badawczo modelu predykcyjnego w celu dalszej analizy jego wydajności. Dalsza analiza jego wydajności polegała na zbadaniu zmian zachowania modelu przy zwiększającej się ilości danych. 
 
 W tym rozdziale przedstawiona zostanie samo zagadnienie predykcji, potencjalne metody mogące zostać wykorzystane, metodologia badania użyteczności rekurencyjnych sieci neuronowych dla tego zastosowania oraz miary jakości predykcji wykorzystywane w tych badaniach. 
@@ -546,6 +547,18 @@ Przy badaniu przydatności rekurencyjnych sieci neuronowych do predykcji czasowy
 W tym celu zbudowane zostały szeregi czasowe dla każdej odpowiadającej sobie geograficznie i czasowo pary punktów pomiarowych z Instytutu Meteorologii i Gospodarki Wodnej oraz Głównego Inspektoratu Ochrony Środowiska. W przypadkach, gdzie występowały wiele punktów mierzących stężenie pyłu PM10 przeprowadzano uśrednianie wyników pomiarów analogicznie do przypadku krakowskiego. Mniejsza uwaga została również poświęcona potrzebie ciągłości szeregu, jako że braki w pewnym fragmencie czasu były ,,przykrywane'' przez inne szeregi. Korzystając z takiej metodologii sporządzone zostały szeregi dla wszystkich sensownych par punktów pomiarowych obu instytucji.
 
 \subsection{Wykorzystanie stworzonego szeregu w procesie predykcyjnym}
+Wszystkie opisane w tym rozdziale szeregi zostały przystosowane do wykorzystania w modelach predykcyjnych przedstawionych w \autoref{section:methods}. W tym celu potrzebne było zdefiniowanie wektora wejściowego do modelu $X$ oraz poszukiwanej estymowanej cechy $y$. W celu utrzymania wiarygodności prowadzonych badań we wszystkich stworzonych szeregach podział ten był taki sam. Wszystkie dane wykorzystywane przez modele predykcyjne są w rozdzielczości dobowej.
+
+Wektor $X$ składa się z następujących cech:
+\begin{itemize}
+	\item Data przeprowadzonego pomiaru (zakres od 01.01.2001 do 31.12.2020)
+	\item Maksymalna dobowa temperatura [$\si\celsius$]
+	\item Minimalna dobowa temperatura [$\si\celsius$]
+	\item Średnia dobowa temperatura [$\si\celsius$]
+	\item Minimalna dobowa temperatura przy gruncie [$\si\celsius$]
+	\item Dobowa suma opadów [$\si{\milli\meter}$]
+\end{itemize}
+Natomiast $y$ to średnia dobowa wartość stężenia pyłu PM10 [$\frac{\si{\micro\gram}}{\si\meter^3}$]. Przed przekazaniem tak podzielonego szeregu do modelu predykcyjnego przeprowadzana została operacja usunięcia z niego dni, w których nie były przeprowadzane żadne pomiary. Brak przeprowadzenia takiej operacji skutkował w równomiernym spadku wydajności wszystkich modeli i został uznany za niepotrzebną komplikację. 
 
 \newpage
 \section{Numeryczna analiza zagadnienia predykcji koncentracji PM10}
@@ -632,7 +645,7 @@ Warto zauważyć, że o ile wartość indeksu Willmott'a utrzymuje się na podob
 \end{table}
 \begin{figure}[!ht]
 	\centering
-	\makebox[0pt]{\includegraphics[scale=0.42]{trees_r2.png}}
+	\makebox[0pt]{\includegraphics[scale=0.3]{trees_r2.png}}
 	\caption{Zmiana wyniku testu $R^2$ dla różnych głębokości drzewa}
 	\label{figure:treer2}
 \end{figure}
